@@ -1,0 +1,2864 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>জেএসআই ০১/২০২৬ (JSI 01/2026) সশস্ত্র বাহিনী বেতন ও পেনশন ক্যালকুলেটর</title>
+  <meta name="description" content="বাংলাদেশ প্রতিরক্ষা মন্ত্রণালয়ের যৌথ বাহিনী নির্দেশাবলি (JSI 01/2026) অনুসারে সশস্ত্র বাহিনীর নির্ভুল বেতন, বকেয়া, ভাতা ও পেনশন ক্যালকুলেটর।" />
+  <meta property="og:title" content="জেএসআই ০১/২০২৬ (JSI 01/2026) সশস্ত্র বাহিনী বেতন ও পেনশন ক্যালকুলেটর" />
+  <meta property="og:description" content="বাংলাদেশ প্রতিরক্ষা মন্ত্রণালয়ের যৌথ বাহিনী নির্দেশাবলি (JSI 01/2026) অনুযায়ী বেতন, বকেয়া, ভাতা ও পেনশন হিসাব।" />
+  <meta name="theme-color" content="#0B130F" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B130F'/%3E%3Cpath d='M32 10l18 7.5V31c0 12.2-7.6 22.5-18 25-10.4-2.5-18-12.8-18-25V17.5L32 10z' fill='%23E5B94C'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='18' font-weight='bold' fill='%231A1302'%3E%E0%A7%B3%3C/text%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hind Siliguri"', 'system-ui', '-apple-system', 'sans-serif']
+          },
+          colors: {
+            regBg: '#0B130F',
+            regCard: '#121E18',
+            regField: '#0D1712',
+            regBorder: '#23382D',
+            emeraldAccent: '#10B981',
+            emeraldLight: '#34D399',
+            emeraldDarkBox: '#0D3325',
+            gold: '#E5B94C',
+            goldMuted: '#3B3014',
+            goldText: '#1A1302',
+            crimson: '#F87171',
+            textMain: '#F1F5F2',
+            textMuted: '#9FB1A6'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #0B130F;
+      color: #F1F5F2;
+      font-family: 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    input[type="range"] {
+      accent-color: #E5B94C;
+    }
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+    }
+    .print-only {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-regBg text-textMain pb-24 md:pb-10">
+
+  <!-- PRINT-ONLY OFFICIAL SUMMARY VIEW -->
+  <div id="print-sheet" class="print-only p-6 text-gray-900">
+    <div class="border-b-2 border-emerald-800 pb-3 mb-4">
+      <h1 class="text-xl font-bold text-emerald-900">জেএসআই ০১/২০২৬ (JSI 01/2026) সশস্ত্র বাহিনী বেতন ও পেনশন ক্যালকুলেটর</h1>
+      <p class="text-xs text-gray-600">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার • প্রতিরক্ষা মন্ত্রণালয় • গেজেট ১৫ নভেম্বর ২০২৬ (কার্যকর ০১ জুলাই ২০২৬)</p>
+    </div>
+    <pre id="print-summary-content" class="whitespace-pre-wrap font-sans text-sm leading-relaxed bg-gray-50 p-4 rounded-lg border border-gray-300"></pre>
+  </div>
+
+  <!-- TOP APP BAR -->
+  <header class="no-print sticky top-0 z-40 bg-[#0E1913]/95 backdrop-blur-md border-b border-regBorder">
+    <div class="max-w-3xl mx-auto px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-10 h-10 rounded-xl bg-gold text-goldText flex items-center justify-center shrink-0 shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.97-3.05 9.16-7 10-3.95-.84-7-5.03-7-10V6l7-3z" />
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-base sm:text-lg font-bold text-textMain truncate">জেএসআই ২০২৬ ক্যালকুলেটর</h1>
+          <p id="header-subtitle" class="text-xs text-textMuted truncate">সেনাবাহিনী • জেসিও ও ওআর / সমতুল্য</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button id="btn-top-pdf" type="button" title="প্রিন্ট / PDF" class="w-11 h-11 rounded-xl bg-gold text-goldText hover:brightness-105 active:scale-95 transition flex items-center justify-center shadow">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+          </svg>
+        </button>
+        <button id="btn-top-share" type="button" title="শেয়ার করুন" class="w-11 h-11 rounded-xl bg-regCard border border-regBorder text-textMain hover:border-gold/60 active:scale-95 transition flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+          </svg>
+        </button>
+        <button id="btn-top-reset" type="button" title="রিসেট করুন" class="w-11 h-11 rounded-xl bg-regCard border border-regBorder text-textMain hover:border-crimson/60 active:scale-95 transition flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Desktop Tabs -->
+    <div class="hidden md:block border-t border-regBorder/60 bg-[#0B140F]">
+      <div class="max-w-3xl mx-auto px-4 py-1.5 flex items-center gap-2" id="desktop-nav-tabs"></div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="no-print max-w-3xl mx-auto px-3 sm:px-4 pt-3 space-y-4">
+    <!-- Top Info & Digit Toggle Row -->
+    <div class="flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-medium text-emeraldLight">প্রতিরক্ষা মন্ত্রণালয় • JSI 01/2026</span>
+        <span id="db-status-badge" class="text-[11px] px-2 py-0.5 rounded-full bg-emeraldDarkBox/70 border border-emeraldAccent/30 text-emeraldLight">অফলাইন সেভ সক্রিয়</span>
+      </div>
+      <button id="btn-toggle-digits" type="button" class="px-3 py-1.5 rounded-lg bg-regCard border border-regBorder text-xs font-semibold text-gold hover:border-gold transition">
+        সংখ্যা: ১২৩ → 123
+      </button>
+    </div>
+
+    <!-- Dynamic Active Tab Root -->
+    <div id="app-root" class="space-y-4"></div>
+  </main>
+
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="no-print md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0E1712]/95 backdrop-blur-md border-t border-regBorder px-2 py-1.5" style="padding-bottom: max(0.375rem, env(safe-area-inset-bottom));">
+    <div id="mobile-nav-tabs" class="max-w-3xl mx-auto grid grid-cols-4 gap-1.5"></div>
+  </nav>
+
+  <!-- ADD PROMOTION MODAL -->
+  <div id="promotion-modal" class="no-print hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md rounded-2xl bg-regCard border border-regBorder p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-gold">সম্ভাব্য পদোন্নতি যোগ করুন</h3>
+        <button id="promo-close-x" type="button" class="w-9 h-9 rounded-lg hover:bg-regField text-textMuted flex items-center justify-center">✕</button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs text-textMuted mb-1.5">পদোন্নতিপ্রাপ্ত পদবি</label>
+          <select id="promo-rank-select" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold"></select>
+        </div>
+        <div>
+          <label class="block text-xs text-textMuted mb-1.5">পদোন্নতির সম্ভাব্য তারিখ <span class="text-gold font-bold">*</span></label>
+          <div class="grid grid-cols-11 gap-1.5 items-center">
+            <input id="promo-day" type="text" inputmode="numeric" maxlength="2" value="01" class="col-span-3 text-center rounded-xl bg-regField border border-regBorder py-2.5 text-sm font-bold text-textMain focus:outline-none focus:border-gold" />
+            <span class="text-center text-textMuted">-</span>
+            <input id="promo-month" type="text" inputmode="numeric" maxlength="2" value="01" class="col-span-3 text-center rounded-xl bg-regField border border-regBorder py-2.5 text-sm font-bold text-textMain focus:outline-none focus:border-gold" />
+            <span class="text-center text-textMuted">-</span>
+            <input id="promo-year" type="text" inputmode="numeric" maxlength="4" value="2030" class="col-span-3 text-center rounded-xl bg-regField border border-regBorder py-2.5 text-sm font-bold text-textMain focus:outline-none focus:border-gold" />
+          </div>
+          <div class="grid grid-cols-11 gap-1.5 text-[11px] text-textMuted text-center mt-1">
+            <span class="col-span-3">দিন</span><span></span><span class="col-span-3">মাস</span><span></span><span class="col-span-3">বছর</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button id="promo-cancel-btn" type="button" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-textMuted hover:bg-regField">বাতিল</button>
+        <button id="promo-save-btn" type="button" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-emeraldAccent text-[#062116] hover:brightness-105">যোগ করুন</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast-banner" class="no-print fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-xl bg-emeraldDarkBox border border-emeraldAccent/50 text-emeraldLight text-sm font-semibold shadow-xl transition-opacity"></div>
+
+  <!-- HIDDEN JSON IMPORT FILE INPUT -->
+  <input id="json-import-input" type="file" accept=".json,application/json" class="hidden" />
+
+  <script>
+    // =========================================================================
+    // 1. EXACT JSI 01/2026 DATA STRUCTURES (বাংলাদেশ প্রতিরক্ষা মন্ত্রণালয় গেজেট)
+    // =========================================================================
+    const STORAGE_KEY_ACTIVE = 'jsi_01_2026_active_state_v1';
+    const STORAGE_KEY_SNAPSHOTS = 'jsi_01_2026_saved_snapshots_v1';
+
+    const ServiceBranch = {
+      ARMY: { id: 'ARMY', bn: 'সেনাবাহিনী', en: 'Army' },
+      NAVY: { id: 'NAVY', bn: 'নৌবাহিনী', en: 'Navy' },
+      AIR_FORCE: { id: 'AIR_FORCE', bn: 'বিমানবাহিনী', en: 'Air Force' },
+      AFNS: { id: 'AFNS', bn: 'এএফএনএস (AFNS)', en: 'AFNS' },
+      MODC: { id: 'MODC', bn: 'এমওডিসি (MODC)', en: 'MODC' },
+      RELIGIOUS: { id: 'RELIGIOUS', bn: 'ধর্মীয় পরামর্শদাতা', en: 'Religious' }
+    };
+
+    const PersonnelCategory = {
+      OFFICER: { id: 'OFFICER', bn: 'কমিশন্ড অফিসার', shortBn: 'অফিসার' },
+      CADET: { id: 'CADET', bn: 'ক্যাডেট / মিডশীপম্যান', shortBn: 'ক্যাডেট' },
+      JCO_OR: { id: 'JCO_OR', bn: 'জেসিও ও ওআর / সমতুল্য', shortBn: 'জেসিও / ওআর' }
+    };
+
+    const OfficerAppendix = {
+      STANDARD: { id: 'STANDARD', bnTitle: 'ক্রোড়পত্র-ক / ঘ / ঙ / চ (সাধারণ কমিশন্ড)', enSubtitle: 'Standard Army/Navy/Air Force' },
+      DIRECT_CAPT: { id: 'DIRECT_CAPT', bnTitle: 'ক্রোড়পত্র-খ (এএমসি/এডিসি/ইঞ্জি./সিগন্যালস/ইএমই সরাসরি ক্যাপ্টেন)', enSubtitle: 'Direct Capt (Medical/Engr)' },
+      DIRECT_LT: { id: 'DIRECT_LT', bnTitle: 'ক্রোড়পত্র-গ (প্রাক-কমিশন এমএসসি/এইসি/জেএজি/আরভিএফসি)', enSubtitle: 'Direct Lt (Special Corps)' },
+      AFNS: { id: 'AFNS', bnTitle: 'ক্রোড়পত্র-ছ (এএফএনএস অফিসারবৃন্দ)', enSubtitle: 'AFNS Officers' }
+    };
+
+    const ImplementationGroup = {
+      GROUP_A: { id: 'GROUP_A', bnLabel: "গ্রুপ 'ক' (৪০% / ৭০% / ১০০%)", phase1Rate: 0.40, phase2Rate: 0.70 },
+      GROUP_B: { id: 'GROUP_B', bnLabel: "গ্রুপ 'খ' (৫০% / ৭৫% / ১০০%)", phase1Rate: 0.50, phase2Rate: 0.75 }
+    };
+
+    const CityCategory = {
+      DHAKA: { id: 'DHAKA', bnLabel: 'ঢাকা উত্তর ও দক্ষিণ সিটি কর্পোরেশন' },
+      OTHER_CITY_CORP: { id: 'OTHER_CITY_CORP', bnLabel: 'অন্যান্য ১১টি সিটি কর্পোরেশন + কক্সবাজার ও সাভার' },
+      OTHER_AREA: { id: 'OTHER_AREA', bnLabel: 'অন্যান্য স্থান / ক্যান্টনমেন্ট / মফস্বল' }
+    };
+
+    const AccommodationType = {
+      NO_QUARTERS_STANDARD: { id: 'NO_QUARTERS_STANDARD', bnLabel: 'সরকারি বাসা বরাদ্দ নেই (সাধারণ হার)' },
+      NO_QUARTERS_EXTRA_FACILITY: { id: 'NO_QUARTERS_EXTRA_FACILITY', bnLabel: 'সরকারি বাসা নেই (বিনামূল্যে আসবাব/রেয়াতি বিদ্যুৎ-গ্যাস)' },
+      MARRIED_GOVT_QUARTERS: { id: 'MARRIED_GOVT_QUARTERS', bnLabel: 'বিবাহিত ও সরকারি পারিবারিক বাসস্থান বরাদ্দপ্রাপ্ত' },
+      UNMARRIED_OR_MESS: { id: 'UNMARRIED_OR_MESS', bnLabel: 'অবিবাহিত / মেস বা ব্যারাকে অবস্থান' }
+    };
+
+    const ServiceBracket = [
+      { id: 'Y0_5', bnLabel: '০ – ৫ বৎসর', index: 0 },
+      { id: 'Y5_10', bnLabel: '৫+ – ১০ বৎসর', index: 1 },
+      { id: 'Y10_15', bnLabel: '১০+ – ১৫ বৎসর', index: 2 },
+      { id: 'Y15_20', bnLabel: '১৫+ – ২০ বৎসর', index: 3 },
+      { id: 'Y20_PLUS', bnLabel: '২০+ বৎসর ও তদূর্ধ্ব', index: 4 }
+    ];
+
+    const MedicalAgeBracket = [
+      { id: 'UP_TO_50', bnLabel: '৫০ বৎসর বয়স পর্যন্ত (৩,০০০ টাকা)', amount: 3000 },
+      { id: 'AGE_50_TO_60', bnLabel: '৫০ বৎসর ১ দিন হতে ৬০ বৎসর পর্যন্ত (৪,০০০ টাকা)', amount: 4000 },
+      { id: 'AGE_60_TO_70', bnLabel: '৬০ বৎসর ১ দিন হতে ৭০ বৎসর (অবসরভোগী: ৫,০০০ টাকা)', amount: 5000 },
+      { id: 'AGE_70_PLUS', bnLabel: '৭০ বৎসরের ঊর্ধ্বে (অবসরভোগী: ৬,০০০ টাকা)', amount: 6000 }
+    ];
+
+    const HillHaorCategory = [
+      { id: 'NONE', bnLabel: 'প্রযোজ্য নয়', maxCap: 0, oldCap: 0 },
+      { id: 'SADAR', bnLabel: 'পার্বত্য জেলা সদর ও সদর উপজেলা (২০%, সর্বোচ্চ ৫,০০০)', maxCap: 5000, oldCap: 3000 },
+      { id: 'OTHER_UPAZILA', bnLabel: 'পার্বত্য অন্যান্য উপজেলা / হাওড়-দ্বীপ-চর (২০%, সর্বোচ্চ ৫,৫০০)', maxCap: 5500, oldCap: 3500 }
+    ];
+
+    const proficiencyPayOptions = [
+      { id: 'none', bnLabel: 'প্রযোজ্য নয়', amount: 0, oldAmount: 0 },
+      { id: 'high_g1', bnLabel: 'উচ্চ দক্ষতা বেতন গ্রেড-১ (সার্জেন্ট ও তদূর্ধ্ব) — ৭৪৬ ৳', amount: 746, oldAmount: 574 },
+      { id: 'high_g2', bnLabel: 'উচ্চ দক্ষতা বেতন গ্রেড-২ (কর্পোরাল ও তদনিম্ন) — ৫৪৪ ৳', amount: 544, oldAmount: 418 },
+      { id: 'prof_g3', bnLabel: 'দক্ষতা বেতন গ্রেড-৩ (সার্জেন্ট ও তদূর্ধ্ব) — ৪১৯ ৳', amount: 419, oldAmount: 322 },
+      { id: 'prof_g4', bnLabel: 'দক্ষতা বেতন গ্রেড-৪ (কর্পোরাল ও তদনিম্ন) — ২৯২ ৳', amount: 292, oldAmount: 225 }
+    ];
+
+    const appointmentPayOptions = [
+      { id: 'none', bnLabel: 'প্রযোজ্য নয়', amount: 0, oldAmount: 0 },
+      { id: 'bsm_rsm', bnLabel: 'বিএসএম / আরএসএম — ২৯২ ৳', amount: 292, oldAmount: 225 },
+      { id: 'bqms', bnLabel: 'বিকিউএমএস — ২৪০ ৳', amount: 240, oldAmount: 185 },
+      { id: 'cqms_csm', bnLabel: 'সিকিউএমএস / সিএসএম / পিও ইনচার্জ / ডব্লিউওআইসি — ২০২ ৳', amount: 202, oldAmount: 155 }
+    ];
+
+    const specialSkillPayList = [
+      { id: 'PARACHUTE', bnLabel: 'প্যারাসুট' },
+      { id: 'COMMANDO', bnLabel: 'কমান্ডো' },
+      { id: 'SWADS', bnLabel: 'সোয়াডস' },
+      { id: 'SUBMARINE', bnLabel: 'সাবমেরিন' },
+      { id: 'SCUBA', bnLabel: 'স্কুবা ডাইভিং' },
+      { id: 'SNIPER', bnLabel: 'স্নাইপার' },
+      { id: 'FLYING', bnLabel: 'উড্ডয়ন (ফ্লাইট ক্রু)' }
+    ];
+
+    function getSpecialSkillAmount(skillId, isOfficer, tier, oldRate = false) {
+      const isJcoOrAbove = ['HONY_CAPT', 'HONY_LT', 'MWO', 'CHIEF_ARTIFICER', 'SWO', 'WO'].includes(tier);
+      const isSgt = tier === 'SGT';
+      if (oldRate) {
+        switch (skillId) {
+          case 'PARACHUTE': case 'SCUBA': return isOfficer ? 510 : 272;
+          case 'COMMANDO': case 'SWADS': return isOfficer ? 1525 : (isJcoOrAbove || isSgt ? 448 : 360);
+          case 'SUBMARINE': return isOfficer ? 3500 : (isJcoOrAbove ? 1500 : (isSgt ? 1200 : 800));
+          case 'SNIPER': return isOfficer ? 550 : 288;
+          case 'FLYING': return isOfficer ? 7500 : 3000;
+          default: return 0;
+        }
+      }
+      switch (skillId) {
+        case 'PARACHUTE': case 'SCUBA': return isOfficer ? 664 : 354;
+        case 'COMMANDO': case 'SWADS': return isOfficer ? 1982 : (isJcoOrAbove || isSgt ? 582 : 468);
+        case 'SUBMARINE': return isOfficer ? 4500 : (isJcoOrAbove ? 2000 : (isSgt ? 1500 : 1000));
+        case 'SNIPER': return isOfficer ? 715 : 374;
+        case 'FLYING': return isOfficer ? 10000 : 4000;
+        default: return 0;
+      }
+    }
+
+    // Officer Pay Scales (Ch. 1 Appendix ক–ছ)
+    const stdSecondLt = { 1: 46200, 2: 48600 };
+    const stdLt = { 1: 48300, 2: 50800, 3: 53300, 4: 56000, 5: 58800 };
+    const stdCapt = { 4: 58000, 5: 60900, 6: 64000, 7: 67200, 8: 70500, 9: 74100, 10: 77800, 11: 81700, 12: 85700, 13: 90000 };
+    const stdMajor = { 9: 86000, 10: 89500, 11: 93100, 12: 96800, 13: 100700, 14: 104700, 15: 108900, 16: 113200, 17: 117700, 18: 122500, 19: 127400, 20: 132400, 21: 139700 };
+    const stdLtCol = { 11: 100000, 12: 103500, 13: 107200, 14: 110900, 15: 114800, 16: 118800, 17: 123000, 18: 127300, 19: 131700, 20: 136300, 21: 142400 };
+    const stdCol = { 14: 113000, 15: 117000, 16: 121100, 17: 125300, 18: 129700, 19: 134300, 20: 139000, 21: 143800, 22: 148800 };
+    const stdBrigGen = { 17: 132000, 18: 135700, 19: 139400, 20: 143200, 21: 147200, 22: 151200, 23: 153000 };
+
+    function shiftScale(baseObj, targetStartYear) {
+      const sorted = Object.entries(baseObj).sort((a, b) => Number(a[0]) - Number(b[0]));
+      const out = {};
+      sorted.forEach(([, val], idx) => { out[targetStartYear + idx] = val; });
+      return out;
+    }
+
+    const afnsLt = { 1: 46200, 2: 48600, 3: 50900, 4: 53500, 5: 56200, 6: 59000 };
+    const afnsCapt = { 2: 48300, 3: 50800, 4: 53300, 5: 56000, 6: 58800, 7: 61700, 8: 64800, 9: 68000, 10: 71400, 11: 75000, 12: 78700 };
+    const afnsMaj = { 5: 58000, 6: 60900, 7: 64000, 8: 67200, 9: 70500, 10: 74100, 11: 77800, 12: 81700, 13: 85700, 14: 90000, 15: 94500, 16: 99200, 17: 104200, 18: 109400 };
+    const afnsLtCol = { 11: 86000, 12: 89500, 13: 93100, 14: 96800, 15: 100700, 16: 104700, 17: 108900, 18: 113200, 19: 117700, 20: 122500 };
+    const afnsCol = { 13: 100000, 14: 103500, 15: 107200, 16: 110900, 17: 114800, 18: 118800, 19: 123000, 20: 127300 };
+
+    function getOfficerRanks(appendixId) {
+      const fixedSenior = [
+        { id: 'maj_gen', bnName: 'মেজর জেনারেল / রিয়ার এডমিরাল / এয়ার ভাইস মার্শাল', isFixed: true, fixedPay: 156000, yearToPay: {}, allowanceTier: 'MAJ_GEN', defaultPrescribedService: 30 },
+        { id: 'lt_gen', bnName: 'লেঃ জেনারেল / ভাইস এডমিরাল / এয়ার মার্শাল', isFixed: true, fixedPay: 164000, yearToPay: {}, allowanceTier: 'LT_GEN', defaultPrescribedService: 30 },
+        { id: 'chief_lt_gen', bnName: 'বাহিনী প্রধান (লেঃ জেনারেল / ভাইস এডমিরাল / এয়ার মার্শাল)', isFixed: true, fixedPay: 164000, yearToPay: {}, allowanceTier: 'GEN', defaultPrescribedService: 30 },
+        { id: 'chief_gen', bnName: 'বাহিনী প্রধান (জেনারেল / এডমিরাল / এয়ার চীফ মার্শাল)', isFixed: true, fixedPay: 172000, yearToPay: {}, allowanceTier: 'GEN', defaultPrescribedService: 32 }
+      ];
+      if (appendixId === 'DIRECT_CAPT') {
+        return [
+          { id: 'capt', bnName: 'ক্যাপ্টেন / লেঃ (নৌ) / ফ্লাইট লেঃ', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdCapt, 1), allowanceTier: 'CAPT', defaultPrescribedService: 20 },
+          { id: 'maj', bnName: 'মেজর / লেঃ কমান্ডার / স্কোয়াড্রন লিডার', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdMajor, 6), allowanceTier: 'MAJ', defaultPrescribedService: 22 },
+          { id: 'lt_col', bnName: 'লেঃ কর্নেল / কমান্ডার / উইং কমান্ডার', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdLtCol, 8), allowanceTier: 'LT_COL', defaultPrescribedService: 24 },
+          { id: 'col', bnName: 'কর্নেল / ক্যাপ্টেন (নৌ) / গ্রুপ ক্যাপ্টেন', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdCol, 11), allowanceTier: 'COL', defaultPrescribedService: 26 },
+          { id: 'brig_gen', bnName: 'ব্রিগেডিয়ার জেনারেল / কমডোর / এয়ার কমডোর', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdBrigGen, 14), allowanceTier: 'BRIG_GEN', defaultPrescribedService: 28 },
+          ...fixedSenior.slice(0, 2)
+        ];
+      }
+      if (appendixId === 'DIRECT_LT') {
+        return [
+          { id: 'lt', bnName: 'লেঃ / সাব লেঃ / ফ্লাইং অফিসার', isFixed: false, fixedPay: 0, yearToPay: stdLt, allowanceTier: 'LT', defaultPrescribedService: 20 },
+          { id: 'capt', bnName: 'ক্যাপ্টেন / লেঃ (নৌ) / ফ্লাইট লেঃ', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdCapt, 3), allowanceTier: 'CAPT', defaultPrescribedService: 20 },
+          { id: 'maj', bnName: 'মেজর / লেঃ কমান্ডার / স্কোয়াড্রন লিডার', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdMajor, 8), allowanceTier: 'MAJ', defaultPrescribedService: 22 },
+          { id: 'lt_col', bnName: 'লেঃ কর্নেল / কমান্ডার / উইং কমান্ডার', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdLtCol, 10), allowanceTier: 'LT_COL', defaultPrescribedService: 24 },
+          { id: 'col', bnName: 'কর্নেল / ক্যাপ্টেন (নৌ) / গ্রুপ ক্যাপ্টেন', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdCol, 12), allowanceTier: 'COL', defaultPrescribedService: 26 },
+          { id: 'brig_gen', bnName: 'ব্রিগেডিয়ার জেনারেল / কমডোর / এয়ার কমডোর', isFixed: false, fixedPay: 0, yearToPay: shiftScale(stdBrigGen, 15), allowanceTier: 'BRIG_GEN', defaultPrescribedService: 28 },
+          ...fixedSenior.slice(0, 2)
+        ];
+      }
+      if (appendixId === 'AFNS') {
+        return [
+          { id: 'afns_lt', bnName: 'এএফএনএস লেফটেন্যান্ট', isFixed: false, fixedPay: 0, yearToPay: afnsLt, allowanceTier: 'LT', defaultPrescribedService: 20 },
+          { id: 'afns_capt', bnName: 'এএফএনএস ক্যাপ্টেন', isFixed: false, fixedPay: 0, yearToPay: afnsCapt, allowanceTier: 'CAPT', defaultPrescribedService: 20 },
+          { id: 'afns_maj', bnName: 'এএফএনএস মেজর', isFixed: false, fixedPay: 0, yearToPay: afnsMaj, allowanceTier: 'MAJ', defaultPrescribedService: 22 },
+          { id: 'afns_lt_col', bnName: 'এএফএনএস লেঃ কর্নেল', isFixed: false, fixedPay: 0, yearToPay: afnsLtCol, allowanceTier: 'LT_COL', defaultPrescribedService: 24 },
+          { id: 'afns_col', bnName: 'এএফএনএস কর্নেল', isFixed: false, fixedPay: 0, yearToPay: afnsCol, allowanceTier: 'COL', defaultPrescribedService: 26 }
+        ];
+      }
+      return [
+        { id: '2lt', bnName: '২য় লেঃ / এ্যাক্টিং সাব লেঃ / পাইলট অফিসার', isFixed: false, fixedPay: 0, yearToPay: stdSecondLt, allowanceTier: 'SECOND_LT', defaultPrescribedService: 20 },
+        { id: 'lt', bnName: 'লেঃ / সাব লেঃ / ফ্লাইং অফিসার', isFixed: false, fixedPay: 0, yearToPay: stdLt, allowanceTier: 'LT', defaultPrescribedService: 20 },
+        { id: 'capt', bnName: 'ক্যাপ্টেন / লেঃ (নৌ) / ফ্লাইট লেঃ', isFixed: false, fixedPay: 0, yearToPay: stdCapt, allowanceTier: 'CAPT', defaultPrescribedService: 20 },
+        { id: 'maj', bnName: 'মেজর / লেঃ কমান্ডার / স্কোয়াড্রন লিডার', isFixed: false, fixedPay: 0, yearToPay: stdMajor, allowanceTier: 'MAJ', defaultPrescribedService: 22 },
+        { id: 'lt_col', bnName: 'লেঃ কর্নেল / কমান্ডার / উইং কমান্ডার', isFixed: false, fixedPay: 0, yearToPay: stdLtCol, allowanceTier: 'LT_COL', defaultPrescribedService: 24 },
+        { id: 'col', bnName: 'কর্নেল / ক্যাপ্টেন (নৌ) / গ্রুপ ক্যাপ্টেন', isFixed: false, fixedPay: 0, yearToPay: stdCol, allowanceTier: 'COL', defaultPrescribedService: 26 },
+        { id: 'brig_gen', bnName: 'ব্রিগেডিয়ার জেনারেল / কমডোর / এয়ার কমডোর', isFixed: false, fixedPay: 0, yearToPay: stdBrigGen, allowanceTier: 'BRIG_GEN', defaultPrescribedService: 28 },
+        ...fixedSenior
+      ];
+    }
+
+    const cadetOptions = [
+      { id: 'officer_cadet', bnName: 'অফিসার ক্যাডেট / ফ্লাইট ক্যাডেট (সেনা/নৌ/বিমান)', fixedPay: 23000, oldFixedPay: 10000 },
+      { id: 'midshipman', bnName: 'মিডশীপম্যান (নৌবাহিনী)', fixedPay: 23800, oldFixedPay: 10500 },
+      { id: 'afns_cadet', bnName: 'এএফএনএস ক্যাডেট', fixedPay: 22400, oldFixedPay: 9500 }
+    ];
+
+    const nonOfficerRanks = [
+      { id: 'hony_capt', bnName: 'অনারারি ক্যাপ্টেন / অনারারি লেঃ (নৌ) / ফ্লাইট লেঃ', isHonoraryFixed: true, fixedPay: 85780, oldScaleStart: 42890, steps: [], group: 'GROUP_A', allowanceTier: 'HONY_CAPT' },
+      { id: 'hony_lt', bnName: 'অনারারি লেঃ / অনারারি সাব লেঃ / ফ্লাইং অফিসার', isHonoraryFixed: true, fixedPay: 76960, oldScaleStart: 38480, steps: [], group: 'GROUP_A', allowanceTier: 'HONY_LT' },
+      { id: 'mwo', bnName: 'মাস্টার ওয়ারেন্ট অফিসার / এমসিপিও', oldScaleStart: 22500, steps: [45000,47300,49700,52100,54700,57500,60300,63400,66500,69900,73300,77000,80900,84900,89100,93600,98300,103200,106200], group: 'GROUP_A', allowanceTier: 'MWO' },
+      { id: 'chief_artificer', bnName: 'চীফ আর্টিফিসার (নৌবাহিনী)', oldScaleStart: 22400, steps: [44800,47100,49400,51900,54500,57200,60000,63000,66100,69400,72900,76500,80400,84400,88600,93000,97600,102500], group: 'GROUP_A', allowanceTier: 'CHIEF_ARTIFICER' },
+      { id: 'swo', bnName: 'সিনিয়র ওয়ারেন্ট অফিসার / এসসিপিও / আর্টি-১,২ / ধর্মীয় স্কেল-১', oldScaleStart: 22250, steps: [44500,46800,49100,51500,54100,56800,59600,62600,65700,69000,72400,76000,79800,83800,88000,92400,97000,101200], group: 'GROUP_A', allowanceTier: 'SWO' },
+      { id: 'wo', bnName: 'ওয়ারেন্ট অফিসার / সিপিও / আর্টি-৩ / ধর্মীয় স্কেল-২', oldScaleStart: 22000, steps: [44000,46200,48600,51000,53500,56200,59000,62000,65100,68300,71700,75300,79100,83000,87200,91500,96100], group: 'GROUP_A', allowanceTier: 'WO' },
+      { id: 'sgt', bnName: 'সার্জেন্ট / পেটি অফিসার / আর্টি-৪ / এমওডিসি ডব্লিউও', oldScaleStart: 16000, steps: [32000,33600,35300,37100,38900,40900,42900,45100,47300,49700,52200,54800,57500,60400,63400,66600,69900,73400,77300], group: 'GROUP_B', allowanceTier: 'SGT', isSergeantOrBelow: true },
+      { id: 'cpl', bnName: 'কর্পোরাল / এলএস / এমওডিসি সার্জেন্ট', oldScaleStart: 11000, steps: [24000,25200,26500,27800,29200,30700,32200,33800,35500,37300,39100,41100,43200,45300,47600,49900,52400,55100,58000], group: 'GROUP_B', allowanceTier: 'CPL', isSergeantOrBelow: true, isCplOrBelow: true },
+      { id: 'lcpl', bnName: 'ল্যান্স কর্পোরাল / এবি / এলএসি / এমওডিসি কর্পোরাল', oldScaleStart: 10200, steps: [23500,24700,26000,27300,28600,30000,31500,33100,34800,36500,38300,40200,42300,44400,46600,48900,51300,53900,56800], group: 'GROUP_B', allowanceTier: 'LCPL', isSergeantOrBelow: true, isCplOrBelow: true },
+      { id: 'sainik', bnName: 'সৈনিক / ওডি / এসি-১ / এমওডিসি এলসিপিএল', oldScaleStart: 9000, steps: [21400,22500,23600,24800,26100,27400,28700,30200,31700,33200,34900,36700,38500,40400,42400,44500,46800,49100,51900], group: 'GROUP_B', allowanceTier: 'SAINIK', isSergeantOrBelow: true, isCplOrBelow: true },
+      { id: 'nce', bnName: 'এনসি(ই) / এমওডিসি সৈনিক', oldScaleStart: 8800, steps: [21000,22100,23200,24400,25600,26900,28200,29600,31100,32600,34300,36000,37800,39600,41600,43700,45900,48200,50900], group: 'GROUP_B', allowanceTier: 'NCE', isSergeantOrBelow: true, isCplOrBelow: true },
+      { id: 'recruit', bnName: 'রিক্রুট / নাবিক ইউটি / এসি-২ (নির্ধারিত)', isRecruitFixed: true, fixedPay: 21400, oldScaleStart: 9000, steps: [], group: 'GROUP_B', allowanceTier: 'RECRUIT', isSergeantOrBelow: true, isCplOrBelow: true },
+      { id: 'modc_recruit', bnName: 'এমওডিসি রিক্রুট (নির্ধারিত)', isRecruitFixed: true, fixedPay: 21000, oldScaleStart: 8800, steps: [], group: 'GROUP_B', allowanceTier: 'RECRUIT', isSergeantOrBelow: true, isCplOrBelow: true }
+    ];
+
+    const officerDefenceAllowance = { GEN: 7200, LT_GEN: 6930, MAJ_GEN: 6900, BRIG_GEN: 6870, COL: 6840, LT_COL: 6810, MAJ: 6780, CAPT: 6750, LT: 6720, SECOND_LT: 6690, HONY_CAPT: 6660, HONY_LT: 6630, MWO: 6600, CHIEF_ARTIFICER: 6570, SWO: 6540, WO: 6510 };
+    const orDefenceAllowance = { SGT: [3240,3840,4560,5400,6480], CPL: [2280,2760,3360,4080,4800], LCPL: [2160,2640,3240,3840,4560], SAINIK: [1800,2160,2640,3000,3600], NCE: [1680,2040,2400,2880,3360] };
+    const oldOfficerDefenceAllowance = { GEN: 4800, LT_GEN: 4620, MAJ_GEN: 4600, BRIG_GEN: 4580, COL: 4560, LT_COL: 4540, MAJ: 4520, CAPT: 4500, LT: 4480, SECOND_LT: 4460, HONY_CAPT: 4440, HONY_LT: 4420, MWO: 4400, CHIEF_ARTIFICER: 4380, SWO: 4360, WO: 4340 };
+    const oldOrDefenceAllowance = { SGT: [2700,3200,3800,4500,5400], CPL: [1900,2300,2800,3400,4000], LCPL: [1800,2200,2700,3200,3800], SAINIK: [1500,1800,2200,2500,3000], NCE: [1400,1700,2000,2400,2800] };
+
+    const commutationTable = {
+      20:29.932, 21:29.782, 22:29.520, 23:29.307, 24:29.091, 25:28.870, 26:28.645, 27:28.414, 28:28.180, 29:27.940,
+      30:27.695, 31:27.444, 32:27.189, 33:26.927, 34:26.660, 35:26.387, 36:26.109, 37:25.824, 38:25.534, 39:25.237,
+      40:24.934, 41:24.623, 42:24.308, 43:23.985, 44:23.655, 45:23.317, 46:22.974, 47:22.623, 48:22.263, 49:21.898,
+      50:21.526, 51:21.148, 52:20.763, 53:20.374, 54:19.980, 55:19.582, 56:19.180, 57:18.776, 58:18.369, 59:17.961,
+      60:17.553, 61:17.164, 62:16.771, 63:16.380, 64:15.994, 65:15.613, 66:15.237, 67:14.867, 68:14.503, 69:14.145,
+      70:13.794, 71:13.450, 72:13.115, 73:12.788, 74:12.469, 75:12.161, 76:11.861, 77:11.573, 78:11.294, 79:11.027, 80:10.771
+    };
+
+    const implementationStartMonths = [
+      { label: 'এখনো পাইনি (আজ পর্যন্ত হিসাব)', months: -1 },
+      { label: 'জুলাই ২০২৬ (০ মাস বকেয়া)', months: 0 },
+      { label: 'আগস্ট ২০২৬ (১ মাস)', months: 1 },
+      { label: 'সেপ্টেম্বর ২০২৬ (২ মাস)', months: 2 },
+      { label: 'অক্টোবর ২০২৬ (৩ মাস)', months: 3 },
+      { label: 'নভেম্বর ২০২৬ (৪ মাস)', months: 4 },
+      { label: 'ডিসেম্বর ২০২৬ (৫ মাস)', months: 5 },
+      { label: 'জানুয়ারি ২০২৭ (৬ মাস)', months: 6 },
+      { label: 'ফেব্রুয়ারি ২০২৭ (৭ মাস)', months: 7 },
+      { label: 'মার্চ ২০২৭ (৮ মাস)', months: 8 },
+      { label: 'এপ্রিল ২০২৭ (৯ মাস)', months: 9 },
+      { label: 'মে ২০২৭ (১০ মাস)', months: 10 },
+      { label: 'জুন ২০২৭ (১১ মাস)', months: 11 },
+      { label: 'জুলাই ২০২৭ (১২ মাস)', months: 12 }
+    ];
+
+    // =========================================================================
+    // 2. BENGALI FORMATTING & UTILITY HELPERS
+    // =========================================================================
+    const bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+    function toBn(str) {
+      return String(str).replace(/[0-9]/g, d => bnDigits[Number(d)]);
+    }
+    function toEn(str) {
+      return String(str).replace(/[০-৯]/g, d => String(bnDigits.indexOf(d)));
+    }
+    function parseIntSafe(str) {
+      const cleaned = toEn(str).replace(/[^0-9]/g, '');
+      return cleaned ? parseInt(cleaned, 10) : 0;
+    }
+    function parseFloatSafe(str) {
+      const cleaned = toEn(str).replace(/[^0-9.]/g, '');
+      const val = parseFloat(cleaned);
+      return Number.isFinite(val) ? val : 0;
+    }
+    function formatIndianCommas(amount) {
+      const neg = amount < 0;
+      const s = String(Math.abs(Math.round(amount)));
+      if (s.length <= 3) return (neg ? '-' : '') + s;
+      const last3 = s.slice(-3);
+      const rest = s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+      return (neg ? '-' : '') + rest + ',' + last3;
+    }
+    function fmtBdt(amount, useBn = true) {
+      const f = formatIndianCommas(Math.round(amount));
+      return useBn ? `${toBn(f)} টাকা` : `${f} BDT`;
+    }
+    function fmtNum(val, useBn = true) {
+      const f = formatIndianCommas(Math.round(val));
+      return useBn ? toBn(f) : f;
+    }
+    function fmtDec(val, dec = 1, useBn = true) {
+      const f = Number(val).toFixed(dec);
+      return useBn ? toBn(f) : f;
+    }
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // =========================================================================
+    // 3. STATE MANAGEMENT & LOCAL STORAGE PERSISTENCE
+    // =========================================================================
+    function createDefaultState() {
+      return {
+        selectedTab: 'INFO',
+        useBengaliDigits: true,
+        isPensionerRole: false,
+        userName: '',
+        serviceNo: '',
+        unitName: '',
+        dobDay: '01', dobMonth: '02', dobYear: '2003',
+        joinDay: '04', joinMonth: '02', joinYear: '2022',
+        computedAgeOnEffectiveDate: 23,
+        computedServiceYears: 4.4,
+        category: 'JCO_OR',
+        serviceBranch: 'ARMY',
+        officerAppendix: 'STANDARD',
+        selectedOfficerRankId: 'maj',
+        commissionedYear: 16,
+        officerOldBasicInput: '56500',
+        selectedCadetId: 'officer_cadet',
+        selectedNonOfficerRankId: 'sgt',
+        oldBasicPayInput: '26120',
+        oldScaleStartOverride: '16000',
+        applyJuly2026Increment: true,
+        isMarried: true,
+        childrenCount: 0,
+        disabledChildrenCount: 0,
+        proficiencyPayId: 'none',
+        appointmentPayId: 'none',
+        goodConductBadges: 0,
+        selectedSpecialSkills: [],
+        otherNewAllowanceInput: '',
+        receiveMonthIndex: 0,
+        monthlyBiseshSubidhaInput: '',
+        cityCategory: 'DHAKA',
+        accommodationType: 'NO_QUARTERS_STANDARD',
+        serviceBracketIndex: 0,
+        activeMedicalAgeBracketId: 'UP_TO_50',
+        receiveFreeTiffin: false,
+        hillHaorCategoryId: 'NONE',
+        oldServiceOrdnanceInput: '',
+        gpfPercent: 5,
+        pensionSubTab: 'RETIRING',
+        oldNetPensionInput: '18500',
+        pensionerAgeBracketId: 'AGE_60_TO_70',
+        adultRationMembers: 2,
+        childRationMembers: 0,
+        retiringType: 'JCO_OR',
+        retiringLastPayInput: '45100',
+        retiringQualifyingYearsInput: '22',
+        rankPrescribedYearsInput: '22',
+        retiringAgeNextBirthday: 52,
+        commutationSurrenderPercent: 50,
+        retireDay: '04', retireMonth: '02', retireYear: '2043',
+        projectedPromotions: [],
+        expandedMilestones: {},
+        breakdownOpen: { existing: true, retiring: true },
+        showJsonPreview: false
+      };
+    }
+
+    let state = loadStateFromStorage();
+    let savedSnapshots = loadSnapshotsFromStorage();
+
+    function loadStateFromStorage() {
+      const def = createDefaultState();
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_ACTIVE);
+        if (!raw) return def;
+        const parsed = { ...def, ...JSON.parse(raw) };
+        if (!ServiceBranch[parsed.serviceBranch]) parsed.serviceBranch = def.serviceBranch;
+        if (!PersonnelCategory[parsed.category]) parsed.category = def.category;
+        if (!OfficerAppendix[parsed.officerAppendix]) parsed.officerAppendix = def.officerAppendix;
+        if (!CityCategory[parsed.cityCategory]) parsed.cityCategory = def.cityCategory;
+        if (!AccommodationType[parsed.accommodationType]) parsed.accommodationType = def.accommodationType;
+        if (!Array.isArray(parsed.selectedSpecialSkills)) parsed.selectedSpecialSkills = [];
+        if (!Array.isArray(parsed.projectedPromotions)) parsed.projectedPromotions = [];
+        if (!parsed.expandedMilestones || typeof parsed.expandedMilestones !== 'object') parsed.expandedMilestones = {};
+        if (!parsed.breakdownOpen || typeof parsed.breakdownOpen !== 'object') parsed.breakdownOpen = def.breakdownOpen;
+        return parsed;
+      } catch {
+        return def;
+      }
+    }
+
+    function saveStateToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY_ACTIVE, JSON.stringify(state));
+      } catch {}
+    }
+
+    function loadSnapshotsFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_SNAPSHOTS);
+        return raw ? JSON.parse(raw) : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveSnapshotsToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY_SNAPSHOTS, JSON.stringify(savedSnapshots));
+      } catch {}
+    }
+
+    // =========================================================================
+    // 4. EXACT JSI 01/2026 CALCULATION ENGINE
+    // =========================================================================
+    function getHouseRentRate(isOfficer, tier, cityId, accommId) {
+      if (tier === 'CADET' || tier === 'RECRUIT') return 0;
+      if (isOfficer) {
+        if (accommId === 'MARRIED_GOVT_QUARTERS') return 0;
+        const isLtColOrAbove = ['LT_COL','COL','BRIG_GEN','MAJ_GEN','LT_GEN','GEN'].includes(tier);
+        const extra = accommId === 'NO_QUARTERS_EXTRA_FACILITY';
+        if (cityId === 'DHAKA') return !isLtColOrAbove ? (extra ? 0.40 : 0.45) : (extra ? 0.35 : 0.40);
+        if (cityId === 'OTHER_CITY_CORP') return !isLtColOrAbove ? (extra ? 0.30 : 0.35) : (extra ? 0.25 : 0.30);
+        return !isLtColOrAbove ? (extra ? 0.25 : 0.30) : (extra ? 0.20 : 0.25);
+      } else {
+        const isSgtOrBelow = ['SGT','CPL','LCPL','SAINIK','NCE'].includes(tier);
+        if (accommId === 'UNMARRIED_OR_MESS') return 0.20;
+        if (accommId === 'MARRIED_GOVT_QUARTERS') return isSgtOrBelow ? 0.20 : 0;
+        if (tier === 'NCE' || tier === 'SAINIK') return cityId === 'DHAKA' ? 0.60 : (cityId === 'OTHER_CITY_CORP' ? 0.50 : 0.45);
+        if (['LCPL','CPL','SGT'].includes(tier)) return cityId === 'DHAKA' ? 0.50 : (cityId === 'OTHER_CITY_CORP' ? 0.40 : 0.35);
+        return cityId === 'DHAKA' ? 0.45 : (cityId === 'OTHER_CITY_CORP' ? 0.35 : 0.30);
+      }
+    }
+
+    function getDefenceServiceAllowance(tier, bracketIdx, isReligious, isOld = false) {
+      if (tier === 'CADET' || tier === 'RECRUIT' || isReligious) return 0;
+      const offMap = isOld ? oldOfficerDefenceAllowance : officerDefenceAllowance;
+      const orMap = isOld ? oldOrDefenceAllowance : orDefenceAllowance;
+      if (offMap[tier] !== undefined) return offMap[tier];
+      if (orMap[tier]) return orMap[tier][bracketIdx] || 0;
+      return 0;
+    }
+
+    function computeDatesAndYears(s) {
+      const dy = parseIntSafe(s.dobYear), dm = parseIntSafe(s.dobMonth), dd = parseIntSafe(s.dobDay);
+      let age = s.computedAgeOnEffectiveDate;
+      if (String(s.dobYear).length === 4 && dy >= 1930 && dy <= 2020 && dm >= 1 && dd >= 1) {
+        let yrs = 2026 - dy;
+        if (dm > 7 || (dm === 7 && dd > 1)) yrs -= 1;
+        age = Math.max(0, yrs);
+      }
+      const jy = parseIntSafe(s.joinYear), jm = parseIntSafe(s.joinMonth), jd = parseIntSafe(s.joinDay);
+      let svc = s.computedServiceYears;
+      if (String(s.joinYear).length === 4 && jy >= 1950 && jy <= 2026 && jm >= 1 && jd >= 1) {
+        const months = (2026 - jy) * 12 + (7 - jm) + (jd <= 15 ? 0 : -1);
+        svc = Math.max(0, months) / 12.0;
+      }
+      return { age, svc };
+    }
+
+    function computeYearsBetween(d1Str, m1Str, y1Str, d2Str, m2Str, y2Str) {
+      if (String(y1Str).length !== 4 || String(y2Str).length !== 4) return null;
+      const d1 = Math.min(31, Math.max(1, parseIntSafe(d1Str) || 1));
+      const m1 = Math.min(12, Math.max(1, parseIntSafe(m1Str) || 1));
+      const y1 = parseIntSafe(y1Str);
+      const d2 = Math.min(31, Math.max(1, parseIntSafe(d2Str) || 1));
+      const m2 = Math.min(12, Math.max(1, parseIntSafe(m2Str) || 1));
+      const y2 = parseIntSafe(y2Str);
+      if (!y1 || !y2) return null;
+      const months = (y2 - y1) * 12 + (m2 - m1) + (d2 >= d1 ? 0 : -1);
+      return Math.max(0, months) / 12.0;
+    }
+
+    function computePayFixation(s) {
+      const bn = s.useBengaliDigits;
+      const eightSteps = [];
+      const steps = [];
+
+      if (s.category === 'OFFICER') {
+        const ranks = getOfficerRanks(s.officerAppendix);
+        const rank = ranks.find(r => r.id === s.selectedOfficerRankId) || ranks[0];
+        const shortName = rank.bnName.split(' /')[0].trim();
+        const oldBasic = parseIntSafe(s.officerOldBasicInput);
+        const appLabel = OfficerAppendix[s.officerAppendix].bnTitle.split(' (')[0];
+
+        if (rank.isFixed) {
+          const fixed = rank.fixedPay;
+          eightSteps.push({ stepBn: bn ? '১' : '1', title: '৩০ জুন ২০২৬-এ আহরিত মূল বেতন', subtitle: 'পুরোনো স্কেল (জেএসআই ০১/২০১৬)', formattedValue: fmtBdt(oldBasic, bn), type: 'NORMAL' });
+          eightSteps.push({ stepBn: bn ? '২' : '2', title: 'জেএসআই ০১/২০২৬ নির্ধারিত মূল বেতন', subtitle: `নির্ধারিত স্কেল (${OfficerAppendix[s.officerAppendix].bnTitle})`, formattedValue: fmtBdt(fixed, bn), type: 'POSITIVE', highlight: true });
+          return {
+            rankTitle: rank.bnName, rankShortTitle: shortName, appendixShortLabel: appLabel,
+            newBasicPay: fixed, fixedBeforeIncrementPay: fixed, july2026IncrementAmount: 0, july2027BasicPay: fixed,
+            oldBasicPay: oldBasic, oldScaleStart: oldBasic, newScaleStart: fixed, personalPay: 0,
+            matchedStepIndex: null, totalSteps: null, group: 'GROUP_A', allowanceTier: rank.allowanceTier,
+            isOfficer: true, isAfns: s.officerAppendix === 'AFNS', isSergeantOrBelow: false, isCplOrBelow: false,
+            defaultPrescribedService: rank.defaultPrescribedService, eightSteps, breakdownSteps: steps
+          };
+        } else {
+          const yrs = Object.keys(rank.yearToPay).map(Number).sort((a,b)=>a-b);
+          const selYr = rank.yearToPay[s.commissionedYear] !== undefined ? s.commissionedYear : yrs[0];
+          const newBasic = rank.yearToPay[selYr];
+          const nextBasic = rank.yearToPay[selYr + 1] || newBasic;
+          const startPay = rank.yearToPay[yrs[0]];
+
+          eightSteps.push({ stepBn: bn ? '১' : '1', title: '৩০ জুন ২০২৬-এ আহরিত মূল বেতন', subtitle: 'পুরোনো স্কেল (জেএসআই ০১/২০১৬)', formattedValue: fmtBdt(oldBasic, bn), type: 'NORMAL' });
+          eightSteps.push({ stepBn: bn ? '২' : '2', title: 'উল্লম্ব স্কেল (Vertical Scale) বছর', subtitle: `${shortName} — ${fmtNum(selYr, bn)}ম বর্ষ`, formattedValue: fmtBdt(newBasic, bn), type: 'POSITIVE', highlight: true });
+          if (oldBasic > 0) {
+            eightSteps.push({ stepBn: bn ? '৩' : '3', title: 'মোট মূল বেতন বৃদ্ধি', subtitle: '(২) থেকে (১) বিয়োগ', formattedValue: `+ ${fmtBdt(Math.max(0, newBasic - oldBasic), bn)}`, type: 'POSITIVE' });
+          }
+          return {
+            rankTitle: `${rank.bnName} (${fmtNum(selYr, bn)}ম বর্ষ)`, rankShortTitle: shortName, appendixShortLabel: appLabel,
+            newBasicPay: newBasic, fixedBeforeIncrementPay: newBasic, july2026IncrementAmount: 0, july2027BasicPay: nextBasic,
+            oldBasicPay: oldBasic, oldScaleStart: startPay, newScaleStart: startPay, personalPay: 0,
+            matchedStepIndex: null, totalSteps: null, group: 'GROUP_A', allowanceTier: rank.allowanceTier,
+            isOfficer: true, isAfns: s.officerAppendix === 'AFNS', isSergeantOrBelow: false, isCplOrBelow: false,
+            defaultPrescribedService: rank.defaultPrescribedService, eightSteps, breakdownSteps: steps
+          };
+        }
+      }
+
+      if (s.category === 'CADET') {
+        const cadet = cadetOptions.find(c => c.id === s.selectedCadetId) || cadetOptions[0];
+        const shortName = cadet.bnName.split(' (')[0].trim();
+        eightSteps.push({ stepBn: bn ? '১' : '1', title: 'পূর্বের নির্ধারিত বেতন', subtitle: 'জেএসআই ০১/২০১৬', formattedValue: fmtBdt(cadet.oldFixedPay, bn), type: 'NORMAL' });
+        eightSteps.push({ stepBn: bn ? '২' : '2', title: 'নতুন নির্ধারিত বেতন', subtitle: 'অধ্যায়-১ ক্রোড়পত্র-জ', formattedValue: fmtBdt(cadet.fixedPay, bn), type: 'POSITIVE', highlight: true });
+        return {
+          rankTitle: cadet.bnName, rankShortTitle: shortName, appendixShortLabel: 'ক্রোড়পত্র-জ',
+          newBasicPay: cadet.fixedPay, fixedBeforeIncrementPay: cadet.fixedPay, july2026IncrementAmount: 0, july2027BasicPay: cadet.fixedPay,
+          oldBasicPay: cadet.oldFixedPay, oldScaleStart: cadet.oldFixedPay, newScaleStart: cadet.fixedPay, personalPay: 0,
+          matchedStepIndex: null, totalSteps: null, group: 'GROUP_B', allowanceTier: 'CADET',
+          isOfficer: false, isAfns: cadet.id === 'afns_cadet', isSergeantOrBelow: true, isCplOrBelow: false,
+          defaultPrescribedService: 20, eightSteps, breakdownSteps: steps
+        };
+      }
+
+      // JCO_OR
+      const rank = nonOfficerRanks.find(r => r.id === s.selectedNonOfficerRankId) || nonOfficerRanks[6];
+      const shortName = rank.bnName.split(' /')[0].trim();
+      const parsedOld = parseIntSafe(s.oldBasicPayInput);
+      const oldBasic = parsedOld > 0 ? parsedOld : rank.oldScaleStart;
+
+      if (rank.isHonoraryFixed) {
+        const protectedPay = oldBasic > rank.fixedPay ? oldBasic + 500 : rank.fixedPay;
+        eightSteps.push({ stepBn: bn ? '১' : '1', title: '৩০ জুন ২০২৬-এ আহরিত মূল বেতন', subtitle: 'পুরোনো স্কেল (জেএসআই ০১/২০১৬)', formattedValue: fmtBdt(oldBasic, bn), type: 'NORMAL' });
+        eightSteps.push({ stepBn: bn ? '২' : '2', title: 'নির্ধারিত স্কেল ও সুরক্ষা নিয়ম', subtitle: 'অনারারি পদের নির্ধারিত মূল বেতন', formattedValue: fmtBdt(protectedPay, bn), type: 'POSITIVE', highlight: true });
+        return {
+          rankTitle: rank.bnName, rankShortTitle: shortName, appendixShortLabel: 'ক্রোড়পত্র-ক',
+          newBasicPay: protectedPay, fixedBeforeIncrementPay: protectedPay, july2026IncrementAmount: 0, july2027BasicPay: protectedPay,
+          oldBasicPay: oldBasic, oldScaleStart: rank.oldScaleStart, newScaleStart: rank.fixedPay, personalPay: 0,
+          matchedStepIndex: null, totalSteps: null, group: rank.group, allowanceTier: rank.allowanceTier,
+          isOfficer: false, isAfns: false, isSergeantOrBelow: false, isCplOrBelow: false,
+          defaultPrescribedService: 25, eightSteps, breakdownSteps: steps
+        };
+      }
+
+      if (rank.isRecruitFixed) {
+        eightSteps.push({ stepBn: bn ? '১' : '1', title: '৩০ জুন ২০২৬-এ আহরিত মূল বেতন', subtitle: 'পুরোনো স্কেল (জেএসআই ০১/২০১৬)', formattedValue: fmtBdt(rank.oldScaleStart, bn), type: 'NORMAL' });
+        eightSteps.push({ stepBn: bn ? '২' : '2', title: 'জেএসআই ০১/২০২৬ নির্ধারিত বেতন', subtitle: 'প্রশিক্ষণার্থী নির্ধারিত', formattedValue: fmtBdt(rank.fixedPay, bn), type: 'POSITIVE', highlight: true });
+        return {
+          rankTitle: rank.bnName, rankShortTitle: shortName, appendixShortLabel: 'ক্রোড়পত্র-ক',
+          newBasicPay: rank.fixedPay, fixedBeforeIncrementPay: rank.fixedPay, july2026IncrementAmount: 0, july2027BasicPay: rank.fixedPay,
+          oldBasicPay: oldBasic, oldScaleStart: rank.oldScaleStart, newScaleStart: rank.fixedPay, personalPay: 0,
+          matchedStepIndex: null, totalSteps: null, group: rank.group, allowanceTier: rank.allowanceTier,
+          isOfficer: false, isAfns: false, isSergeantOrBelow: true, isCplOrBelow: true,
+          defaultPrescribedService: 25, eightSteps, breakdownSteps: steps
+        };
+      }
+
+      // Exact 8-Step Fixation
+      const parsedStart = parseIntSafe(s.oldScaleStartOverride);
+      const oldScaleStart = parsedStart > 0 ? parsedStart : rank.oldScaleStart;
+      const scale = rank.steps;
+      const newScaleStart = scale[0];
+      const diff = Math.max(0, oldBasic - oldScaleStart);
+      const targetAmount = newScaleStart + diff;
+
+      let matchedBeforeIncIdx = 0;
+      let personalPay = 0;
+      let matchReason = 'স্কেলের ১ম ধাপে নির্ধারণ';
+
+      if (oldBasic > oldScaleStart) {
+        const foundIdx = scale.findIndex(v => v >= targetAmount);
+        if (foundIdx >= 0) {
+          matchedBeforeIncIdx = foundIdx;
+          matchReason = scale[foundIdx] === targetAmount
+            ? `স্কেলে সমান ধাপ থাকায় ${fmtNum(foundIdx + 1, bn)} নং ধাপে নির্ধারণ`
+            : 'স্কেলে সমান ধাপ না থাকায় পরবর্তী উচ্চতর ধাপে নির্ধারণ';
+        } else {
+          matchedBeforeIncIdx = scale.length - 1;
+          personalPay = Math.max(0, oldBasic - scale[scale.length - 1]);
+          matchReason = 'সর্বোচ্চ ধাপে নির্ধারণ';
+        }
+      }
+
+      const fixedBeforeIncrement = scale[matchedBeforeIncIdx];
+      let finalIdx2026 = matchedBeforeIncIdx;
+      if (s.applyJuly2026Increment && finalIdx2026 < scale.length - 1) {
+        finalIdx2026 += 1;
+      }
+      const newBasic2026 = scale[finalIdx2026];
+      const inc2026 = Math.max(0, newBasic2026 - fixedBeforeIncrement);
+      const july2027Idx = Math.min(scale.length - 1, finalIdx2026 + 1);
+      const july2027Basic = scale[july2027Idx];
+
+      eightSteps.push({ stepBn: bn ? '১' : '1', title: '৩০ জুন ২০২৬-এ আহরিত মূল বেতন', subtitle: 'পুরোনো স্কেল (জেএসআই ০১/২০১৬)', formattedValue: fmtBdt(oldBasic, bn), type: 'NORMAL' });
+      eightSteps.push({ stepBn: bn ? '২' : '2', title: 'পুরোনো স্কেলের প্রারম্ভিক ধাপ', subtitle: `${shortName} পদের স্কেল শুরু`, formattedValue: `− ${fmtBdt(oldScaleStart, bn)}`, type: 'NEGATIVE' });
+      eightSteps.push({ stepBn: bn ? '৩' : '3', title: 'পার্থক্য', subtitle: '(১) থেকে (২) বিয়োগ', formattedValue: fmtBdt(diff, bn), type: 'GOLD', highlight: true });
+      eightSteps.push({ stepBn: bn ? '৪' : '4', title: 'নতুন স্কেলের প্রারম্ভিক ধাপ', subtitle: 'জেএসআই ০১/২০২৬, ক্রোড়পত্র-ক', formattedValue: fmtBdt(newScaleStart, bn), type: 'NORMAL' });
+      eightSteps.push({ stepBn: bn ? '৫' : '5', title: 'পার্থক্য যোগ', subtitle: '(৩)-এর অঙ্ক', formattedValue: `+ ${fmtBdt(diff, bn)}`, type: 'POSITIVE' });
+      eightSteps.push({ stepBn: bn ? '৬' : '6', title: 'নতুন স্কেলে প্রাপ্য অঙ্ক', subtitle: '(৪) + (৫)', formattedValue: fmtBdt(targetAmount, bn), type: 'GOLD', highlight: true });
+      eightSteps.push({ stepBn: bn ? '৭' : '7', title: 'নতুন স্কেলে নির্ধারিত মূল বেতন', subtitle: matchReason, formattedValue: fmtBdt(fixedBeforeIncrement, bn), type: 'NORMAL' });
+      eightSteps.push({ stepBn: bn ? '৮' : '8', title: '০১ জুলাই ২০২৬-এর বার্ষিক ইনক্রিমেন্ট', subtitle: (s.applyJuly2026Increment && inc2026 > 0) ? 'পরবর্তী ধাপে উন্নীত' : 'প্রযোজ্য নয় / সর্বোচ্চ ধাপ', formattedValue: `+ ${fmtBdt(inc2026, bn)}`, type: 'POSITIVE' });
+
+      return {
+        rankTitle: rank.bnName, rankShortTitle: shortName, appendixShortLabel: 'জেএসআই ০১/২০২৬',
+        newBasicPay: newBasic2026, fixedBeforeIncrementPay: fixedBeforeIncrement, july2026IncrementAmount: inc2026, july2027BasicPay: july2027Basic,
+        oldBasicPay: oldBasic, oldScaleStart, newScaleStart, personalPay,
+        matchedStepIndex: finalIdx2026 + 1, totalSteps: scale.length, group: rank.group, allowanceTier: rank.allowanceTier,
+        isOfficer: false, isAfns: false, isSergeantOrBelow: Boolean(rank.isSergeantOrBelow), isCplOrBelow: Boolean(rank.isCplOrBelow),
+        defaultPrescribedService: 25, eightSteps, breakdownSteps: steps
+      };
+    }
+
+    function computeAllowances(s, pay, basicFor2028) {
+      const tier = pay.allowanceTier;
+      const oldOrd = (pay.isSergeantOrBelow && tier !== 'CADET' && tier !== 'RECRUIT') ? parseIntSafe(s.oldServiceOrdnanceInput) : 0;
+      const serviceOrdnancePay2028 = oldOrd > 0 ? Math.round(oldOrd * 1.10) : 0;
+      const payBasis = basicFor2028 + serviceOrdnancePay2028 + pay.personalPay;
+
+      const houseRentRate = getHouseRentRate(pay.isOfficer, tier, s.cityCategory, s.accommodationType);
+      const houseRentAmount = Math.round(payBasis * houseRentRate);
+
+      const isReligious = s.category === 'JCO_OR' && s.serviceBranch === 'RELIGIOUS';
+      const defenceServiceAllowance = getDefenceServiceAllowance(tier, s.serviceBracketIndex, isReligious, false);
+
+      const medObj = MedicalAgeBracket.find(m => m.id === s.activeMedicalAgeBracketId) || MedicalAgeBracket[0];
+      const medicalAllowance = (pay.isOfficer || tier === 'CADET') ? 0 : medObj.amount;
+
+      const educationAllowance = tier === 'CADET' ? 0 : Math.min(2, Math.max(0, s.childrenCount)) * 500;
+      const disabledChildAllowance = tier === 'CADET' ? 0 : Math.min(2, Math.max(0, s.disabledChildrenCount)) * 3000;
+      const tiffinAllowance = (pay.isCplOrBelow && !s.receiveFreeTiffin) ? 500 : 0;
+      const transportAllowance = (pay.isCplOrBelow && (s.cityCategory === 'DHAKA' || s.cityCategory === 'OTHER_CITY_CORP')) ? 600 : 0;
+
+      const mobileAllowance = ['GEN','LT_GEN','MAJ_GEN','BRIG_GEN','COL','LT_COL','MAJ'].includes(tier)
+        ? 500 : (tier === 'CADET' ? 0 : 150);
+
+      let kitAllowance = 157;
+      if (pay.isAfns && pay.isOfficer) kitAllowance = 1040;
+      else if (pay.isOfficer) kitAllowance = 1320;
+      else if (tier === 'CADET' || tier === 'RECRUIT') kitAllowance = 0;
+      else if (pay.isSergeantOrBelow) kitAllowance = 143;
+
+      const hillObj = HillHaorCategory.find(h => h.id === s.hillHaorCategoryId) || HillHaorCategory[0];
+      const hillHaorAllowance = hillObj.maxCap > 0 ? Math.min(Math.round(basicFor2028 * 0.20), hillObj.maxCap) : 0;
+
+      const proficiencyPay = (!pay.isOfficer && tier !== 'CADET' && tier !== 'RECRUIT')
+        ? (proficiencyPayOptions.find(p => p.id === s.proficiencyPayId)?.amount || 0) : 0;
+      const appointmentPay = (!pay.isOfficer && tier !== 'CADET' && tier !== 'RECRUIT')
+        ? (appointmentPayOptions.find(a => a.id === s.appointmentPayId)?.amount || 0) : 0;
+      const goodConductPay = (pay.isSergeantOrBelow && tier !== 'CADET' && tier !== 'RECRUIT')
+        ? Math.min(3, Math.max(0, s.goodConductBadges)) * 35 : 0;
+      const specialSkillPay = (tier !== 'CADET' && tier !== 'RECRUIT')
+        ? (s.selectedSpecialSkills || []).reduce((acc, sk) => acc + getSpecialSkillAmount(sk, pay.isOfficer, tier, false), 0) : 0;
+      const otherNewAllowance = Math.max(0, parseIntSafe(s.otherNewAllowanceInput));
+
+      const grossMonthlyPay = basicFor2028 + serviceOrdnancePay2028 + pay.personalPay + houseRentAmount +
+        defenceServiceAllowance + medicalAllowance + educationAllowance + disabledChildAllowance +
+        tiffinAllowance + transportAllowance + mobileAllowance + kitAllowance + hillHaorAllowance +
+        proficiencyPay + appointmentPay + goodConductPay + specialSkillPay + otherNewAllowance;
+
+      const gpfDeduction = (tier === 'CADET' || tier === 'RECRUIT') ? 0 : Math.round(basicFor2028 * (s.gpfPercent / 100.0));
+      const netMonthlyPay = grossMonthlyPay - gpfDeduction;
+      const noboborshoAnnual = Math.round(basicFor2028 * 0.15);
+
+      return {
+        basicPay: basicFor2028, serviceOrdnancePay2028, houseRentRate, houseRentAmount, defenceServiceAllowance,
+        medicalAllowance, educationAllowance, disabledChildAllowance, tiffinAllowance, transportAllowance,
+        mobileAllowance, kitAllowance, hillHaorAllowance, proficiencyPay, appointmentPay, goodConductPay,
+        specialSkillPay, otherNewAllowance, grossMonthlyPay, gpfDeduction, netMonthlyPay, noboborshoAnnual
+      };
+    }
+
+    function computeOldAllowancesBreakdown(s, pay) {
+      const tier = pay.allowanceTier;
+      const items = [];
+      if (tier === 'CADET') return items;
+
+      const oldOrd = (pay.isSergeantOrBelow && tier !== 'RECRUIT') ? parseIntSafe(s.oldServiceOrdnanceInput) : 0;
+      if (oldOrd > 0) items.push(['সার্ভিস ওয়ার্ডিন্যান্স বেতন (পুরোনো)', oldOrd]);
+
+      const oldBasis = pay.oldBasicPay + oldOrd;
+      const hrRate = getHouseRentRate(pay.isOfficer, tier, s.cityCategory, s.accommodationType);
+      const oldHr = Math.round(oldBasis * hrRate);
+      if (oldHr > 0) items.push([`বাড়ি ভাড়া ভাতা (${Math.round(hrRate * 100)}%, পুরোনো স্কেল)`, oldHr]);
+
+      const isReligious = s.category === 'JCO_OR' && s.serviceBranch === 'RELIGIOUS';
+      const oldDsa = getDefenceServiceAllowance(tier, s.serviceBracketIndex, isReligious, true);
+      if (oldDsa > 0) items.push(['প্রতিরক্ষা সার্ভিস ভাতা (পুরোনো হার)', oldDsa]);
+
+      const oldMed = (pay.isOfficer || tier === 'RECRUIT') ? 0 : 1500;
+      if (oldMed > 0) items.push(['চিকিৎসা ভাতা (পুরোনো হার)', oldMed]);
+
+      let oldKit = 143;
+      if (pay.isOfficer && pay.isAfns) oldKit = 800;
+      else if (pay.isOfficer) oldKit = 1200;
+      else if (tier === 'RECRUIT') oldKit = 0;
+      else if (pay.isSergeantOrBelow) oldKit = 130;
+      if (oldKit > 0) items.push([pay.isOfficer ? 'কিট ভাতা (পুরোনো)' : 'কিট রক্ষণাবেক্ষণ / ধোলাই ভাতা', oldKit]);
+
+      const oldEdu = Math.min(2, Math.max(0, s.childrenCount)) * 500;
+      if (oldEdu > 0) items.push(['শিক্ষা সহায়ক ভাতা', oldEdu]);
+
+      const oldTiffin = (pay.isCplOrBelow && !s.receiveFreeTiffin) ? 200 : 0;
+      if (oldTiffin > 0) items.push(['টিফিন ভাতা (পুরোনো)', oldTiffin]);
+
+      const oldTransport = (pay.isCplOrBelow && (s.cityCategory === 'DHAKA' || s.cityCategory === 'OTHER_CITY_CORP')) ? 300 : 0;
+      if (oldTransport > 0) items.push(['যাতায়াত ভাতা (পুরোনো)', oldTransport]);
+
+      const hillObj = HillHaorCategory.find(h => h.id === s.hillHaorCategoryId) || HillHaorCategory[0];
+      const oldHill = hillObj.oldCap > 0 ? Math.min(Math.round(pay.oldBasicPay * 0.20), hillObj.oldCap) : 0;
+      if (oldHill > 0) items.push(['পাহাড়ি / হাওড় ভাতা (পুরোনো)', oldHill]);
+
+      const oldProf = (!pay.isOfficer && tier !== 'RECRUIT') ? (proficiencyPayOptions.find(p => p.id === s.proficiencyPayId)?.oldAmount || 0) : 0;
+      if (oldProf > 0) items.push(['দক্ষতা বেতন (পুরোনো)', oldProf]);
+
+      const oldAppt = (!pay.isOfficer && tier !== 'RECRUIT') ? (appointmentPayOptions.find(a => a.id === s.appointmentPayId)?.oldAmount || 0) : 0;
+      if (oldAppt > 0) items.push(['নিযুক্তি বেতন (পুরোনো)', oldAppt]);
+
+      const oldBadge = (pay.isSergeantOrBelow && tier !== 'RECRUIT') ? Math.min(3, Math.max(0, s.goodConductBadges)) * 30 : 0;
+      if (oldBadge > 0) items.push(['সদাচরণ ব্যাজ (পুরোনো)', oldBadge]);
+
+      const oldSkill = tier !== 'RECRUIT'
+        ? (s.selectedSpecialSkills || []).reduce((acc, sk) => acc + getSpecialSkillAmount(sk, pay.isOfficer, tier, true), 0) : 0;
+      if (oldSkill > 0) items.push(['বিশেষ দক্ষতা বেতন (পুরোনো)', oldSkill]);
+
+      return items;
+    }
+
+    function buildNewAllowancesItemList(pay, allow) {
+      const list = [['মূল বেতন (JSI 01/2026)', allow.basicPay]];
+      if (allow.serviceOrdnancePay2028 > 0) list.push(['সার্ভিস ওয়ার্ডিন্যান্স বেতন (+১০%)', allow.serviceOrdnancePay2028]);
+      if (pay.personalPay > 0) list.push(['ব্যক্তিগত বেতন (Personal Pay)', pay.personalPay]);
+      if (allow.houseRentAmount > 0) list.push([`বাড়ি ভাড়া ভাতা (${Math.round(allow.houseRentRate * 100)}%)`, allow.houseRentAmount]);
+      if (allow.defenceServiceAllowance > 0) list.push(['প্রতিরক্ষা সার্ভিস ভাতা', allow.defenceServiceAllowance]);
+      if (allow.medicalAllowance > 0) list.push(['চিকিৎসা ভাতা', allow.medicalAllowance]);
+      if (allow.kitAllowance > 0) list.push([pay.isOfficer ? 'কিট ভাতা' : 'কিট রক্ষণাবেক্ষণ ভাতা', allow.kitAllowance]);
+      if (allow.educationAllowance > 0) list.push(['শিক্ষা সহায়ক ভাতা', allow.educationAllowance]);
+      if (allow.disabledChildAllowance > 0) list.push(['নিবন্ধিত প্রতিবন্ধী সন্তান ভাতা', allow.disabledChildAllowance]);
+      if (allow.tiffinAllowance > 0) list.push(['টিফিন ভাতা', allow.tiffinAllowance]);
+      if (allow.transportAllowance > 0) list.push(['যাতায়াত ভাতা', allow.transportAllowance]);
+      if (allow.mobileAllowance > 0) list.push(['মোবাইল ভাতা', allow.mobileAllowance]);
+      if (allow.hillHaorAllowance > 0) list.push(['পাহাড়ি / হাওড় ভাতা', allow.hillHaorAllowance]);
+      if (allow.proficiencyPay > 0) list.push(['দক্ষতা বেতন', allow.proficiencyPay]);
+      if (allow.appointmentPay > 0) list.push(['নিযুক্তি বেতন', allow.appointmentPay]);
+      if (allow.goodConductPay > 0) list.push(['সদাচরণ ব্যাজ বেতন', allow.goodConductPay]);
+      if (allow.specialSkillPay > 0) list.push(['বিশেষ দক্ষতা বেতন', allow.specialSkillPay]);
+      if (allow.otherNewAllowance > 0) list.push(['অন্যান্য নতুন ভাতা', allow.otherNewAllowance]);
+      return list;
+    }
+
+    function computePhasedArrears(s, pay, allow2028, referenceDate = null) {
+      const bn = s.useBengaliDigits;
+      const oldBasic = pay.oldBasicPay;
+      const newBasic2026 = pay.newBasicPay;
+      const july2027Basic = pay.july2027BasicPay;
+      const increase2026 = Math.max(0, newBasic2026 - oldBasic);
+      const grp = ImplementationGroup[pay.group];
+
+      const p1 = oldBasic + Math.round(increase2026 * grp.phase1Rate);
+      const p2 = oldBasic + Math.round(increase2026 * grp.phase2Rate);
+      const p3 = july2027Basic;
+
+      const isGrade10To20 = pay.isSergeantOrBelow || pay.allowanceTier === 'CADET';
+      const rateBisesh = isGrade10To20 ? 0.15 : 0.10;
+      const minBisesh = isGrade10To20 ? 2000 : 1500;
+      const rawPct = Math.round(oldBasic * rateBisesh);
+      const autoBisesh = Math.max(rawPct, minBisesh);
+      const biseshNote = rawPct < minBisesh
+        ? `আগের মূল বেতন ${fmtNum(oldBasic, bn)} টাকার ${isGrade10To20 ? '১৫%' : '১০%'} ${fmtNum(minBisesh, bn)}-এর কম, তাই ন্যূনতম ${fmtNum(minBisesh, bn)}`
+        : `আগের মূল বেতন ${fmtNum(oldBasic, bn)} টাকার ${isGrade10To20 ? '১৫%' : '১০%'} হারে নির্ধারিত`;
+
+      const effectiveBisesh = String(s.monthlyBiseshSubidhaInput || '').trim() === ''
+        ? autoBisesh : parseIntSafe(s.monthlyBiseshSubidhaInput);
+
+      const today = referenceDate || new Date();
+      const startOpt = implementationStartMonths[s.receiveMonthIndex] || implementationStartMonths[0];
+
+      let fractionMonths = 0;
+      let dateRangeSubtitle = '';
+      let durationSummary = '';
+
+      if (startOpt.months === -1) {
+        const refJul = new Date(2026, 6, 1);
+        const effToday = today < refJul ? refJul : today;
+        const fullMonthsBefore = Math.max(0, (effToday.getFullYear() - 2026) * 12 + (effToday.getMonth() + 1 - 7));
+        const curDay = Math.min(30, Math.max(1, effToday.getDate()));
+        fractionMonths = fullMonthsBefore + (curDay / 30.0);
+        const monthNamesBn = ['', 'জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+        const tMonthBn = monthNamesBn[effToday.getMonth() + 1] || '';
+        dateRangeSubtitle = `০১ জুলাই ২০২৬ থেকে আজ ${fmtNum(curDay, bn)} ${tMonthBn} ${fmtNum(effToday.getFullYear(), bn)} পর্যন্ত`;
+        durationSummary = `মোট ${fmtNum(fullMonthsBefore + 1, bn)} মাসের সম্ভাব্য বকেয়া (চলতি মাসের ${fmtNum(curDay, bn)} দিনসহ)`;
+      } else {
+        fractionMonths = startOpt.months;
+        dateRangeSubtitle = `০১ জুলাই ২০২৬ থেকে (${startOpt.label})`;
+        durationSummary = `মোট ${fmtNum(startOpt.months, bn)} পূর্ণ মাসের প্রাপ্য বকেয়া`;
+      }
+
+      const p1Months = Math.min(6, Math.max(0, fractionMonths));
+      const p2Months = Math.min(6, Math.max(0, fractionMonths - 6));
+      const p3Months = Math.max(0, fractionMonths - 12);
+
+      const p1Diff = Math.max(0, p1 - oldBasic);
+      const p2Diff = Math.max(0, p2 - oldBasic);
+      const p3Diff = Math.max(0, p3 - oldBasic);
+
+      const grossArrears = Math.round((p1Months * p1Diff) + (p2Months * p2Diff) + (p3Months * p3Diff));
+      const totalBiseshDeducted = Math.round(effectiveBisesh * fractionMonths);
+      const netPayableArrears = Math.max(0, grossArrears - totalBiseshDeducted);
+      const probableGpfOnArrears = Math.round(grossArrears * (s.gpfPercent / 100.0));
+
+      const oldAllowItems = computeOldAllowancesBreakdown(s, pay);
+      const oldAllowTotal = oldAllowItems.reduce((a, b) => a + b[1], 0);
+      const isCadetOrRecruit = pay.allowanceTier === 'CADET' || pay.allowanceTier === 'RECRUIT';
+      const calcGpf = b => isCadetOrRecruit ? 0 : Math.round(b * (s.gpfPercent / 100.0));
+
+      const gpf1 = calcGpf(p1), gross1 = p1 + oldAllowTotal, take1 = gross1 - gpf1;
+      const gpf2 = calcGpf(p2), gross2 = p2 + oldAllowTotal, take2 = gross2 - gpf2;
+      const gpf3 = calcGpf(p3), gross3 = p3 + oldAllowTotal, take3 = gross3 - gpf3;
+      const take4 = allow2028.netMonthlyPay;
+
+      const p1Pct = grp.id === 'GROUP_A' ? '৪০%' : '৫০%';
+      const p2Pct = grp.id === 'GROUP_A' ? '৭০%' : '৭৫%';
+
+      const milestones = [
+        {
+          id: 'jul2026', title: 'জুলাই ২০২৬', dateRange: '০১ জুলাই ২০২৬ – ৩১ ডিসেম্বর ২০২৬',
+          badgeText: `বৃদ্ধি ${p1Pct}`, isFinalPhase: false,
+          basicPay: p1, basicDiffFromPrevious: Math.max(0, p1 - oldBasic), basicSubtitle: `পুরোনো মূল বেতন + বৃদ্ধি ${p1Pct}`,
+          netGainTitle: 'প্রণোদনা বাদ দিয়ে জুন ২০২৬-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে',
+          netGainAmount: p1 - oldBasic - effectiveBisesh,
+          netGainSubtitle: `বিশেষ প্রণোদনা ${fmtBdt(effectiveBisesh, bn)} বাদ (${biseshNote})`,
+          takeHomeTitle: 'পূর্বের ভাতাসহ এখন মোট বেতন পাবেন (কর্তনের পর)',
+          takeHomeAfterDeductions: take1,
+          itemBreakdown: [['ধাপ-১ মূল বেতন', p1], ...oldAllowItems],
+          gpfDeduction: gpf1, grossMonthlyPay: gross1
+        },
+        {
+          id: 'jan2027', title: 'জানুয়ারি ২০২৭', dateRange: '০১ জানুয়ারি ২০২৭ – ৩০ জুন ২০২৭',
+          badgeText: `বৃদ্ধি ${p2Pct}`, isFinalPhase: false,
+          basicPay: p2, basicDiffFromPrevious: Math.max(0, p2 - p1), basicSubtitle: `পুরোনো মূল বেতন + বৃদ্ধি ${p2Pct}`,
+          netGainTitle: 'জুলাই ২০২৬-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে',
+          netGainAmount: Math.max(0, p2 - p1), netGainSubtitle: null,
+          takeHomeTitle: 'পূর্বের ভাতাসহ এখন মোট বেতন পাবেন (কর্তনের পর)',
+          takeHomeAfterDeductions: take2,
+          itemBreakdown: [['ধাপ-২ মূল বেতন', p2], ...oldAllowItems],
+          gpfDeduction: gpf2, grossMonthlyPay: gross2
+        },
+        {
+          id: 'jul2027', title: 'জুলাই ২০২৭', dateRange: '০১ জুলাই ২০২৭ – ৩১ ডিসেম্বর ২০২৭',
+          badgeText: 'বৃদ্ধি ১০০%', isFinalPhase: false,
+          basicPay: p3, basicDiffFromPrevious: Math.max(0, p3 - p2), basicSubtitle: p3 > newBasic2026 ? '১০০% নতুন মূল বেতন (ইনক্রিমেন্টসহ)' : '১০০% নতুন মূল বেতন',
+          netGainTitle: 'জানুয়ারি ২০২৭-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে',
+          netGainAmount: Math.max(0, p3 - p2), netGainSubtitle: null,
+          takeHomeTitle: 'পূর্বের ভাতাসহ এখন মোট বেতন পাবেন (কর্তনের পর)',
+          takeHomeAfterDeductions: take3,
+          itemBreakdown: [['ধাপ-৩ মূল বেতন', p3], ...oldAllowItems],
+          gpfDeduction: gpf3, grossMonthlyPay: gross3
+        },
+        {
+          id: 'jan2028', title: 'জানুয়ারি ২০২৮', dateRange: '০১ জানুয়ারি ২০২৮ থেকে',
+          badgeText: 'নতুন ভাতা চালু', isFinalPhase: true,
+          basicPay: allow2028.basicPay, basicDiffFromPrevious: 0, basicSubtitle: 'নতুন মূল বেতন',
+          netGainTitle: 'জুলাই ২০২৭-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে',
+          netGainAmount: take4 - take3, netGainSubtitle: null,
+          takeHomeTitle: 'সব ভাতাসহ মোট বেতন (কর্তনের পর)',
+          takeHomeAfterDeductions: take4,
+          itemBreakdown: buildNewAllowancesItemList(pay, allow2028),
+          gpfDeduction: allow2028.gpfDeduction, grossMonthlyPay: allow2028.grossMonthlyPay
+        }
+      ];
+
+      return {
+        oldBasicPay: oldBasic, newBasicPay: newBasic2026, july2027BasicPay: july2027Basic, increase2026,
+        group: grp, phase1Pay: p1, phase2Pay: p2, phase3Pay: p3,
+        dateRangeSubtitle, arrearsDurationSummary: durationSummary,
+        monthlyBiseshSubidha: effectiveBisesh, grossArrears, totalBiseshSubidhaDeducted: totalBiseshDeducted,
+        netPayableArrears, probableGpfOnArrears, milestones
+      };
+    }
+
+    function computeExistingPension(s) {
+      const bn = s.useBengaliDigits;
+      const oldNet = Math.max(0, parseIntSafe(s.oldNetPensionInput));
+      const steps = [];
+      let slabLabel = '', ratePercent = 55, minCap = 62001, maxCap = 70200;
+      if (oldNet <= 9000) { slabLabel = 'সর্বনিম্ন – ৯,০০০ টাকা'; ratePercent = 100; minCap = 10000; maxCap = 18000; }
+      else if (oldNet <= 20000) { slabLabel = '৯,০০১ – ২০,০০০ টাকা'; ratePercent = 75; minCap = 18001; maxCap = 35000; }
+      else if (oldNet <= 30000) { slabLabel = '২০,০০১ – ৩০,০০০ টাকা'; ratePercent = 65; minCap = 35001; maxCap = 49000; }
+      else if (oldNet <= 40000) { slabLabel = '৩০,০০১ – ৪০,০০০ টাকা'; ratePercent = 60; minCap = 49001; maxCap = 62000; }
+      else { slabLabel = '৪০,০০১ টাকা ও তদূর্ধ্ব'; ratePercent = 55; minCap = 62001; maxCap = 70200; }
+
+      const isAboveCapProtected = oldNet > 70200;
+      let newFullNetPension = oldNet;
+      if (isAboveCapProtected) {
+        steps.push(`১. অনুচ্ছেদ ২৭ এর শর্ত অনুযায়ী: ৩০ জুন ২০২৬-এর নিট পেনশন ৭০,২০০ টাকার অধিক হওয়ায় ০১ জুলাই ২০২৭ পর্যন্ত বিদ্যমান পেনশন (${fmtBdt(oldNet, bn)}) প্রাপ্য হইবেন।`);
+      } else {
+        const rawInc = Math.round(oldNet * (1 + ratePercent / 100.0));
+        newFullNetPension = Math.min(maxCap, Math.max(minCap, rawInc));
+        steps.push(`১. ৩০ জুন ২০২৬ এর নিট পেনশন = ${fmtBdt(oldNet, bn)} (স্ল্যাব: ${slabLabel}, বৃদ্ধির হার: ${fmtNum(ratePercent, bn)}%)।`);
+        steps.push(`২. গাণিতিক বৃদ্ধি = ${fmtBdt(rawInc, bn)}। স্ল্যাব সীমা অনুযায়ী চূড়ান্ত নিট পেনশন = ${fmtBdt(newFullNetPension, bn)}।`);
+      }
+
+      const grp = oldNet >= 20001 ? ImplementationGroup.GROUP_A : ImplementationGroup.GROUP_B;
+      const inc = Math.max(0, newFullNetPension - oldNet);
+      const p1 = oldNet + Math.round(inc * grp.phase1Rate);
+      const p2 = oldNet + Math.round(inc * grp.phase2Rate);
+      const july2027Inc = Math.round(newFullNetPension * 1.05);
+      const ration = s.adultRationMembers * 1000 + s.childRationMembers * 500;
+      const medical = (MedicalAgeBracket.find(m => m.id === s.pensionerAgeBracketId) || MedicalAgeBracket[2]).amount;
+      const totalMonthly = newFullNetPension + ration + medical;
+      const noboborsho = Math.round(newFullNetPension * 0.15);
+
+      steps.push(`৩. ধাপে ধাপে প্রদান: ${grp.bnLabel}`);
+      steps.push(`   • ০১ জুলাই – ৩১ ডিসে ২০২৬: ${fmtBdt(p1, bn)}`);
+      steps.push(`   • ০১ জানু – ৩০ জুন ২০২৭: ${fmtBdt(p2, bn)}`);
+      steps.push(`   • ০১ জুলাই ২০২৭ (+৫% বৃদ্ধি): ${fmtBdt(july2027Inc, bn)}`);
+      steps.push(`৪. রেশন ভাতা: ${fmtBdt(ration, bn)} | চিকিৎসা ভাতা (জানু ২০২৮): ${fmtBdt(medical, bn)}।`);
+
+      return {
+        oldNetPension: oldNet, slabLabel, increaseRatePercent: ratePercent, newFullNetPension,
+        isAboveCapProtected, group: grp, phase1Pension: p1, phase2Pension: p2, phase3Pension: newFullNetPension,
+        july2027IncrementedPension: july2027Inc, rationAllowance: ration, medicalAllowance: medical,
+        totalMonthlyWithAllowancesFull: totalMonthly, noboborshoAnnual: noboborsho, breakdownSteps: steps
+      };
+    }
+
+    function computeRetiringPension(s, pay) {
+      const bn = s.useBengaliDigits;
+      const lastPay = Math.max(0, parseIntSafe(s.retiringLastPayInput));
+      const qualYears = Math.max(0, parseFloatSafe(s.retiringQualifyingYearsInput));
+      const prescribedYears = Math.max(1, parseFloatSafe(s.rankPrescribedYearsInput));
+      const steps = [];
+
+      let grossPension = 0;
+      let capNote = '';
+
+      if (qualYears < 10) {
+        capNote = 'ন্যূনতম ১০ বৎসর অবসরভাতাযোগ্য চাকরি পূর্ণ হয়নি।';
+        steps.push('১. অনুচ্ছেদ ৫ ও ১৫ অনুযায়ী কর্ম উপাদান প্রাপ্য হইতে ন্যূনতম ১০ বৎসর যোগ্য চাকরি প্রয়োজন।');
+      } else if (s.retiringType === 'OFFICER') {
+        const raw = (lastPay * 9.0 * qualYears) / (10.0 * prescribedYears);
+        const cap90 = lastPay * 0.90;
+        const maxCap = 154000;
+        grossPension = Math.round(Math.min(raw, Math.min(cap90, maxCap)));
+        capNote = raw > maxCap && maxCap <= cap90 ? 'সর্বোচ্চ সীমা ১,৫৪,০০০ টাকায় সীমাবদ্ধ'
+          : (raw > cap90 ? 'শেষ গৃহীত বেতনের ৯০% সীমায় সীমাবদ্ধ' : 'সূত্র অনুযায়ী পূর্ণ অর্জিত গ্রস পেনশন');
+        steps.push('১. অফিসার কর্ম উপাদান সূত্র (অনুচ্ছেদ ৫): (৯ × শেষ বেতন × যোগ্য চাকরি) ÷ (১০ × নির্ধারিত চাকরি)');
+        steps.push(`২. হিসাব: (৯ × ${fmtNum(lastPay, bn)} × ${fmtDec(qualYears, 1, bn)}) ÷ (১০ × ${fmtDec(prescribedYears, 1, bn)}) = ${fmtBdt(raw, bn)}।`);
+        steps.push(`৩. নির্ধারিত অর্জিত গ্রস পেনশন = ${fmtBdt(grossPension, bn)} (${capNote})।`);
+      } else {
+        const basis = lastPay + 608;
+        const raw = (basis * qualYears) / 31.0;
+        const cap90 = basis * 0.90;
+        grossPension = Math.round(Math.min(raw, cap90));
+        capNote = raw > cap90 ? '(শেষ গৃহীত বেতন + ৬০৮) এর ৯০% সীমায় সীমাবদ্ধ' : 'সূত্র অনুযায়ী পূর্ণ অর্জিত গ্রস পেনশন';
+        steps.push('১. জেসিও/ওআর কর্ম উপাদান সূত্র (অনুচ্ছেদ ১৫): ((শেষ বেতন + ৬০৮ টাকা) × যোগ্য চাকরি) ÷ ৩১');
+        steps.push(`২. হিসাব: ((${fmtNum(lastPay, bn)} + ৬০৮) × ${fmtDec(qualYears, 1, bn)}) ÷ ৩১ = ${fmtBdt(raw, bn)}।`);
+        steps.push(`৩. নির্ধারিত অর্জিত গ্রস পেনশন = ${fmtBdt(grossPension, bn)} (${capNote})।`);
+      }
+
+      const surrenderPct = Math.min(100, Math.max(0, s.commutationSurrenderPercent));
+      const commutedMonthly = Math.round(grossPension * (surrenderPct / 100.0));
+      const netMonthly = Math.max(0, grossPension - commutedMonthly);
+      const age = Math.min(80, Math.max(20, s.retiringAgeNextBirthday));
+      const multiplier = commutationTable[age] || 17.553;
+      const lumpSum = Math.round(commutedMonthly * 12.0 * multiplier);
+
+      const ration = s.adultRationMembers * 1000 + s.childRationMembers * 500;
+      const medical = s.retiringType === 'OFFICER' ? 0 : (MedicalAgeBracket.find(m => m.id === s.pensionerAgeBracketId)?.amount || 5000);
+      const projectedRankTitle = s.projectedPromotions.length > 0
+        ? s.projectedPromotions[s.projectedPromotions.length - 1].rankTitle
+        : pay.rankTitle;
+
+      steps.push(`৪. কম্যুটেশন (অনুচ্ছেদ ২৮): পরবর্তী জন্মদিনে বয়স ${fmtNum(age, bn)} বৎসরের গুণক = ${fmtDec(multiplier, 3, bn)}।`);
+      steps.push(`৫. সমর্পিত অংশ (${fmtNum(surrenderPct, bn)}%): ${fmtBdt(commutedMonthly, bn)} | মাসিক নিট পেনশন = ${fmtBdt(netMonthly, bn)}।`);
+      steps.push(`৬. এককালীন কম্যুটেড গ্র্যাচুইটি = ${fmtBdt(lumpSum, bn)}।`);
+
+      return {
+        grossPension, capNote, surrenderPercent: surrenderPct, commutedMonthlyPortion: commutedMonthly,
+        netMonthlyPension: netMonthly, commutationMultiplier: multiplier, lumpSumCommutedValue: lumpSum,
+        rationAllowance: ration, medicalAllowance: medical, projectedLastRankTitle: projectedRankTitle,
+        projectedQualifyingYears: qualYears, projectedTotalMonthlyWithAllowances: netMonthly + ration + medical,
+        breakdownSteps: steps
+      };
+    }
+
+    function computeAll(s, referenceDate = null) {
+      const { age, svc } = computeDatesAndYears(s);
+      s.computedAgeOnEffectiveDate = age;
+      s.computedServiceYears = svc;
+      const pay = computePayFixation(s);
+      const allow = computeAllowances(s, pay, pay.july2027BasicPay);
+      const phased = computePhasedArrears(s, pay, allow, referenceDate);
+      const existingPen = computeExistingPension(s);
+      const retiringPen = computeRetiringPension(s, pay);
+      return { pay, allow, phased, existingPen, retiringPen };
+    }
+
+    function applyProjectedFuturePensionInputs(preserveFocus = false) {
+      const pay = computePayFixation(state);
+      const qualYears = computeYearsBetween(state.joinDay, state.joinMonth, state.joinYear, state.retireDay, state.retireMonth, state.retireYear)
+        ?? parseFloatSafe(state.retiringQualifyingYearsInput);
+      const ageDiff = computeYearsBetween(state.dobDay, state.dobMonth, state.dobYear, state.retireDay, state.retireMonth, state.retireYear);
+      const ageAtRetire = ageDiff !== null ? Math.min(80, Math.max(20, Math.floor(ageDiff) + 1)) : state.retiringAgeNextBirthday;
+      const retireYr = parseIntSafe(state.retireYear) || 2043;
+      const yearsAfter2026 = Math.max(0, retireYr - 2026);
+
+      let projectedPay = pay.newBasicPay;
+      let projectedPrescribed = pay.defaultPrescribedService;
+      let projectedIsOfficer = pay.isOfficer;
+
+      if (state.projectedPromotions.length > 0) {
+        const lastPromo = state.projectedPromotions[state.projectedPromotions.length - 1];
+        const nonOff = nonOfficerRanks.find(r => r.id === lastPromo.rankId);
+        const off = getOfficerRanks(state.officerAppendix).find(r => r.id === lastPromo.rankId);
+        if (nonOff) {
+          projectedIsOfficer = false;
+          projectedPrescribed = 25;
+          if (nonOff.isHonoraryFixed || nonOff.isRecruitFixed) {
+            projectedPay = Math.max(nonOff.fixedPay, projectedPay);
+          } else {
+            const steps = nonOff.steps;
+            const idxFound = steps.findIndex(v => v > projectedPay);
+            const startIdx = idxFound >= 0 ? idxFound : 0;
+            const targetIdx = Math.min(steps.length - 1, startIdx + Math.min(steps.length - 1 - startIdx, Math.floor(yearsAfter2026 / 2)));
+            projectedPay = steps[targetIdx] || projectedPay;
+          }
+        } else if (off) {
+          projectedIsOfficer = true;
+          projectedPrescribed = off.defaultPrescribedService;
+          if (off.isFixed) {
+            projectedPay = off.fixedPay;
+          } else {
+            const keys = Object.keys(off.yearToPay).map(Number).sort((a,b)=>a-b);
+            const yrsAtRetire = Math.min(keys[keys.length - 1] || 23, state.commissionedYear + yearsAfter2026);
+            const matchedKey = keys.filter(k => k <= yrsAtRetire).pop() || keys[0];
+            projectedPay = off.yearToPay[matchedKey] || pay.newBasicPay;
+          }
+        }
+      } else if (!pay.isOfficer) {
+        const rank = nonOfficerRanks.find(r => r.id === state.selectedNonOfficerRankId);
+        if (rank && rank.steps.length > 0) {
+          const baseIdx = (pay.matchedStepIndex || 1) - 1;
+          const finalIdx = Math.min(rank.steps.length - 1, Math.max(0, baseIdx + yearsAfter2026));
+          projectedPay = rank.steps[finalIdx];
+        }
+      } else {
+        const rank = getOfficerRanks(state.officerAppendix).find(r => r.id === state.selectedOfficerRankId);
+        if (rank && !rank.isFixed) {
+          const keys = Object.keys(rank.yearToPay).map(Number).sort((a,b)=>a-b);
+          const yrsAtRetire = state.commissionedYear + yearsAfter2026;
+          const matchedKey = keys.filter(k => k <= yrsAtRetire).pop() || keys[keys.length - 1];
+          if (matchedKey !== undefined) projectedPay = rank.yearToPay[matchedKey] || projectedPay;
+        }
+      }
+
+      state.pensionSubTab = 'RETIRING';
+      state.retiringType = projectedIsOfficer ? 'OFFICER' : 'JCO_OR';
+      state.retiringLastPayInput = String(projectedPay);
+      state.retiringQualifyingYearsInput = Number(qualYears).toFixed(1);
+      state.rankPrescribedYearsInput = String(projectedPrescribed);
+      state.retiringAgeNextBirthday = ageAtRetire;
+      saveStateToStorage();
+      renderApp(preserveFocus);
+    }
+
+    function syncDatesEffects() {
+      const { age, svc } = computeDatesAndYears(state);
+      state.computedAgeOnEffectiveDate = age;
+      state.computedServiceYears = svc;
+      state.activeMedicalAgeBracketId = age > 50 ? 'AGE_50_TO_60' : 'UP_TO_50';
+      state.pensionerAgeBracketId = age > 70 ? 'AGE_70_PLUS' : (age > 60 ? 'AGE_60_TO_70' : (age > 50 ? 'AGE_50_TO_60' : 'UP_TO_50'));
+      state.retiringAgeNextBirthday = Math.min(80, Math.max(20, age + 1));
+      state.serviceBracketIndex = svc < 5 ? 0 : (svc <= 10 ? 1 : (svc <= 15 ? 2 : (svc <= 20 ? 3 : 4)));
+      state.applyJuly2026Increment = svc >= 0.5;
+    }
+
+    function buildFullSummaryText() {
+      const bn = state.useBengaliDigits;
+      const { pay, allow, phased, existingPen, retiringPen } = computeAll(state);
+      const lines = [
+        '==========================================',
+        'জেএসআই ০১/২০২৬ (JSI 01/2026) বেতন ও পেনশন সামারি',
+        'বাংলাদেশ প্রতিরক্ষা মন্ত্রণালয় | কার্যকর: ০১ জুলাই ২০২৬',
+        '=========================================='
+      ];
+      if (state.userName || state.serviceNo || state.unitName) {
+        lines.push(`নাম: ${state.userName || 'প্রযোজ্য নয়'}`);
+        if (state.serviceNo) lines.push(`সার্ভিস/সেনা নং: ${state.serviceNo}`);
+        if (state.unitName) lines.push(`ইউনিট: ${state.unitName}`);
+      }
+      lines.push(`বাহিনী ও শ্রেণি: ${ServiceBranch[state.serviceBranch].bn} • ${PersonnelCategory[state.category].bn}`);
+      lines.push(`জন্মতারিখ: ${state.dobDay}-${state.dobMonth}-${state.dobYear} | যোগদান: ${state.joinDay}-${state.joinMonth}-${state.joinYear}`, '');
+
+      lines.push('[১. মূল বেতন নির্ধারণ]');
+      lines.push(`পদবি: ${pay.rankTitle}`);
+      lines.push(`৩০ জুন ২০২৬-এ মূল বেতন: ${fmtBdt(pay.oldBasicPay, bn)}`);
+      lines.push(`০১ জুলাই ২০২৬ নতুন মূল বেতন (ইনক্রিমেন্টসহ): ${fmtBdt(pay.newBasicPay, bn)}`);
+      lines.push(`০১ জুলাই ২০২৭ মূল বেতন (ইনক্রিমেন্টসহ): ${fmtBdt(pay.july2027BasicPay, bn)}`, '');
+
+      lines.push('[২. ধাপে ধাপে বেতন ও বকেয়া]');
+      lines.push(`১ম ধাপ (জুলাই–ডিসে ২০২৬): ${fmtBdt(phased.phase1Pay, bn)}`);
+      lines.push(`২য় ধাপ (জানু–জুন ২০২৭): ${fmtBdt(phased.phase2Pay, bn)}`);
+      lines.push(`৩য় ধাপ (জুলাই ২০২৭+): ${fmtBdt(phased.phase3Pay, bn)}`);
+      lines.push(`মোট প্রাপ্য বকেয়া (${phased.dateRangeSubtitle}): ${fmtBdt(phased.grossArrears, bn)}`);
+      lines.push(`বাদ: বিশেষ সুবিধা সমন্বয়: − ${fmtBdt(phased.totalBiseshSubidhaDeducted, bn)}`);
+      lines.push(`নিট প্রাপ্য বকেয়া: ${fmtBdt(phased.netPayableArrears, bn)}`);
+      lines.push(`সম্ভাব্য জিপিএফ কর্তন: − ${fmtBdt(phased.probableGpfOnArrears, bn)}`, '');
+
+      lines.push('[৩. ভাতাদি ও নিট বেতন (০১ জানু ২০২৮ হইতে)]');
+      lines.push(`মোট বেতন-ভাতা (Gross): ${fmtBdt(allow.grossMonthlyPay, bn)}`);
+      lines.push(`জিপিএফ কর্তন: − ${fmtBdt(allow.gpfDeduction, bn)}`);
+      lines.push(`নিট মাসিক বেতন (২০২৮): ${fmtBdt(allow.netMonthlyPay, bn)}`);
+      lines.push(`বাংলা নববর্ষ ভাতা (১৫%): ${fmtBdt(allow.noboborshoAnnual, bn)}`, '');
+
+      if (state.pensionSubTab === 'EXISTING') {
+        lines.push('[৪. পেনশন (পূর্বের অবসরভোগী)]');
+        lines.push(`পূর্বের নিট পেনশন: ${fmtBdt(existingPen.oldNetPension, bn)}`);
+        lines.push(`পূর্ণ বর্ধিত নিট পেনশন: ${fmtBdt(existingPen.newFullNetPension, bn)}`);
+        lines.push(`রেশন ও চিকিৎসা সহ মোট (পূর্ণ ধাপে): ${fmtBdt(existingPen.totalMonthlyWithAllowancesFull, bn)}`);
+      } else {
+        lines.push('[৪. পেনশন ও কম্যুটেশন (অবসরগামী)]');
+        lines.push(`অর্জিত গ্রস পেনশন: ${fmtBdt(retiringPen.grossPension, bn)}`);
+        lines.push(`মাসিক নিট পেনশন: ${fmtBdt(retiringPen.netMonthlyPension, bn)}`);
+        lines.push(`এককালীন কম্যুটেড গ্র্যাচুইটি: ${fmtBdt(retiringPen.lumpSumCommutedValue, bn)}`);
+      }
+
+      lines.push('', 'ডেভেলপার: Àbdüllāh Aĺ Hỗŝŝâîň | ইমেইল: mhossenali740@gmail.com');
+      lines.push('বিঃদ্রঃ এটি জেএসআই ০১/২০২৬ গেজেট (১৫ নভে ২০২৬) অবলম্বনে একটি রেফারেন্স ক্যালকুলেটর। চূড়ান্ত বেতন ও পেনশন নির্ধারণ iBAS++ / SFC / FC / SFPO অফিস কর্তৃক সম্পন্ন হইবে।');
+      return lines.join('\n');
+    }
+
+    // =========================================================================
+    // 5. UI ACTIONS & SHARED COMPONENTS
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast-banner');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.add('hidden'), 2600);
+    }
+
+    async function copyText(label, text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(`${label} কপি করা হয়েছে`);
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        showToast(`${label} কপি করা হয়েছে`);
+      }
+    }
+
+    async function shareSummaryAction() {
+      const text = buildFullSummaryText();
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'জেএসআই ০১/২০২৬ (JSI 01/2026) বেতন ও পেনশন সামারি',
+            text
+          });
+          return;
+        } catch {}
+      }
+      await copyText('সামারি', text);
+    }
+
+    function printSummaryAction() {
+      document.getElementById('print-summary-content').textContent = buildFullSummaryText();
+      window.print();
+    }
+
+    function saveCurrentSnapshotAction() {
+      const bn = state.useBengaliDigits;
+      const { pay, allow, existingPen, retiringPen } = computeAll(state);
+      const name = state.userName.trim() || `সদস্য (${ServiceBranch[state.serviceBranch].bn})`;
+      const rank = pay.rankTitle;
+      const summary = state.isPensionerRole
+        ? `পেনশন: ${fmtBdt(state.pensionSubTab === 'EXISTING' ? existingPen.newFullNetPension : retiringPen.netMonthlyPension, bn)}`
+        : `মূল বেতন: ${fmtBdt(pay.newBasicPay, bn)} • ২০২৮ নিট: ${fmtBdt(allow.netMonthlyPay, bn)}`;
+
+      const snapshot = {
+        id: Date.now(),
+        memberName: name,
+        rankTitle: rank,
+        summaryHighlight: summary,
+        stateSnapshot: JSON.parse(JSON.stringify(state))
+      };
+      savedSnapshots.unshift(snapshot);
+      saveSnapshotsToStorage();
+      showToast('হিসাবটি লোকাল ডাটাবেজে সংরক্ষণ করা হয়েছে');
+      renderApp();
+    }
+
+    function buildExportJsonPayload() {
+      const { pay, allow, phased, existingPen, retiringPen } = computeAll(state);
+      const cleanInputs = JSON.parse(JSON.stringify(state));
+      delete cleanInputs.showJsonPreview;
+      return {
+        schemaVersion: 'jsi-01-2026-v1',
+        exportedAt: new Date().toISOString(),
+        appTitle: 'জেএসআই ০১/২০২৬ (JSI 01/2026) সশস্ত্র বাহিনী বেতন ও পেনশন ক্যালকুলেটর',
+        gazetteReference: 'Bangladesh Ministry of Defence JSI 01/2026 (Effective 01 July 2026)',
+        member: {
+          userName: state.userName || null,
+          serviceNo: state.serviceNo || null,
+          unitName: state.unitName || null,
+          serviceBranch: state.serviceBranch,
+          serviceBranchLabel: ServiceBranch[state.serviceBranch].bn,
+          category: state.category,
+          categoryLabel: PersonnelCategory[state.category].bn,
+          computedAgeOnEffectiveDate: state.computedAgeOnEffectiveDate,
+          computedServiceYears: state.computedServiceYears
+        },
+        inputs: cleanInputs,
+        calculations: {
+          payFixation: pay,
+          phasedArrears: phased,
+          allowances2028: allow,
+          existingPension: existingPen,
+          retiringPension: retiringPen
+        },
+        savedSnapshots: savedSnapshots
+      };
+    }
+
+    function buildExportJsonString() {
+      return JSON.stringify(buildExportJsonPayload(), null, 2);
+    }
+
+    function getExportJsonFilename() {
+      const idSlug = toEn(state.serviceNo || state.userName || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      const dateStr = new Date().toISOString().slice(0, 10);
+      return idSlug ? `jsi-01-2026-${idSlug}-${dateStr}.json` : `jsi-01-2026-backup-${dateStr}.json`;
+    }
+
+    function downloadJsonAction() {
+      try {
+        const jsonStr = buildExportJsonString();
+        const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = getExportJsonFilename();
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1500);
+        showToast('JSON ফাইল ডাউনলোড করা হয়েছে (GitHub / লোকাল সেভের জন্য প্রস্তুত)');
+      } catch {
+        copyText('JSON ডাটা', buildExportJsonString());
+      }
+    }
+
+    function importJsonFromText(rawText) {
+      try {
+        const parsed = JSON.parse(rawText);
+        if (!parsed || typeof parsed !== 'object') {
+          showToast('সঠিক JSON ফাইল নয়');
+          return false;
+        }
+        const rawInputs = parsed.inputs || parsed.stateSnapshot || (parsed.serviceBranch && parsed.category ? parsed : null);
+        if (rawInputs && typeof rawInputs === 'object') {
+          const def = createDefaultState();
+          const merged = { ...def, ...rawInputs, showJsonPreview: state.showJsonPreview };
+          if (!ServiceBranch[merged.serviceBranch]) merged.serviceBranch = def.serviceBranch;
+          if (!PersonnelCategory[merged.category]) merged.category = def.category;
+          if (!OfficerAppendix[merged.officerAppendix]) merged.officerAppendix = def.officerAppendix;
+          if (!CityCategory[merged.cityCategory]) merged.cityCategory = def.cityCategory;
+          if (!AccommodationType[merged.accommodationType]) merged.accommodationType = def.accommodationType;
+          if (!Array.isArray(merged.selectedSpecialSkills)) merged.selectedSpecialSkills = [];
+          if (!Array.isArray(merged.projectedPromotions)) merged.projectedPromotions = [];
+          state = merged;
+          saveStateToStorage();
+        }
+        if (Array.isArray(parsed.savedSnapshots)) {
+          const existingIds = new Set(savedSnapshots.map(s => s.id));
+          const incoming = parsed.savedSnapshots.filter(s => s && s.stateSnapshot && !existingIds.has(s.id));
+          if (incoming.length > 0 || savedSnapshots.length === 0) {
+            savedSnapshots = [...incoming, ...savedSnapshots];
+            saveSnapshotsToStorage();
+          }
+        }
+        if (!rawInputs && !Array.isArray(parsed.savedSnapshots)) {
+          showToast('JSON ফাইলে JSI 01/2026 হিসাবের তথ্য পাওয়া যায়নি');
+          return false;
+        }
+        renderApp();
+        showToast('JSON থেকে হিসাব সফলভাবে লোড ও সেভ করা হয়েছে');
+        return true;
+      } catch {
+        showToast('JSON ফাইল পার্স করা যায়নি — ফরম্যাট যাচাই করুন');
+        return false;
+      }
+    }
+
+    function renderShareAndDevCards() {
+      return `
+        <div class="rounded-2xl border border-emeraldAccent/45 bg-gradient-to-r from-[#0E2C21] to-[#133A2C] p-4 flex items-center justify-between gap-3">
+          <div class="space-y-1">
+            <h3 class="text-sm font-bold text-textMain">সহকর্মীদের সাথে শেয়ার করুন</h3>
+            <p class="text-xs text-textMuted">তারাও জানুক নতুন স্কেলে তাদের বেতন ও পেনশন কত হবে</p>
+          </div>
+          <button type="button" data-action="share-summary" class="px-4 py-2.5 rounded-xl bg-emeraldAccent text-[#062116] text-xs sm:text-sm font-bold flex items-center gap-1.5 shrink-0 hover:brightness-105 active:scale-95 transition">
+            <span>শেয়ার করুন</span>
+          </button>
+        </div>
+
+        <div class="rounded-2xl bg-regCard border border-gold/35 p-4 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl bg-goldMuted border border-gold/55 flex items-center justify-center text-gold shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold text-gold">ডেভেলপার পরিচিতি (Developer Info)</div>
+              <div class="text-base font-bold text-textMain">Àbdüllāh Aĺ Hỗŝŝâîň</div>
+            </div>
+          </div>
+          <div class="border-t border-regBorder"></div>
+          <div class="space-y-2">
+            <a href="https://www.facebook.com/share/14vc4Dkbfsi/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between gap-3 rounded-xl bg-regField border border-regBorder px-3 py-2.5 hover:border-gold/50 transition">
+              <div class="min-w-0">
+                <div class="text-[11px] text-textMuted">ফেসবুক (Facebook)</div>
+                <div class="text-sm font-medium text-textMain truncate">facebook.com/share/14vc4Dkbfsi</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emeraldDarkBox text-emeraldLight text-xs font-bold shrink-0">খুলুন</span>
+            </a>
+            <button type="button" data-action="copy-text" data-label="WhatsApp ID" data-value="@ali_98khan" class="w-full text-left flex items-center justify-between gap-3 rounded-xl bg-regField border border-regBorder px-3 py-2.5 hover:border-gold/50 transition">
+              <div class="min-w-0">
+                <div class="text-[11px] text-textMuted">হোয়াটসঅ্যাপ (WhatsApp)</div>
+                <div class="text-sm font-medium text-textMain truncate">@ali_98khan</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emeraldDarkBox text-emeraldLight text-xs font-bold shrink-0">কপি</span>
+            </button>
+            <button type="button" data-action="copy-text" data-label="Imo ID" data-value="mhossenali998" class="w-full text-left flex items-center justify-between gap-3 rounded-xl bg-regField border border-regBorder px-3 py-2.5 hover:border-gold/50 transition">
+              <div class="min-w-0">
+                <div class="text-[11px] text-textMuted">ইমু (Imo)</div>
+                <div class="text-sm font-medium text-textMain truncate">mhossenali998</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emeraldDarkBox text-emeraldLight text-xs font-bold shrink-0">কপি</span>
+            </button>
+            <a href="mailto:mhossenali740@gmail.com" class="flex items-center justify-between gap-3 rounded-xl bg-regField border border-regBorder px-3 py-2.5 hover:border-gold/50 transition">
+              <div class="min-w-0">
+                <div class="text-[11px] text-textMuted">জিমেইল (Gmail)</div>
+                <div class="text-sm font-medium text-textMain truncate">mhossenali740@gmail.com</div>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg bg-emeraldDarkBox text-emeraldLight text-xs font-bold shrink-0">মেইল</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStepper(label, valText, minusKey, plusKey) {
+      return `
+        <div class="space-y-1.5">
+          <div class="text-xs text-textMuted truncate">${label}</div>
+          <div class="flex items-center h-12 rounded-xl bg-regField border border-regBorder overflow-hidden">
+            <button type="button" data-stepper="${minusKey}" class="w-12 h-full text-xl font-bold text-gold hover:bg-white/5 active:bg-white/10">−</button>
+            <div class="flex-1 text-center text-base font-bold text-textMain border-x border-regBorder py-2">${valText}</div>
+            <button type="button" data-stepper="${plusKey}" class="w-12 h-full text-xl font-bold text-gold hover:bg-white/5 active:bg-white/10">+</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDateBoxes(label, prefix, day, month, year) {
+      return `
+        <div class="space-y-1.5">
+          <label class="block text-sm text-textMain">${label} <span class="text-gold font-bold">*</span></label>
+          <div class="grid grid-cols-11 gap-1.5 items-center">
+            <input type="text" inputmode="numeric" maxlength="2" data-date="${prefix}-day" value="${escHtml(day)}" class="col-span-3 h-12 text-center rounded-xl bg-regField border border-emeraldAccent/35 text-base font-bold text-textMain focus:outline-none focus:border-gold" />
+            <span class="text-center text-textMuted font-bold">-</span>
+            <input type="text" inputmode="numeric" maxlength="2" data-date="${prefix}-month" value="${escHtml(month)}" class="col-span-3 h-12 text-center rounded-xl bg-regField border border-emeraldAccent/35 text-base font-bold text-textMain focus:outline-none focus:border-gold" />
+            <span class="text-center text-textMuted font-bold">-</span>
+            <input type="text" inputmode="numeric" maxlength="4" data-date="${prefix}-year" value="${escHtml(year)}" class="col-span-3 h-12 text-center rounded-xl bg-regField border border-emeraldAccent/35 text-base font-bold text-textMain focus:outline-none focus:border-gold" />
+          </div>
+          <div class="grid grid-cols-11 gap-1.5 text-[11px] text-textMuted text-center">
+            <span class="col-span-3">দিন</span><span></span><span class="col-span-3">মাস</span><span></span><span class="col-span-3">বছর</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function sectionHeader(numBn, title, sub) {
+      return `
+        <div class="flex items-center gap-3 pb-3 border-b border-regBorder/70">
+          <div class="w-9 h-9 rounded-xl bg-goldMuted border border-gold/45 text-gold font-bold flex items-center justify-center shrink-0">${numBn}</div>
+          <div>
+            <h2 class="text-base font-bold text-textMain">${title}</h2>
+            <p class="text-xs text-textMuted">${sub}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 6. TAB RENDERERS
+    // =========================================================================
+    function renderInfoTab(computed) {
+      const bn = state.useBengaliDigits;
+      const pay = computed.pay;
+
+      let rankSectionHtml = '';
+      if (state.category === 'OFFICER') {
+        const ranks = getOfficerRanks(state.officerAppendix);
+        const selRank = ranks.find(r => r.id === state.selectedOfficerRankId) || ranks[0];
+        const yearPills = !selRank.isFixed ? `
+          <div class="space-y-1.5">
+            <div class="text-xs text-textMuted">কমিশন্ড চাকরির বর্ষ (Service Year)</div>
+            <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+              ${Object.keys(selRank.yearToPay).map(Number).sort((a,b)=>a-b).map(yr => `
+                <button type="button" data-officer-year="${yr}" class="px-3 py-2 rounded-xl text-xs font-semibold shrink-0 border transition ${state.commissionedYear === yr ? 'bg-gold text-goldText border-gold font-bold' : 'bg-regField text-textMain border-regBorder hover:border-gold/50'}">
+                  ${fmtNum(yr, bn)}ম বর্ষ
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        ` : '';
+
+        rankSectionHtml = `
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">ক্রোড়পত্র / শাখা তালিকা (Appendix)</label>
+            <select data-field="officerAppendix" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${Object.values(OfficerAppendix).map(a => `<option value="${a.id}" ${state.officerAppendix === a.id ? 'selected' : ''}>${a.bnTitle}</option>`).join('')}
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">বর্তমান পদবি <span class="text-gold font-bold">*</span></label>
+            <select data-field="selectedOfficerRankId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${ranks.map(r => `<option value="${r.id}" ${state.selectedOfficerRankId === r.id ? 'selected' : ''}>${r.bnName}</option>`).join('')}
+            </select>
+          </div>
+          ${yearPills}
+        `;
+      } else if (state.category === 'CADET') {
+        rankSectionHtml = `
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">বর্তমান পদবি / ক্যাটাগরি <span class="text-gold font-bold">*</span></label>
+            <select data-field="selectedCadetId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${cadetOptions.map(c => `<option value="${c.id}" ${state.selectedCadetId === c.id ? 'selected' : ''}>${c.bnName}</option>`).join('')}
+            </select>
+          </div>
+        `;
+      } else {
+        rankSectionHtml = `
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">বর্তমান পদবি <span class="text-gold font-bold">*</span></label>
+            <select data-field="selectedNonOfficerRankId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${nonOfficerRanks.map(r => `<option value="${r.id}" ${state.selectedNonOfficerRankId === r.id ? 'selected' : ''}>${r.bnName}</option>`).join('')}
+            </select>
+          </div>
+        `;
+      }
+
+      let card2Html = '';
+      if (!state.isPensionerRole) {
+        let payInputs = '';
+        if (state.category === 'OFFICER') {
+          payInputs = `
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">বর্তমান মূল বেতন (৩০ জুন ২০২৬) <span class="text-gold font-bold">*</span></label>
+              <div class="relative">
+                <input type="text" inputmode="numeric" data-field="officerOldBasicInput" value="${escHtml(state.officerOldBasicInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 pr-10 text-base text-textMain focus:outline-none focus:border-gold" />
+                <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gold font-bold">৳</span>
+              </div>
+              <p class="text-xs text-textMuted mt-1">ধাপ অনুযায়ী বকেয়া ও বৃদ্ধি তুলনার জন্য ৩০ জুন ২০২৬-এর মূল বেতন দিন</p>
+            </div>
+          `;
+        } else if (state.category === 'CADET') {
+          const cad = cadetOptions.find(c => c.id === state.selectedCadetId) || cadetOptions[0];
+          payInputs = `
+            <div class="rounded-xl bg-emeraldDarkBox/70 border border-emeraldAccent/40 p-3.5 space-y-1">
+              <div class="text-sm font-bold text-textMain">ক্যাডেট নির্ধারিত বেতন (${cad.bnName})</div>
+              <div class="text-xs text-textMuted">পূর্বের নির্ধারিত বেতন ${fmtBdt(cad.oldFixedPay, bn)} হতে জেএসআই ০১/২০২৬ অনুযায়ী ${fmtBdt(cad.fixedPay, bn)} নির্ধারিত।</div>
+            </div>
+          `;
+        } else {
+          const r = nonOfficerRanks.find(x => x.id === state.selectedNonOfficerRankId) || nonOfficerRanks[6];
+          payInputs = `
+            ${!r.isRecruitFixed ? `
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">বর্তমান মূল বেতন (৳) <span class="text-gold font-bold">*</span></label>
+                <div class="relative">
+                  <input type="text" inputmode="numeric" data-field="oldBasicPayInput" value="${escHtml(state.oldBasicPayInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 pr-10 text-base text-textMain focus:outline-none focus:border-gold" />
+                  <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gold font-bold">৳</span>
+                </div>
+                <p class="text-xs text-textMuted mt-1">${r.isHonoraryFixed ? 'পূর্বের মূল বেতন নির্ধারিত বেতনের বেশি হলে পূর্বের বেতন + ৫০০ টাকা প্রাপ্য' : `জেএসআই ০১/২০১৬ অনুযায়ী ${r.bnName} প্রারম্ভিক বেতন: ${fmtBdt(r.oldScaleStart, bn)}`}</p>
+              </div>
+            ` : `
+              <div class="rounded-xl bg-emeraldDarkBox/70 border border-emeraldAccent/40 p-3.5 space-y-1">
+                <div class="text-sm font-bold text-textMain">রিক্রুট / প্রশিক্ষণার্থী নির্ধারিত বেতন</div>
+                <div class="text-xs text-textMuted">জেএসআই ০১/২০১৬ প্রারম্ভিক ${fmtBdt(r.oldScaleStart, bn)} হতে জেএসআই ০১/২০২৬ অনুযায়ী নির্ধারিত বেতন ${fmtBdt(r.fixedPay, bn)}।</div>
+              </div>
+            `}
+            ${!r.isHonoraryFixed && !r.isRecruitFixed ? `
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">জেএসআই ০১/২০১৬ প্রারম্ভিক ধাপ</label>
+                <div class="relative">
+                  <input type="text" inputmode="numeric" data-field="oldScaleStartOverride" value="${escHtml(state.oldScaleStartOverride)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 pr-10 text-base text-textMain focus:outline-none focus:border-gold" />
+                  <span class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gold font-bold">৳</span>
+                </div>
+                <p class="text-xs text-textMuted mt-1">পদবি অনুযায়ী স্বয়ংক্রিয়ভাবে প্রি-ফিল করা হয়েছে</p>
+              </div>
+              <label class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/5 cursor-pointer select-none">
+                <input type="checkbox" data-checkbox="applyJuly2026Increment" ${state.applyJuly2026Increment ? 'checked' : ''} class="w-5 h-5 rounded accent-gold" />
+                <span class="text-sm text-textMain">০১ জুলাই ২০২৬ তারিখে বার্ষিক ইনক্রিমেন্ট প্রযোজ্য (ন্যূনতম ৬ মাস চাকরি)</span>
+              </label>
+              <div class="space-y-1.5">
+                <div class="text-xs text-textMuted">জেএসআই ০১/২০২৬ স্কেলের ধাপসমূহ (${fmtNum(r.steps.length, bn)}টি ধাপ):</div>
+                <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                  ${r.steps.map((amt, i) => {
+                    const matched = pay.matchedStepIndex === (i + 1);
+                    return `<button type="button" data-step-info="${i + 1}:${amt}" class="px-2.5 py-1.5 rounded-lg text-xs shrink-0 border ${matched ? 'bg-gold text-goldText border-gold font-bold' : 'bg-regField text-textMuted border-regBorder'}">${fmtNum(i + 1, bn)}: ${fmtNum(amt, bn)}</button>`;
+                  }).join('')}
+                </div>
+              </div>
+            ` : ''}
+          `;
+        }
+
+        const accommOpts = state.category === 'OFFICER'
+          ? [AccommodationType.NO_QUARTERS_STANDARD, AccommodationType.NO_QUARTERS_EXTRA_FACILITY, AccommodationType.MARRIED_GOVT_QUARTERS]
+          : [AccommodationType.NO_QUARTERS_STANDARD, AccommodationType.MARRIED_GOVT_QUARTERS, AccommodationType.UNMARRIED_OR_MESS];
+
+        card2Html = `
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${sectionHeader(bn ? '২' : '2', '৩০ জুন ২০২৬-এর মূল বেতন', 'জেএসআই ০১/২০১৬ অনুযায়ী আহরিত মূল বেতন')}
+            ${payInputs}
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${sectionHeader(bn ? '৩' : '3', 'পরিবার', 'বৈবাহিক অবস্থা ও সন্তান')}
+            <div class="space-y-1.5">
+              <div class="text-xs text-textMuted">বৈবাহিক অবস্থা</div>
+              <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-regField border border-regBorder">
+                <button type="button" data-marital="true" class="py-2.5 rounded-lg text-sm font-bold transition ${state.isMarried ? 'bg-gold text-goldText' : 'text-textMuted'}">বিবাহিত</button>
+                <button type="button" data-marital="false" class="py-2.5 rounded-lg text-sm font-bold transition ${!state.isMarried ? 'bg-gold text-goldText' : 'text-textMuted'}">অবিবাহিত</button>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${renderStepper('সন্তান সংখ্যা (২৩ বছরের নিচে)', fmtNum(state.childrenCount, bn), 'children-minus', 'children-plus')}
+              ${renderStepper('নিবন্ধিত প্রতিবন্ধী সন্তান', fmtNum(state.disabledChildrenCount, bn), 'disabled-minus', 'disabled-plus')}
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${sectionHeader(bn ? '৪' : '4', 'দক্ষতা ও অন্যান্য বেতন উপাদান', 'দক্ষতা বেতন, ব্যাজ ও নিযুক্তি বেতন')}
+            ${state.category === 'JCO_OR' ? `
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">দক্ষতা বেতন</label>
+                <select data-field="proficiencyPayId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                  ${proficiencyPayOptions.map(o => `<option value="${o.id}" ${state.proficiencyPayId === o.id ? 'selected' : ''}>${o.bnLabel}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">নিযুক্তি বেতন</label>
+                <select data-field="appointmentPayId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                  ${appointmentPayOptions.map(o => `<option value="${o.id}" ${state.appointmentPayId === o.id ? 'selected' : ''}>${o.bnLabel}</option>`).join('')}
+                </select>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-start">
+                ${renderStepper('সদাচরণ ব্যাজ', fmtNum(state.goodConductBadges, bn), 'badge-minus', 'badge-plus')}
+                <div class="space-y-1.5">
+                  <div class="text-xs text-textMuted truncate">সার্ভিস ওয়ার্ডিন্যান্স বেতন (৳)</div>
+                  <input type="text" inputmode="numeric" data-field="oldServiceOrdnanceInput" placeholder="না থাকলে ফাঁকা" value="${escHtml(state.oldServiceOrdnanceInput)}" class="w-full h-12 rounded-xl bg-regField border border-regBorder px-3.5 text-sm text-textMain focus:outline-none focus:border-gold" />
+                </div>
+              </div>
+            ` : ''}
+            <div class="space-y-2">
+              <div class="text-xs text-textMuted">বিশেষ দক্ষতা বেতন (থাকলে নির্বাচন করুন)</div>
+              <div class="flex flex-wrap gap-2">
+                ${specialSkillPayList.map(sk => {
+                  const active = (state.selectedSpecialSkills || []).includes(sk.id);
+                  return `<button type="button" data-skill="${sk.id}" class="px-3.5 py-2 rounded-full text-xs font-semibold border transition ${active ? 'bg-goldMuted border-gold text-gold font-bold' : 'bg-regField border-regBorder text-textMain'}">${sk.bnLabel}</button>`;
+                }).join('')}
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">অন্যান্য নতুন ভাতা (৳/মাস)</label>
+              <input type="text" inputmode="numeric" data-field="otherNewAllowanceInput" placeholder="ঐচ্ছিক" value="${escHtml(state.otherNewAllowanceInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold" />
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${sectionHeader(bn ? '৫' : '5', 'কর্মস্থল, বাসস্থান, বকেয়া ও জিপিএফ', 'বাড়ি ভাড়া, জিপিএফ ও বকেয়া সমন্বয়ের তথ্য')}
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">কর্মস্থল / এলাকা (Location Category)</label>
+              <select data-field="cityCategory" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                ${Object.values(CityCategory).map(c => `<option value="${c.id}" ${state.cityCategory === c.id ? 'selected' : ''}>${c.bnLabel}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">বাসস্থান / কোয়ার্টার্স</label>
+              <select data-field="accommodationType" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                ${accommOpts.map(a => `<option value="${a.id}" ${state.accommodationType === a.id ? 'selected' : ''}>${a.bnLabel}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">পাহাড়ি / হাওড় / দ্বীপ ভাতা (প্রযোজ্য হলে)</label>
+              <select data-field="hillHaorCategoryId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                ${HillHaorCategory.map(h => `<option value="${h.id}" ${state.hillHaorCategoryId === h.id ? 'selected' : ''}>${h.bnLabel}</option>`).join('')}
+              </select>
+            </div>
+            ${pay.isCplOrBelow ? `
+              <label class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/5 cursor-pointer select-none">
+                <input type="checkbox" data-checkbox="receiveFreeTiffin" ${state.receiveFreeTiffin ? 'checked' : ''} class="w-5 h-5 rounded accent-gold" />
+                <span class="text-sm text-textMain">প্রতিষ্ঠান হইতে বিনামূল্যে টিফিন প্রাপ্ত হন</span>
+              </label>
+            ` : ''}
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">নতুন বেতন প্রথম উত্তোলনের মাস (বকেয়া হিসাব)</label>
+              <select data-field-int="receiveMonthIndex" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                ${implementationStartMonths.map((m, idx) => `<option value="${idx}" ${state.receiveMonthIndex === idx ? 'selected' : ''}>${m.label}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">জুলাই ২০২৬ হইতে উত্তোলিত মাসিক "বিশেষ সুবিধা"</label>
+              <input type="text" inputmode="numeric" data-field="monthlyBiseshSubidhaInput" placeholder="খালি রাখলে স্বয়ংক্রিয়ভাবে হিসাব হবে" value="${escHtml(state.monthlyBiseshSubidhaInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold" />
+              <p class="text-xs text-textMuted mt-1">সার্জেন্ট ও তদনিম্ন: ১৫% (সর্বনিম্ন ২,০০০ ৳) | জেসিও ও অফিসার: ১০% (সর্বনিম্ন ১,৫০০ ৳)</p>
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-textMuted">সাধারণ ভবিষ্য তহবিল (GPF) চাঁদা</span>
+                <span id="gpf-pct-label" class="text-sm font-bold text-gold">${fmtNum(state.gpfPercent, bn)}%</span>
+              </div>
+              <input type="range" min="5" max="25" step="1" data-slider="gpfPercent" value="${state.gpfPercent}" class="w-full cursor-pointer" />
+            </div>
+          </div>
+        `;
+      } else {
+        card2Html = `
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${sectionHeader(bn ? '২' : '2', 'পেনশন সংক্রান্ত তথ্য', 'পূর্বের অবসরভোগী বা অবসরগামী তথ্য')}
+            <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-regField border border-regBorder">
+              <button type="button" data-pension-sub="EXISTING" class="py-2.5 rounded-lg text-xs sm:text-sm font-bold transition ${state.pensionSubTab === 'EXISTING' ? 'bg-gold text-goldText' : 'text-textMuted'}">পূর্বের অবসরভোগী</button>
+              <button type="button" data-pension-sub="RETIRING" class="py-2.5 rounded-lg text-xs sm:text-sm font-bold transition ${state.pensionSubTab === 'RETIRING' ? 'bg-gold text-goldText' : 'text-textMuted'}">অবসরগামী সদস্য</button>
+            </div>
+            ${state.pensionSubTab === 'EXISTING' ? `
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">৩০ জুন ২০২৬ তারিখে প্রাপ্ত নিট পেনশন <span class="text-gold font-bold">*</span></label>
+                <input type="text" inputmode="numeric" data-field="oldNetPensionInput" value="${escHtml(state.oldNetPensionInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                ${renderStepper('প্রাপ্তবয়স্ক রেশন সদস্য', fmtNum(state.adultRationMembers, bn), 'adult-ration-minus', 'adult-ration-plus')}
+                ${renderStepper('অপ্রাপ্তবয়স্ক (<১২ বৎসর)', fmtNum(state.childRationMembers, bn), 'child-ration-minus', 'child-ration-plus')}
+              </div>
+            ` : `
+              <div class="grid grid-cols-2 gap-1 p-1 rounded-xl bg-regField border border-regBorder">
+                <button type="button" data-retiring-type="OFFICER" class="py-2 rounded-lg text-sm font-bold ${state.retiringType === 'OFFICER' ? 'bg-gold text-goldText' : 'text-textMuted'}">অফিসার</button>
+                <button type="button" data-retiring-type="JCO_OR" class="py-2 rounded-lg text-sm font-bold ${state.retiringType === 'JCO_OR' ? 'bg-gold text-goldText' : 'text-textMuted'}">জেসিও / ওআর</button>
+              </div>
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">শেষ গৃহীত বেতন (Last Drawn Pay) <span class="text-gold font-bold">*</span></label>
+                <input type="text" inputmode="numeric" data-field="retiringLastPayInput" value="${escHtml(state.retiringLastPayInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+              </div>
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">অবসরভাতাযোগ্য চাকরিকাল (বৎসর) <span class="text-gold font-bold">*</span></label>
+                <input type="text" inputmode="decimal" data-field="retiringQualifyingYearsInput" value="${escHtml(state.retiringQualifyingYearsInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+              </div>
+            `}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="space-y-2">
+          <div class="text-base font-bold text-textMain">আপনি কে?</div>
+          <div class="grid grid-cols-2 gap-1 p-1 rounded-2xl bg-regField border border-regBorder">
+            <button type="button" data-role-pensioner="false" class="py-3 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${!state.isPensionerRole ? 'bg-gold text-goldText shadow' : 'text-textMuted'}">চাকরিরত সদস্য</button>
+            <button type="button" data-role-pensioner="true" class="py-3 rounded-xl text-sm font-bold transition flex items-center justify-center gap-2 ${state.isPensionerRole ? 'bg-gold text-goldText shadow' : 'text-textMuted'}">পেনশনভোগী</button>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+          ${sectionHeader(bn ? '১' : '1', 'ব্যক্তিগত তথ্য', 'নাম, পদবি, জন্মতারিখ ও যোগদানের তারিখ')}
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">নাম</label>
+            <input type="text" data-field="userName" placeholder="আপনার পূর্ণ নাম লিখুন" value="${escHtml(state.userName)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold" />
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">সেনা / সার্ভিস নং (ঐচ্ছিক)</label>
+              <input type="text" data-field="serviceNo" placeholder="০" value="${escHtml(state.serviceNo)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold" />
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">ইউনিট (ঐচ্ছিক)</label>
+              <input type="text" data-field="unitName" placeholder="ইউনিট নাম" value="${escHtml(state.unitName)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">সার্ভিস / বাহিনী</label>
+            <select data-field="serviceBranch" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${Object.values(ServiceBranch).map(b => `<option value="${b.id}" ${state.serviceBranch === b.id ? 'selected' : ''}>${b.bn} (${b.en})</option>`).join('')}
+            </select>
+          </div>
+          <div class="space-y-1.5">
+            <div class="text-xs text-textMuted">সদস্যের শ্রেণি</div>
+            <div class="grid grid-cols-3 gap-1 p-1 rounded-xl bg-regField border border-regBorder">
+              ${Object.values(PersonnelCategory).map(c => `
+                <button type="button" data-category="${c.id}" class="py-2.5 px-1 rounded-lg text-xs sm:text-sm font-bold transition ${state.category === c.id ? 'bg-gold text-goldText' : 'text-textMuted'}">${c.shortBn}</button>
+              `).join('')}
+            </div>
+          </div>
+          ${rankSectionHtml}
+          ${renderDateBoxes('জন্মতারিখ', 'dob', state.dobDay, state.dobMonth, state.dobYear)}
+          ${renderDateBoxes('চাকরিতে যোগদান', 'join', state.joinDay, state.joinMonth, state.joinYear)}
+
+          <div class="rounded-xl bg-emeraldDarkBox/55 border border-emeraldAccent/35 px-3 py-2.5 flex flex-wrap items-center justify-between gap-2">
+            <span class="text-xs font-semibold text-emeraldLight">হিসাবকৃত বয়স (১ জুলাই ২৬): ${fmtNum(state.computedAgeOnEffectiveDate, bn)} বৎসর</span>
+            <span class="text-xs font-bold text-gold">চাকরিকাল: ${fmtDec(state.computedServiceYears, 1, bn)} বৎসর</span>
+          </div>
+          <p class="text-xs text-textMuted">জন্মতারিখ দিয়ে চিকিৎসা ভাতা ও অবসরের সময় এককালীন পেনশন (আনুতোষিক) বের করা হয়। যোগদানের তারিখ দিয়ে প্রতিরক্ষা সার্ভিস ভাতার ধাপ ও পেনশনযোগ্য চাকরিকাল হিসাব হয়।</p>
+        </div>
+
+        ${card2Html}
+
+        <button type="button" data-action="submit-calculator" class="w-full h-14 rounded-2xl bg-gold text-goldText text-base font-bold shadow-lg hover:brightness-105 active:scale-[0.99] transition flex items-center justify-center gap-2">
+          <span>সাবমিট করুন ও হিসাব দেখুন</span>
+        </button>
+
+        ${renderShareAndDevCards()}
+      `;
+    }
+
+    function renderSalaryTab(computed) {
+      const bn = state.useBengaliDigits;
+      const { pay, allow, phased } = computed;
+      const p1Rate = phased.group.id === 'GROUP_A' ? '৪০%' : '৫০%';
+      const p2Rate = phased.group.id === 'GROUP_A' ? '৭০%' : '৭৫%';
+
+      return `
+        <!-- 1. Hero Card -->
+        <div class="rounded-2xl border border-gold/45 bg-gradient-to-br from-[#172C20] to-[#1F3823] p-4 sm:p-5 space-y-3 shadow-lg">
+          <div class="flex items-center justify-between gap-2">
+            <div class="text-base font-bold text-textMain truncate">${escHtml(state.userName || `সদস্য (${ServiceBranch[state.serviceBranch].bn})`)}</div>
+            <div class="text-xs sm:text-sm font-bold text-gold shrink-0">${escHtml(pay.rankShortTitle)}</div>
+          </div>
+          <div>
+            <div class="text-xs sm:text-sm text-textMuted">জানুয়ারি ২০২৮ থেকে সকল ভাতাসহ মাসিক বেতন পাবেন</div>
+            <div class="text-3xl sm:text-4xl font-bold text-gold mt-1">${fmtBdt(allow.netMonthlyPay, bn)}</div>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="rounded-xl bg-[#0F1B14] border border-regBorder p-2.5 space-y-1">
+              <div class="text-[11px] leading-tight text-textMuted">জুলাই ২০২৬ মূল বেতন (ইনক্রিমেন্টসহ)</div>
+              <div class="text-sm sm:text-base font-bold text-textMain">${fmtBdt(phased.phase1Pay, bn)}</div>
+            </div>
+            <div class="rounded-xl bg-[#0F1B14] border border-regBorder p-2.5 space-y-1">
+              <div class="text-[11px] leading-tight text-textMuted">জানুয়ারি ২০২৭ মূল বেতন</div>
+              <div class="text-sm sm:text-base font-bold text-textMain">${fmtBdt(phased.phase2Pay, bn)}</div>
+            </div>
+            <div class="rounded-xl bg-[#0F1B14] border border-regBorder p-2.5 space-y-1">
+              <div class="text-[11px] leading-tight text-textMuted">জুলাই ২০২৭ মূল বেতন (ইনক্রিমেন্টসহ)</div>
+              <div class="text-sm sm:text-base font-bold text-textMain">${fmtBdt(phased.phase3Pay, bn)}</div>
+            </div>
+          </div>
+        </div>
+
+        ${pay.personalPay > 0 ? `
+          <div class="rounded-2xl bg-goldMuted/55 border border-gold/45 p-3.5">
+            <div class="text-sm font-bold text-gold">ব্যক্তিগত বেতন (Personal Pay)</div>
+            <div class="text-xs text-textMuted mt-0.5">পূর্বের মূল বেতন স্কেলের সর্বোচ্চ ধাপ অতিক্রম করায় অতিরিক্ত ${fmtBdt(pay.personalPay, bn)} ব্যক্তিগত বেতন হিসাবে প্রদেয় হইবে।</div>
+          </div>
+        ` : ''}
+
+        <!-- 2. Arrears Card -->
+        <div class="rounded-2xl bg-regCard border border-emeraldAccent/45 p-4 space-y-3.5">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-xl bg-emeraldDarkBox border border-emeraldAccent/50 text-emeraldLight flex items-center justify-center shrink-0">৳</div>
+            <div>
+              <h2 class="text-base font-bold text-textMain">বকেয়া হিসাব</h2>
+              <p class="text-xs text-textMuted">${phased.dateRangeSubtitle}</p>
+            </div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-emeraldLight">${fmtBdt(phased.netPayableArrears, bn)}</div>
+            <p class="text-xs text-textMuted mt-0.5">${phased.arrearsDurationSummary}</p>
+          </div>
+          <div class="rounded-xl bg-regField border border-regBorder p-3.5 space-y-2.5 text-sm">
+            <div class="flex justify-between gap-3">
+              <div><div class="font-medium text-textMain">মূল বেতন বৃদ্ধির বকেয়া</div><div class="text-xs text-textMuted">নতুন মূল বেতন − পুরোনো মূল বেতন, প্রতি মাসে</div></div>
+              <div class="font-bold text-emeraldLight shrink-0">+ ${fmtBdt(phased.grossArrears, bn)}</div>
+            </div>
+            <div class="flex justify-between gap-3">
+              <div><div class="font-medium text-textMain">বিশেষ সুবিধা (প্রণোদনা) সমন্বয়</div><div class="text-xs text-textMuted">বিলুপ্ত হলেও জুলাই ২০২৬ থেকে তোলা হয়েছে (${fmtBdt(phased.monthlyBiseshSubidha, bn)}/মাস)</div></div>
+              <div class="font-bold text-crimson shrink-0">− ${fmtBdt(phased.totalBiseshSubidhaDeducted, bn)}</div>
+            </div>
+            <div class="border-t border-regBorder pt-2 flex justify-between font-bold text-emeraldLight">
+              <span>মোট বকেয়া</span><span>${fmtBdt(phased.netPayableArrears, bn)}</span>
+            </div>
+            <div class="border-t border-regBorder/60 pt-2 flex justify-between gap-3">
+              <div><div class="font-medium text-textMain">সম্ভাব্য জিপিএফ কর্তন</div><div class="text-xs text-textMuted">মূল বেতন বৃদ্ধির বকেয়ার ${fmtNum(state.gpfPercent, bn)}%; আপনার জিপিএফ হিসাবে জমা থাকবে</div></div>
+              <div class="font-bold text-textMuted shrink-0">− ${fmtBdt(phased.probableGpfOnArrears, bn)}</div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs text-textMuted mb-1.5">নতুন হারে প্রথম বেতন কোন মাসে পেয়েছেন?</label>
+            <select data-field-int="receiveMonthIndex" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+              ${implementationStartMonths.map((m, idx) => `<option value="${idx}" ${state.receiveMonthIndex === idx ? 'selected' : ''}>${m.label}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. 8-Step Pay Fixation Card -->
+        <div class="rounded-2xl bg-regCard border border-gold/40 p-4 space-y-3">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <div class="text-xs font-semibold text-gold">মূল বেতন নির্ধারণ বিবরণী</div>
+              <h2 class="text-base font-bold text-textMain">০১ জুলাই ২০২৬-এ মূল বেতন নির্ধারণ</h2>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-goldMuted/50 border border-gold/65 text-[11px] font-bold text-gold">${escHtml(pay.appendixShortLabel)}</span>
+          </div>
+          <div class="flex justify-between text-xs sm:text-sm text-textMuted border-b border-regBorder pb-2">
+            <span>${escHtml(state.userName || 'সদস্য')}</span>
+            <span class="font-semibold">${escHtml(pay.rankShortTitle)}</span>
+          </div>
+          <div class="space-y-1.5">
+            ${pay.eightSteps.map(st => {
+              const amtCls = st.type === 'NEGATIVE' ? 'text-crimson' : (st.type === 'POSITIVE' ? 'text-emeraldLight' : (st.type === 'GOLD' ? 'text-gold' : 'text-textMain'));
+              return `
+                <div class="flex items-center gap-2.5 rounded-xl px-2.5 py-2 ${st.highlight ? 'bg-[#1E2D24]' : ''}">
+                  <div class="w-7 h-7 rounded-lg bg-goldMuted/70 border border-gold/45 text-gold text-xs font-bold flex items-center justify-center shrink-0">${st.stepBn}</div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold text-textMain">${st.title}</div>
+                    <div class="text-xs text-textMuted">${st.subtitle}</div>
+                  </div>
+                  <div class="text-sm font-bold shrink-0 ${amtCls}">${st.formattedValue}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <div class="rounded-xl bg-goldMuted/55 border border-gold/70 px-3.5 py-3 flex items-center justify-between gap-3">
+            <div class="text-xs sm:text-sm font-semibold text-gold">০১ জুলাই ২০২৬ থেকে নতুন মূল বেতন (ইনক্রিমেন্টসহ)</div>
+            <div class="text-xl font-bold text-gold shrink-0">${fmtBdt(pay.newBasicPay, bn)}</div>
+          </div>
+        </div>
+
+        <!-- 4. Phased Comparison Table -->
+        <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-3">
+          <div class="rounded-xl bg-regField border border-regBorder p-3 border-l-4 border-l-gold space-y-1">
+            <div class="text-xs sm:text-sm font-semibold text-textMain">আপনার মোট মূল বেতন বৃদ্ধি = নতুন মূল বেতন − পুরোনো মূল বেতন</div>
+            <div class="text-sm font-bold text-gold">= ${fmtBdt(pay.newBasicPay, bn)} − ${fmtBdt(pay.oldBasicPay, bn)} = ${fmtBdt(phased.increase2026, bn)}</div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="text-textMuted border-b border-regBorder">
+                  <th class="py-2 font-medium">সময়কাল</th>
+                  <th class="py-2 text-center font-medium">বৃদ্ধির হার</th>
+                  <th class="py-2 text-right font-medium">বৃদ্ধির পরিমাণ</th>
+                  <th class="py-2 text-right font-medium">প্রাপ্য মূল বেতন</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-regBorder/50">
+                <tr>
+                  <td class="py-2.5"><div class="font-semibold">জুলাই ২০২৬</div><div class="text-[11px] text-textMuted">প্রথম ধাপ</div></td>
+                  <td class="py-2.5 text-center">${p1Rate}</td>
+                  <td class="py-2.5 text-right font-semibold text-emeraldLight">+ ${fmtBdt(Math.max(0, phased.phase1Pay - phased.oldBasicPay), bn)}</td>
+                  <td class="py-2.5 text-right font-bold">${fmtBdt(phased.phase1Pay, bn)}</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5"><div class="font-semibold">জানুয়ারি ২০২৭</div></td>
+                  <td class="py-2.5 text-center">${p2Rate}</td>
+                  <td class="py-2.5 text-right font-semibold text-emeraldLight">+ ${fmtBdt(Math.max(0, phased.phase2Pay - phased.oldBasicPay), bn)}</td>
+                  <td class="py-2.5 text-right font-bold">${fmtBdt(phased.phase2Pay, bn)}</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5"><div class="font-semibold">জুলাই ২০২৭</div><div class="text-[11px] text-textMuted">${phased.phase3Pay > phased.newBasicPay ? 'পূর্ণ বেতন + ইনক্রিমেন্ট' : 'পূর্ণ বেতন'}</div></td>
+                  <td class="py-2.5 text-center">১০০%</td>
+                  <td class="py-2.5 text-right font-semibold text-emeraldLight">+ ${fmtBdt(Math.max(0, phased.phase3Pay - phased.oldBasicPay), bn)}</td>
+                  <td class="py-2.5 text-right font-bold">${fmtBdt(phased.phase3Pay, bn)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="rounded-xl bg-emeraldDarkBox/55 border border-emeraldAccent/35 p-3 text-xs text-textMain">
+            ${phased.group.id === 'GROUP_B'
+              ? 'সার্জেন্ট ও তদনিম্ন পদের জন্য বর্ধিত মূল বেতন ধাপে ধাপে দেওয়া হবে: ৫০% → ৭৫% → ১০০%। বিশেষ প্রণোদনা ০১ জুলাই ২০২৬ থেকে বাদ যাবে।'
+              : 'অফিসার ও জেসিও (ডব্লিউও এবং তদূর্ধ্ব) পদের জন্য বর্ধিত মূল বেতন ধাপে ধাপে দেওয়া হবে: ৪০% → ৭০% → ১০০%। বিশেষ প্রণোদনা ০১ জুলাই ২০২৬ থেকে বাদ যাবে।'}
+          </div>
+        </div>
+
+        <!-- 5. 4-Stage Timeline -->
+        <h2 class="text-lg font-bold text-textMain pt-1">প্রতিটি ধাপের বেতন ও ভাতা</h2>
+        <div class="space-y-3.5">
+          ${phased.milestones.map((m, idx) => {
+            const expanded = Boolean(state.expandedMilestones[m.id]);
+            const ringCls = m.isFinalPhase ? 'border-emeraldAccent' : 'border-gold';
+            const badgeCls = m.isFinalPhase ? 'bg-emeraldDarkBox border-emeraldAccent/60 text-emeraldLight' : 'bg-goldMuted/50 border-gold/60 text-gold';
+            const gainStr = m.netGainAmount >= 0 ? `+${fmtBdt(m.netGainAmount, bn)}` : `−${fmtBdt(Math.abs(m.netGainAmount), bn)}`;
+            return `
+              <div class="flex gap-2.5 items-stretch">
+                <div class="flex flex-col items-center w-5 shrink-0">
+                  <div class="w-4 h-4 mt-4 rounded-full bg-regBg border-2 ${ringCls} shrink-0"></div>
+                  ${idx < phased.milestones.length - 1 ? `<div class="w-0.5 flex-1 mt-1 bg-gradient-to-b from-gold/60 to-emeraldAccent/30"></div>` : ''}
+                </div>
+                <div class="flex-1 rounded-2xl bg-regCard border ${m.isFinalPhase ? 'border-emeraldAccent/45' : 'border-regBorder'} p-3.5 space-y-2.5">
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <div class="text-base font-bold text-textMain">${m.title}</div>
+                      <div class="text-xs text-textMuted">${m.dateRange}</div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full border text-xs font-semibold shrink-0 ${badgeCls}">${m.badgeText}</span>
+                  </div>
+                  <div class="rounded-xl bg-regField border border-regBorder p-3 flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-goldMuted text-gold text-xs font-bold flex items-center justify-center shrink-0">${bn ? '১' : '1'}</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs text-textMuted">জেএসআই অনুসারে প্রাপ্য মূল বেতন</div>
+                      <div class="flex justify-between items-center gap-2">
+                        <span class="text-lg font-bold text-textMain">${fmtBdt(m.basicPay, bn)}</span>
+                        ${m.basicDiffFromPrevious > 0 ? `<span class="text-xs font-semibold text-emeraldLight">+${fmtBdt(m.basicDiffFromPrevious, bn)}</span>` : ''}
+                      </div>
+                      <div class="text-xs text-textMuted">${m.basicSubtitle}</div>
+                    </div>
+                  </div>
+                  <div class="rounded-xl bg-regField border border-regBorder p-3 flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-emeraldDarkBox text-emeraldLight text-xs font-bold flex items-center justify-center shrink-0">${bn ? '২' : '2'}</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs text-textMuted">${m.netGainTitle}</div>
+                      <div class="text-lg font-bold ${m.netGainAmount >= 0 ? 'text-emeraldLight' : 'text-crimson'}">${gainStr}</div>
+                      ${m.netGainSubtitle ? `<div class="text-xs text-textMuted">${m.netGainSubtitle}</div>` : ''}
+                    </div>
+                  </div>
+                  <div class="rounded-xl bg-regField border border-regBorder p-3 flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-[#1D2834] text-[#7CB7F6] text-xs font-bold flex items-center justify-center shrink-0">${bn ? '৩' : '3'}</div>
+                    <div class="flex-1 min-w-0">
+                      <div class="text-xs text-textMuted">${m.takeHomeTitle}</div>
+                      <div class="text-lg font-bold text-textMain">${fmtBdt(m.takeHomeAfterDeductions, bn)}</div>
+                    </div>
+                  </div>
+                  <button type="button" data-toggle-milestone="${m.id}" class="w-full py-2.5 rounded-xl bg-regField border border-regBorder text-xs font-bold text-gold hover:border-gold/50 transition">
+                    ${expanded ? 'বিস্তারিত হিসাব সংকুচিত করুন ▲' : 'বিস্তারিত হিসাব দেখুন ▼'}
+                  </button>
+                  ${expanded ? `
+                    <div class="rounded-xl bg-regField border border-regBorder p-3 space-y-1.5 text-xs sm:text-sm">
+                      ${m.itemBreakdown.map(([lbl, amt]) => `<div class="flex justify-between gap-2"><span class="text-textMuted">${lbl}</span><span class="font-semibold">${fmtBdt(amt, bn)}</span></div>`).join('')}
+                      <div class="border-t border-regBorder pt-1.5 flex justify-between"><span class="text-textMuted">মোট বেতন-ভাতা (Gross)</span><span class="font-semibold">${fmtBdt(m.grossMonthlyPay, bn)}</span></div>
+                      <div class="flex justify-between"><span class="text-textMuted">বাদ: জিপিএফ কর্তন (${fmtNum(state.gpfPercent, bn)}%)</span><span class="font-semibold text-crimson">− ${fmtBdt(m.gpfDeduction, bn)}</span></div>
+                      <div class="flex justify-between font-bold text-gold pt-1 border-t border-regBorder"><span>নিট প্রদেয় (হাতে পাবেন)</span><span>${fmtBdt(m.takeHomeAfterDeductions, bn)}</span></div>
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- 6. Annual Allowances -->
+        <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-2.5 text-sm">
+          <div class="flex justify-between items-center gap-2"><span class="text-textMuted">বাংলা নববর্ষ ভাতা (মূল বেতনের ১৫%)</span><span class="font-bold text-textMain">${fmtBdt(allow.noboborshoAnnual, bn)}</span></div>
+          <div class="border-t border-regBorder/60 pt-2.5 flex justify-between items-center gap-2"><span class="text-textMuted">শ্রান্তি ও বিনোদন ভাতা</span><span class="font-semibold text-textMain">প্রচলিত বিধি অনুযায়ী</span></div>
+        </div>
+
+        <!-- 7. Action Buttons -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <button type="button" data-action="print-pdf" class="h-12 rounded-xl bg-gold text-goldText font-bold text-sm hover:brightness-105 active:scale-95 transition">পিডিএফ / প্রিন্ট</button>
+          <button type="button" data-action="go-to-pension" class="h-12 rounded-xl bg-emeraldAccent text-[#062116] font-bold text-sm hover:brightness-105 active:scale-95 transition">অবসরের হিসাব →</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button type="button" data-action="save-snapshot" class="h-12 rounded-xl border border-emeraldAccent/60 text-emeraldLight font-semibold text-sm hover:bg-emeraldDarkBox/40 transition">
+            লোকাল ডাটাবেজে সেভ করুন
+          </button>
+          <button type="button" data-action="download-json" class="h-12 rounded-xl border border-gold/60 text-gold font-semibold text-sm hover:bg-gold/10 transition">
+            JSON এক্সপোর্ট (.json)
+          </button>
+        </div>
+
+        ${renderShareAndDevCards()}
+      `;
+    }
+
+    function renderPensionTab(computed) {
+      const bn = state.useBengaliDigits;
+      const { existingPen, retiringPen } = computed;
+
+      let bodyHtml = '';
+      if (state.pensionSubTab === 'EXISTING') {
+        const res = existingPen;
+        bodyHtml = `
+          <div class="rounded-2xl border border-gold/40 bg-gradient-to-br from-[#103024] to-[#1A4333] p-4 sm:p-5 space-y-2.5 shadow-lg">
+            <span class="inline-block px-3 py-1 rounded-full bg-gold/15 border border-gold/60 text-xs font-bold text-gold">${res.slabLabel} (+${fmtNum(res.increaseRatePercent, bn)}%)</span>
+            <div class="text-sm text-textMain/85">নতুন পূর্ণ নিট পেনশন (০১ জুলাই ২০২৭ শতভাগ পর্যায়ে)</div>
+            <div class="text-3xl font-bold text-textMain">${fmtBdt(res.newFullNetPension, bn)}</div>
+            <div class="border-t border-white/15 pt-2.5 grid grid-cols-2 gap-3 text-xs">
+              <div><div class="text-textMuted">রেশন ও চিকিৎসা সহ মোট</div><div class="text-sm font-bold text-gold">${fmtBdt(res.totalMonthlyWithAllowancesFull, bn)}</div></div>
+              <div><div class="text-textMuted">জুলাই ২০২৭ (+৫% বৃদ্ধি)</div><div class="text-sm font-bold text-gold">${fmtBdt(res.july2027IncrementedPension, bn)}</div></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-3.5">
+            <h2 class="text-base font-bold text-textMain">পূর্বের অবসরভোগী ও পারিবারিক পেনশনার (অনুচ্ছেদ ২৭)</h2>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">৩০ জুন ২০২৬ তারিখে প্রাপ্ত নিট পেনশন <span class="text-gold font-bold">*</span></label>
+              <input type="text" inputmode="numeric" data-field="oldNetPensionInput" value="${escHtml(state.oldNetPensionInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+              <p class="text-xs text-textMuted mt-1">স্ল্যাব অনুযায়ী ন্যূনতম ও সর্বোচ্চ সীমা স্বয়ংক্রিয়ভাবে প্রযোজ্য হইবে</p>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">অবসরভোগীর বয়স (চিকিৎসা ভাতা - অনুচ্ছেদ ২৩)</label>
+              <select data-field="pensionerAgeBracketId" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                ${MedicalAgeBracket.map(m => `<option value="${m.id}" ${state.pensionerAgeBracketId === m.id ? 'selected' : ''}>${m.bnLabel}</option>`).join('')}
+              </select>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${renderStepper('প্রাপ্তবয়স্ক (১২+ বৎসর)', fmtNum(state.adultRationMembers, bn), 'adult-ration-minus', 'adult-ration-plus')}
+              ${renderStepper('অপ্রাপ্তবয়স্ক (<১২ বৎসর)', fmtNum(state.childRationMembers, bn), 'child-ration-minus', 'child-ration-plus')}
+            </div>
+            <div class="border-t border-regBorder pt-3 space-y-2 text-sm">
+              <div class="flex justify-between gap-2"><span class="text-textMuted">ধাপ-১ (০১ জুলাই – ৩১ ডিসে ২০২৬)</span><span class="font-semibold">${fmtBdt(res.phase1Pension, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">ধাপ-২ (০১ জানু – ৩০ জুন ২০২৭)</span><span class="font-semibold">${fmtBdt(res.phase2Pension, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">ধাপ-৩ (০১ জুলাই ২০২৭ মূল নিট পেনশন)</span><span class="font-semibold">${fmtBdt(res.phase3Pension, bn)}</span></div>
+              <div class="flex justify-between gap-2 text-gold font-bold"><span>০১ জুলাই ২০২৭ (+৫% বার্ষিক ইনক্রিমেন্ট সহ)</span><span>${fmtBdt(res.july2027IncrementedPension, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">মাসিক রেশন ভাতা (১,০০০ / ৫০০)</span><span class="font-semibold">${fmtBdt(res.rationAllowance, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">মাসিক চিকিৎসা ভাতা (০১ জানু ২০২৮ হইতে)</span><span class="font-semibold">${fmtBdt(res.medicalAllowance, bn)}</span></div>
+              <div class="flex justify-between gap-2 text-gold font-bold"><span>সর্বমোট মাসিক প্রাপ্তি</span><span>${fmtBdt(res.totalMonthlyWithAllowancesFull, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">বাংলা নববর্ষ ভাতা (বৎসরে ১ বার ১৫%)</span><span class="font-semibold">${fmtBdt(res.noboborshoAnnual, bn)}</span></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-gold/40 p-4 space-y-2">
+            <button type="button" data-toggle-breakdown="existing" class="w-full flex justify-between items-center text-sm font-bold text-textMain">
+              <span>হিসাবের ব্যাখ্যা (Step-by-Step)</span>
+              <span class="text-gold">${state.breakdownOpen.existing ? '▲' : '▼'}</span>
+            </button>
+            ${state.breakdownOpen.existing ? `<div class="border-t border-regBorder pt-2 space-y-1.5 text-xs sm:text-sm text-textMain">${res.breakdownSteps.map(x => `<p>${x}</p>`).join('')}</div>` : ''}
+          </div>
+        `;
+      } else {
+        const res = retiringPen;
+        bodyHtml = `
+          <div class="space-y-1.5">
+            <span class="inline-block px-3 py-1 rounded-full bg-goldMuted/55 border border-gold/60 text-xs font-bold text-gold">★ অবসর ও পেনশন</span>
+            <h2 class="text-xl font-bold text-textMain">অবসরে আপনার <span class="text-emeraldLight">সম্ভাব্য পেনশন</span></h2>
+            <p class="text-xs text-textMuted">অবসরের সম্ভাব্য তারিখ ও তখনকার পদবি দিন। পথে কোনো পদোন্নতির সম্ভাবনা থাকলে সেটাও যোগ করুন।</p>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-4">
+            ${renderDateBoxes('পেনশনে যাওয়ার সম্ভাব্য তারিখ', 'retire', state.retireDay, state.retireMonth, state.retireYear)}
+            <div class="space-y-2">
+              <div class="text-sm text-textMain">সম্ভাব্য পদোন্নতি (তারিখসহ)</div>
+              ${state.projectedPromotions.map(p => `
+                <div class="flex items-center justify-between gap-2 rounded-xl bg-regField border border-gold/40 px-3 py-2.5">
+                  <div>
+                    <div class="text-sm font-semibold text-gold">${escHtml(p.rankTitle)}</div>
+                    <div class="text-xs text-textMuted">তারিখ: ${p.day}-${p.month}-${p.year}</div>
+                  </div>
+                  <button type="button" data-remove-promo="${p.id}" class="px-3 py-1.5 rounded-lg text-xs font-bold text-crimson hover:bg-crimson/10">মুছুন</button>
+                </div>
+              `).join('')}
+              <button type="button" data-action="open-promo-modal" class="w-full h-12 rounded-xl bg-regField border border-regBorder text-sm font-semibold text-textMain hover:border-gold/50 transition">+ পদোন্নতি যোগ করুন</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              ${renderStepper('রেশন: প্রাপ্তবয়স্ক সদস্য', fmtNum(state.adultRationMembers, bn), 'adult-ration-minus', 'adult-ration-plus')}
+              ${renderStepper('রেশন: ১২ বছরের নিচের সন্তান', fmtNum(state.childRationMembers, bn), 'child-ration-minus', 'child-ration-plus')}
+            </div>
+            <button type="button" data-action="calculate-future-pension" class="w-full h-[52px] py-3 rounded-xl bg-emeraldAccent text-[#062116] font-bold text-base hover:brightness-105 active:scale-[0.99] transition">পেনশন হিসাব করুন</button>
+          </div>
+
+          <div class="rounded-2xl border border-gold/40 bg-gradient-to-br from-[#103024] to-[#1A4333] p-4 sm:p-5 space-y-2.5 shadow-lg">
+            <span class="inline-block px-3 py-1 rounded-full bg-gold/15 border border-gold/60 text-xs font-bold text-gold">${escHtml(res.projectedLastRankTitle)} • চাকরিকাল ${fmtDec(res.projectedQualifyingYears, 1, bn)} বৎসর</span>
+            <div class="text-sm text-textMain/85">এককালীন কম্যুটেড গ্র্যাচুইটি (Commuted Value)</div>
+            <div class="text-3xl font-bold text-textMain">${fmtBdt(res.lumpSumCommutedValue, bn)}</div>
+            <div class="border-t border-white/15 pt-2.5 grid grid-cols-3 gap-2 text-xs">
+              <div><div class="text-textMuted">অর্জিত গ্রস পেনশন</div><div class="text-sm font-bold text-gold">${fmtBdt(res.grossPension, bn)}</div></div>
+              <div><div class="text-textMuted">মাসিক নিট পেনশন</div><div class="text-sm font-bold text-gold">${fmtBdt(res.netMonthlyPension, bn)}</div></div>
+              <div><div class="text-textMuted">রেশন ও চিকিৎসাসহ মোট</div><div class="text-sm font-bold text-gold">${fmtBdt(res.projectedTotalMonthlyWithAllowances, bn)}</div></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-3.5">
+            <h2 class="text-base font-bold text-textMain">কর্ম উপাদান ও কম্যুটেশন বিস্তারিত (অনুঃ ৫, ১৫, ২৮)</h2>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">সদস্যের ধরন</label>
+              <select data-field="retiringType" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-sm text-textMain focus:outline-none focus:border-gold">
+                <option value="OFFICER" ${state.retiringType === 'OFFICER' ? 'selected' : ''}>কমিশন্ড অফিসার (১০+ বৎসর চাকরি)</option>
+                <option value="JCO_OR" ${state.retiringType === 'JCO_OR' ? 'selected' : ''}>জেসিও / ওআর / এনসি(ই) / এমওডিসি (১০+ বৎসর)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-textMuted mb-1.5">শেষ গৃহীত বেতন (Last Drawn Pay + উপাদান) <span class="text-gold font-bold">*</span></label>
+              <input type="text" inputmode="numeric" data-field="retiringLastPayInput" value="${escHtml(state.retiringLastPayInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+            </div>
+            <div class="grid grid-cols-1 ${state.retiringType === 'OFFICER' ? 'sm:grid-cols-2' : ''} gap-3">
+              <div>
+                <label class="block text-xs text-textMuted mb-1.5">যোগ্য চাকরি (বৎসর)</label>
+                <input type="text" inputmode="decimal" data-field="retiringQualifyingYearsInput" value="${escHtml(state.retiringQualifyingYearsInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+              </div>
+              ${state.retiringType === 'OFFICER' ? `
+                <div>
+                  <label class="block text-xs text-textMuted mb-1.5">পদবির নির্ধারিত চাকরি</label>
+                  <input type="text" inputmode="decimal" data-field="rankPrescribedYearsInput" value="${escHtml(state.rankPrescribedYearsInput)}" class="w-full rounded-xl bg-regField border border-regBorder px-3.5 py-3 text-base text-textMain focus:outline-none focus:border-gold" />
+                </div>
+              ` : ''}
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-textMuted">পরবর্তী জন্মদিনে বয়স (অনুচ্ছেদ ২৮)</span>
+                <span id="retire-age-label" class="font-bold text-gold">${fmtNum(state.retiringAgeNextBirthday, bn)} বৎসর (গুণক: ${fmtDec(res.commutationMultiplier, 3, bn)})</span>
+              </div>
+              <input type="range" min="20" max="80" step="1" data-slider="retiringAgeNextBirthday" value="${state.retiringAgeNextBirthday}" class="w-full cursor-pointer" />
+            </div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-textMuted">পেনশন সমর্পণের হার (প্রচলিত ৫০%)</span>
+                <span id="comm-pct-label" class="font-bold text-gold">${fmtNum(state.commutationSurrenderPercent, bn)}%</span>
+              </div>
+              <input type="range" min="0" max="100" step="5" data-slider="commutationSurrenderPercent" value="${state.commutationSurrenderPercent}" class="w-full cursor-pointer" />
+            </div>
+            <div class="border-t border-regBorder pt-3 space-y-2 text-sm">
+              <div class="flex justify-between gap-2 font-bold text-gold"><span>অর্জিত গ্রস পেনশন</span><span>${fmtBdt(res.grossPension, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">সমর্পিত মাসিক অংশ (${fmtNum(res.surrenderPercent, bn)}%)</span><span>${fmtBdt(res.commutedMonthlyPortion, bn)}</span></div>
+              <div class="flex justify-between gap-2 font-bold text-gold"><span>মাসিক নিট পেনশন</span><span>${fmtBdt(res.netMonthlyPension, bn)}</span></div>
+              <div class="flex justify-between gap-2"><span class="text-textMuted">মাসিক রেশন ভাতা</span><span>${fmtBdt(res.rationAllowance, bn)}</span></div>
+              ${res.medicalAllowance > 0 ? `<div class="flex justify-between gap-2"><span class="text-textMuted">মাসিক চিকিৎসা ভাতা</span><span>${fmtBdt(res.medicalAllowance, bn)}</span></div>` : ''}
+              <div class="flex justify-between gap-2 font-bold text-gold"><span>এককালীন কম্যুটেড অর্থ</span><span>${fmtBdt(res.lumpSumCommutedValue, bn)}</span></div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-regCard border border-gold/40 p-4 space-y-2">
+            <button type="button" data-toggle-breakdown="retiring" class="w-full flex justify-between items-center text-sm font-bold text-textMain">
+              <span>হিসাবের ব্যাখ্যা (Step-by-Step)</span>
+              <span class="text-gold">${state.breakdownOpen.retiring ? '▲' : '▼'}</span>
+            </button>
+            ${state.breakdownOpen.retiring ? `<div class="border-t border-regBorder pt-2 space-y-1.5 text-xs sm:text-sm text-textMain">${res.breakdownSteps.map(x => `<p>${x}</p>`).join('')}</div>` : ''}
+          </div>
+        `;
+      }
+
+      return `
+        <div class="grid grid-cols-2 gap-1 p-1 rounded-2xl bg-regField border border-regBorder">
+          <button type="button" data-pension-sub="EXISTING" class="py-2.5 px-2 rounded-xl text-xs sm:text-sm font-bold transition ${state.pensionSubTab === 'EXISTING' ? 'bg-gold text-goldText' : 'text-textMuted'}">পূর্বের অবসরভোগী (অনুঃ ২৭)</button>
+          <button type="button" data-pension-sub="RETIRING" class="py-2.5 px-2 rounded-xl text-xs sm:text-sm font-bold transition ${state.pensionSubTab === 'RETIRING' ? 'bg-gold text-goldText' : 'text-textMuted'}">সম্ভাব্য / অবসরগামী (অনুঃ ৫, ১৫, ২৮)</button>
+        </div>
+        ${bodyHtml}
+        ${renderShareAndDevCards()}
+      `;
+    }
+
+    function renderReportTab(computed) {
+      const bn = state.useBengaliDigits;
+      const { pay, allow, phased, existingPen, retiringPen } = computed;
+
+      return `
+        <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-3 text-sm">
+          <h2 class="text-base font-bold text-textMain border-b border-regBorder pb-2.5">পূর্ণাঙ্গ বেতন ও পেনশন রিপোর্ট (JSI 01/2026)</h2>
+          ${state.userName ? `<div class="flex justify-between gap-2"><span class="text-textMuted">নাম</span><span class="font-semibold">${escHtml(state.userName)}</span></div>` : ''}
+          ${state.serviceNo ? `<div class="flex justify-between gap-2"><span class="text-textMuted">সার্ভিস নং</span><span class="font-semibold">${escHtml(state.serviceNo)}</span></div>` : ''}
+          ${state.unitName ? `<div class="flex justify-between gap-2"><span class="text-textMuted">ইউনিট</span><span class="font-semibold">${escHtml(state.unitName)}</span></div>` : ''}
+          <div class="flex justify-between gap-2"><span class="text-textMuted">বাহিনী ও শ্রেণি</span><span class="font-semibold">${ServiceBranch[state.serviceBranch].bn} • ${PersonnelCategory[state.category].bn}</span></div>
+          <div class="flex justify-between gap-2"><span class="text-textMuted">জন্ম ও যোগদান</span><span class="font-semibold">${state.dobDay}-${state.dobMonth}-${state.dobYear} | ${state.joinDay}-${state.joinMonth}-${state.joinYear}</span></div>
+          <div class="border-t border-regBorder my-2"></div>
+
+          ${!state.isPensionerRole ? `
+            <div class="flex justify-between gap-2"><span class="text-textMuted">পদবি</span><span class="font-semibold text-right">${escHtml(pay.rankTitle)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">৩০ জুন ২০২৬ মূল বেতন</span><span class="font-semibold">${fmtBdt(pay.oldBasicPay, bn)}</span></div>
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>০১ জুলাই ২০২৬ মূল বেতন (ইনক্রিমেন্টসহ)</span><span>${fmtBdt(pay.newBasicPay, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">১ম ধাপ (জুলাই–ডিসে ২০২৬)</span><span class="font-semibold">${fmtBdt(phased.phase1Pay, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">২য় ধাপ (জানু–জুন ২০২৭)</span><span class="font-semibold">${fmtBdt(phased.phase2Pay, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">৩য় ধাপ (জুলাই ২০২৭ ইনক্রিমেন্টসহ)</span><span class="font-semibold">${fmtBdt(phased.phase3Pay, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">নিট প্রাপ্য বকেয়া</span><span class="font-semibold text-emeraldLight">${fmtBdt(phased.netPayableArrears, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">সম্ভাব্য জিপিএফ কর্তন (বকেয়া)</span><span class="font-semibold text-crimson">− ${fmtBdt(phased.probableGpfOnArrears, bn)}</span></div>
+            <div class="border-t border-regBorder my-2"></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">মোট মাসিক বেতন-ভাতা (২০২৮)</span><span class="font-semibold">${fmtBdt(allow.grossMonthlyPay, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">জিপিএফ কর্তন</span><span class="font-semibold text-crimson">− ${fmtBdt(allow.gpfDeduction, bn)}</span></div>
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>নিট মাসিক প্রদেয় বেতন (২০২৮)</span><span>${fmtBdt(allow.netMonthlyPay, bn)}</span></div>
+          ` : (state.pensionSubTab === 'EXISTING' ? `
+            <div class="flex justify-between gap-2"><span class="text-textMuted">পূর্বের নিট পেনশন</span><span class="font-semibold">${fmtBdt(existingPen.oldNetPension, bn)}</span></div>
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>পূর্ণ বর্ধিত নিট পেনশন</span><span>${fmtBdt(existingPen.newFullNetPension, bn)}</span></div>
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>রেশন ও চিকিৎসা সহ মোট</span><span>${fmtBdt(existingPen.totalMonthlyWithAllowancesFull, bn)}</span></div>
+          ` : `
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>অর্জিত গ্রস পেনশন</span><span>${fmtBdt(retiringPen.grossPension, bn)}</span></div>
+            <div class="flex justify-between gap-2"><span class="text-textMuted">মাসিক নিট পেনশন</span><span class="font-semibold">${fmtBdt(retiringPen.netMonthlyPension, bn)}</span></div>
+            <div class="flex justify-between gap-2 font-bold text-gold"><span>এককালীন কম্যুটেড গ্র্যাচুইটি</span><span>${fmtBdt(retiringPen.lumpSumCommutedValue, bn)}</span></div>
+          `)}
+
+          <div class="border-t border-regBorder pt-3 flex flex-wrap gap-2">
+            <button type="button" data-action="print-pdf" class="flex-1 min-w-[120px] h-11 rounded-xl bg-gold text-goldText font-bold text-sm hover:brightness-105">প্রিন্ট / PDF</button>
+            <button type="button" data-action="copy-summary" class="flex-1 min-w-[120px] h-11 rounded-xl border border-gold text-gold font-bold text-sm hover:bg-gold/10">সামারি কপি</button>
+            <button type="button" data-action="share-summary" class="px-4 h-11 rounded-xl bg-emeraldDarkBox text-emeraldLight font-bold text-sm hover:brightness-110">শেয়ার</button>
+          </div>
+        </div>
+
+        <!-- JSON Export & Import Card (GitHub / Local Storage) -->
+        <div class="rounded-2xl bg-regCard border border-gold/40 p-4 space-y-3">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <h2 class="text-base font-bold text-gold">JSON এক্সপোর্ট ও ব্যাকআপ (GitHub / লোকাল ফাইল)</h2>
+              <p class="text-xs text-textMuted">আপনার বর্তমান ইনপুট, নির্ধারিত বেতন, বকেয়া, ভাতা ও পেনশন হিসাব JSON ফরম্যাটে ডাউনলোড বা GitHub-এ সেভ করুন</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-md bg-goldMuted/60 border border-gold/50 text-[11px] font-bold text-gold shrink-0">.JSON</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button type="button" data-action="download-json" class="h-11 rounded-xl bg-gold text-goldText font-bold text-sm hover:brightness-105 active:scale-95 transition flex items-center justify-center gap-1.5">
+              <span>⬇ JSON ফাইল ডাউনলোড</span>
+            </button>
+            <button type="button" data-action="copy-json" class="h-11 rounded-xl border border-gold text-gold font-bold text-sm hover:bg-gold/10 active:scale-95 transition flex items-center justify-center gap-1.5">
+              <span>📋 JSON কপি (GitHub)</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button type="button" data-action="import-json" class="h-11 rounded-xl bg-regField border border-emeraldAccent/50 text-emeraldLight font-semibold text-xs sm:text-sm hover:bg-emeraldDarkBox/40 transition">
+              ⬆ সংরক্ষিত .json ফাইল লোড করুন
+            </button>
+            <button type="button" data-action="toggle-json-preview" class="h-11 rounded-xl bg-regField border border-regBorder text-textMuted font-semibold text-xs sm:text-sm hover:border-gold/50 hover:text-textMain transition">
+              ${state.showJsonPreview ? 'JSON প্রিভিউ লুকান ▲' : 'JSON ব্লব প্রিভিউ দেখুন ▼'}
+            </button>
+          </div>
+          ${state.showJsonPreview ? `
+            <div class="rounded-xl bg-[#09100C] border border-regBorder p-3 space-y-2">
+              <div class="flex items-center justify-between text-[11px] text-textMuted">
+                <span>ফাইল নাম: <span class="text-gold font-mono">${escHtml(getExportJsonFilename())}</span></span>
+                <button type="button" data-action="copy-json" class="text-emeraldLight font-bold hover:underline">কপি</button>
+              </div>
+              <pre class="max-h-64 overflow-auto text-[11px] leading-relaxed font-mono text-emeraldLight/90 whitespace-pre">${escHtml(buildExportJsonString())}</pre>
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Local DB Saved Snapshots -->
+        <div class="rounded-2xl bg-regCard border border-regBorder p-4 space-y-3">
+          <div>
+            <h2 class="text-base font-bold text-textMain">সংরক্ষিত হিসাবসমূহ (লোকাল ডাটাবেজ)</h2>
+            <p class="text-xs text-textMuted">সকল ইনপুট স্বয়ংক্রিয়ভাবে এবং একাধিক সদস্যের হিসাব ব্রাউজার লোকাল ডাটাবেজে সেভ থাকে</p>
+          </div>
+          <button type="button" data-action="save-snapshot" class="w-full h-11 rounded-xl bg-emeraldDarkBox text-emeraldLight font-bold text-sm border border-emeraldAccent/40 hover:brightness-110">
+            বর্তমান হিসাব নতুন করে সেভ করুন
+          </button>
+          ${savedSnapshots.length === 0
+            ? `<p class="text-xs text-textMuted">এখনো আলাদা কোনো স্ন্যাপশট সেভ করা হয়নি। তবে আপনার চলমান ফর্মের সব তথ্য স্বয়ংক্রিয়ভাবে সেভ হচ্ছে।</p>`
+            : `<div class="space-y-2">
+                ${savedSnapshots.map(item => `
+                  <div class="flex items-center justify-between gap-2 rounded-xl bg-regField border border-regBorder p-3">
+                    <div class="min-w-0 flex-1">
+                      <div class="text-sm font-semibold text-textMain truncate">${escHtml(item.memberName)} • ${escHtml(item.rankTitle)}</div>
+                      <div class="text-xs text-emeraldLight">${escHtml(item.summaryHighlight)}</div>
+                    </div>
+                    <button type="button" data-load-snapshot="${item.id}" class="px-3 py-1.5 rounded-lg text-xs font-bold text-gold hover:bg-gold/10">লোড</button>
+                    <button type="button" data-delete-snapshot="${item.id}" class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-crimson hover:bg-crimson/10">মুছুন</button>
+                  </div>
+                `).join('')}
+              </div>`}
+        </div>
+
+        ${renderShareAndDevCards()}
+
+        <div class="rounded-2xl bg-regCard border border-regBorder p-3.5 text-xs text-textMuted leading-relaxed">
+          বিঃদ্রঃ এই ক্যালকুলেটরটি গণপ্রজাতন্ত্রী বাংলাদেশ সরকার, প্রতিরক্ষা মন্ত্রণালয়ের যৌথ বাহিনী নির্দেশাবলি (JSI 01/2026, বাংলাদেশ গেজেট অতিরিক্ত সংখ্যা ১৫ নভেম্বর ২০২৬) অনুসরণে নির্মিত একটি রেফারেন্স সহায়িকা মাত্র। চূড়ান্ত ও আনুষ্ঠানিক বেতন-পেনশন নির্ধারণ iBAS++ সিস্টেম এবং সংশ্লিষ্ট SFC / FC / SFPO অফিসের মাধ্যমে সম্পন্ন হইবে।
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 7. RENDER ENGINE & EVENT WIRING
+    // =========================================================================
+    const TABS = [
+      { id: 'INFO', bn: 'তথ্য', icon: '✎' },
+      { id: 'SALARY', bn: 'বেতন', icon: '৳' },
+      { id: 'PENSION', bn: 'অবসর', icon: '📈' },
+      { id: 'REPORT', bn: 'রিপোর্ট', icon: '📄' }
+    ];
+
+    function renderNavigation() {
+      const mobileRoot = document.getElementById('mobile-nav-tabs');
+      const desktopRoot = document.getElementById('desktop-nav-tabs');
+      mobileRoot.innerHTML = TABS.map(t => {
+        const active = state.selectedTab === t.id;
+        return `<button type="button" data-nav-tab="${t.id}" class="py-2 rounded-xl flex flex-col items-center justify-center gap-0.5 text-xs font-bold transition ${active ? 'bg-goldMuted/70 border border-gold/45 text-gold' : 'text-textMuted'}">
+          <span class="text-base leading-none">${t.icon}</span><span>${t.bn}</span>
+        </button>`;
+      }).join('');
+      desktopRoot.innerHTML = TABS.map(t => {
+        const active = state.selectedTab === t.id;
+        return `<button type="button" data-nav-tab="${t.id}" class="px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-bold transition ${active ? 'bg-goldMuted/70 border border-gold/45 text-gold' : 'text-textMuted hover:text-textMain'}">
+          <span>${t.icon}</span><span>${t.bn}</span>
+        </button>`;
+      }).join('');
+    }
+
+    function renderApp(preserveFocus = false) {
+      let activeKey = null, selStart = null, selEnd = null;
+      if (preserveFocus && document.activeElement) {
+        const el = document.activeElement;
+        activeKey = el.getAttribute('data-field') || el.getAttribute('data-date');
+        selStart = el.selectionStart;
+        selEnd = el.selectionEnd;
+      }
+
+      document.getElementById('header-subtitle').textContent = `${ServiceBranch[state.serviceBranch].bn} • ${PersonnelCategory[state.category].bn}`;
+      document.getElementById('btn-toggle-digits').textContent = state.useBengaliDigits ? 'সংখ্যা: ১২৩ → 123' : 'Digits: 123 → ১২৩';
+
+      renderNavigation();
+      const computed = computeAll(state);
+      const root = document.getElementById('app-root');
+
+      if (state.selectedTab === 'INFO') root.innerHTML = renderInfoTab(computed);
+      else if (state.selectedTab === 'SALARY') root.innerHTML = renderSalaryTab(computed);
+      else if (state.selectedTab === 'PENSION') root.innerHTML = renderPensionTab(computed);
+      else root.innerHTML = renderReportTab(computed);
+
+      if (activeKey) {
+        const target = root.querySelector(`[data-field="${activeKey}"], [data-date="${activeKey}"]`);
+        if (target) {
+          target.focus();
+          if (selStart !== null && typeof target.setSelectionRange === 'function') {
+            try { target.setSelectionRange(selStart, selEnd); } catch {}
+          }
+        }
+      }
+    }
+
+    // Delegated Click Events
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-nav-tab], [data-action], [data-role-pensioner], [data-category], [data-officer-year], [data-marital], [data-stepper], [data-skill], [data-pension-sub], [data-retiring-type], [data-toggle-milestone], [data-toggle-breakdown], [data-step-info], [data-remove-promo], [data-load-snapshot], [data-delete-snapshot]');
+      if (!btn) return;
+
+      if (btn.hasAttribute('data-nav-tab')) {
+        state.selectedTab = btn.getAttribute('data-nav-tab');
+        saveStateToStorage();
+        renderApp();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      if (btn.hasAttribute('data-role-pensioner')) {
+        state.isPensionerRole = btn.getAttribute('data-role-pensioner') === 'true';
+        state.pensionSubTab = state.isPensionerRole ? 'EXISTING' : 'RETIRING';
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-category')) {
+        const cat = btn.getAttribute('data-category');
+        state.category = cat;
+        if (cat === 'OFFICER' && ['MODC','RELIGIOUS'].includes(state.serviceBranch)) state.serviceBranch = 'ARMY';
+        if (cat === 'CADET' && ['MODC','RELIGIOUS'].includes(state.serviceBranch)) state.serviceBranch = 'ARMY';
+        if (cat === 'JCO_OR' && state.serviceBranch === 'AFNS') state.serviceBranch = 'ARMY';
+        if (state.serviceBranch === 'AFNS') state.officerAppendix = 'AFNS';
+        else if (state.officerAppendix === 'AFNS') state.officerAppendix = 'STANDARD';
+        if (cat === 'OFFICER') {
+          const ranks = getOfficerRanks(state.officerAppendix);
+          const rk = ranks.find(r => r.id === state.selectedOfficerRankId) || ranks[0];
+          state.selectedOfficerRankId = rk.id;
+          const yrs = Object.keys(rk.yearToPay).map(Number);
+          if (yrs.length && rk.yearToPay[state.commissionedYear] === undefined) state.commissionedYear = yrs[0];
+          if (state.accommodationType === 'UNMARRIED_OR_MESS') state.accommodationType = 'NO_QUARTERS_STANDARD';
+        } else {
+          if (cat === 'CADET' && state.serviceBranch === 'AFNS') state.selectedCadetId = 'afns_cadet';
+          if (state.accommodationType === 'NO_QUARTERS_EXTRA_FACILITY') state.accommodationType = 'NO_QUARTERS_STANDARD';
+        }
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-officer-year')) {
+        state.commissionedYear = Number(btn.getAttribute('data-officer-year'));
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-marital')) {
+        const married = btn.getAttribute('data-marital') === 'true';
+        state.isMarried = married;
+        if (!married && state.category !== 'OFFICER') state.accommodationType = 'UNMARRIED_OR_MESS';
+        else if (married && state.accommodationType === 'UNMARRIED_OR_MESS') state.accommodationType = 'NO_QUARTERS_STANDARD';
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-stepper')) {
+        const k = btn.getAttribute('data-stepper');
+        if (k === 'children-minus') state.childrenCount = Math.max(0, state.childrenCount - 1);
+        if (k === 'children-plus') state.childrenCount = Math.min(2, state.childrenCount + 1);
+        if (k === 'disabled-minus') state.disabledChildrenCount = Math.max(0, state.disabledChildrenCount - 1);
+        if (k === 'disabled-plus') state.disabledChildrenCount = Math.min(2, state.disabledChildrenCount + 1);
+        if (k === 'badge-minus') state.goodConductBadges = Math.max(0, state.goodConductBadges - 1);
+        if (k === 'badge-plus') state.goodConductBadges = Math.min(3, state.goodConductBadges + 1);
+        if (k === 'adult-ration-minus') state.adultRationMembers = Math.max(0, state.adultRationMembers - 1);
+        if (k === 'adult-ration-plus') state.adultRationMembers = Math.min(10, state.adultRationMembers + 1);
+        if (k === 'child-ration-minus') state.childRationMembers = Math.max(0, state.childRationMembers - 1);
+        if (k === 'child-ration-plus') state.childRationMembers = Math.min(10, state.childRationMembers + 1);
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-skill')) {
+        const sk = btn.getAttribute('data-skill');
+        const list = state.selectedSpecialSkills || [];
+        state.selectedSpecialSkills = list.includes(sk) ? list.filter(x => x !== sk) : [...list, sk];
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-pension-sub')) {
+        state.pensionSubTab = btn.getAttribute('data-pension-sub');
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-retiring-type')) {
+        state.retiringType = btn.getAttribute('data-retiring-type');
+        saveStateToStorage();
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-toggle-milestone')) {
+        const id = btn.getAttribute('data-toggle-milestone');
+        state.expandedMilestones[id] = !state.expandedMilestones[id];
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-toggle-breakdown')) {
+        const k = btn.getAttribute('data-toggle-breakdown');
+        state.breakdownOpen[k] = !state.breakdownOpen[k];
+        renderApp();
+        return;
+      }
+
+      if (btn.hasAttribute('data-step-info')) {
+        const [stepNo, amt] = btn.getAttribute('data-step-info').split(':');
+        showToast(`ধাপ ${fmtNum(stepNo, state.useBengaliDigits)}: ${fmtBdt(amt, state.useBengaliDigits)} (৩০ জুন ২০২৬-এর বেতন অনুযায়ী স্বয়ংক্রিয়ভাবে নির্ধারিত হয়)`);
+        return;
+      }
+
+      if (btn.hasAttribute('data-remove-promo')) {
+        const id = btn.getAttribute('data-remove-promo');
+        state.projectedPromotions = state.projectedPromotions.filter(p => p.id !== id);
+        applyProjectedFuturePensionInputs();
+        return;
+      }
+
+      if (btn.hasAttribute('data-load-snapshot')) {
+        const id = Number(btn.getAttribute('data-load-snapshot'));
+        const found = savedSnapshots.find(x => x.id === id);
+        if (found) {
+          state = { ...createDefaultState(), ...found.stateSnapshot, selectedTab: 'SALARY' };
+          saveStateToStorage();
+          renderApp();
+          showToast('সংরক্ষিত হিসাব লোড করা হয়েছে');
+        }
+        return;
+      }
+
+      if (btn.hasAttribute('data-delete-snapshot')) {
+        const id = Number(btn.getAttribute('data-delete-snapshot'));
+        savedSnapshots = savedSnapshots.filter(x => x.id !== id);
+        saveSnapshotsToStorage();
+        renderApp();
+        showToast('সংরক্ষিত হিসাব মুছে ফেলা হয়েছে');
+        return;
+      }
+
+      const action = btn.getAttribute('data-action');
+      if (action === 'submit-calculator') {
+        const pay = computePayFixation(state);
+        state.pensionSubTab = state.isPensionerRole ? state.pensionSubTab : 'RETIRING';
+        if (!state.isPensionerRole) {
+          state.retiringType = pay.isOfficer ? 'OFFICER' : 'JCO_OR';
+          state.retiringLastPayInput = String(pay.july2027BasicPay);
+          state.rankPrescribedYearsInput = String(pay.defaultPrescribedService);
+        }
+        state.selectedTab = state.isPensionerRole ? 'PENSION' : 'SALARY';
+        saveStateToStorage();
+        renderApp();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'go-to-pension') {
+        const pay = computePayFixation(state);
+        state.pensionSubTab = 'RETIRING';
+        state.retiringType = pay.isOfficer ? 'OFFICER' : 'JCO_OR';
+        state.retiringLastPayInput = String(pay.july2027BasicPay);
+        state.rankPrescribedYearsInput = String(pay.defaultPrescribedService);
+        state.selectedTab = 'PENSION';
+        saveStateToStorage();
+        renderApp();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (action === 'print-pdf') {
+        printSummaryAction();
+      } else if (action === 'copy-summary') {
+        copyText('সামারি', buildFullSummaryText());
+      } else if (action === 'share-summary') {
+        shareSummaryAction();
+      } else if (action === 'copy-text') {
+        copyText(btn.getAttribute('data-label'), btn.getAttribute('data-value'));
+      } else if (action === 'save-snapshot') {
+        saveCurrentSnapshotAction();
+      } else if (action === 'download-json') {
+        downloadJsonAction();
+      } else if (action === 'copy-json') {
+        copyText('JSON ডাটা', buildExportJsonString());
+      } else if (action === 'import-json') {
+        const inp = document.getElementById('json-import-input');
+        if (inp) { inp.value = ''; inp.click(); }
+      } else if (action === 'toggle-json-preview') {
+        state.showJsonPreview = !state.showJsonPreview;
+        renderApp();
+      } else if (action === 'calculate-future-pension') {
+        applyProjectedFuturePensionInputs();
+        showToast('সম্ভাব্য অবসর ও পেনশন হিসাব আপডেট হয়েছে');
+      } else if (action === 'open-promo-modal') {
+        const sel = document.getElementById('promo-rank-select');
+        const opts = (state.category === 'OFFICER' || state.retiringType === 'OFFICER')
+          ? getOfficerRanks(state.officerAppendix).map(r => [r.id, r.bnName])
+          : nonOfficerRanks.map(r => [r.id, r.bnName]);
+        sel.innerHTML = opts.map(([id, name]) => `<option value="${id}">${name}</option>`).join('');
+        document.getElementById('promotion-modal').classList.remove('hidden');
+      }
+    });
+
+    // Delegated Input & Change Events
+    document.addEventListener('change', (e) => {
+      const t = e.target;
+      if (t.hasAttribute('data-slider')) {
+        state[t.getAttribute('data-slider')] = Number(t.value);
+        saveStateToStorage();
+        renderApp();
+      } else if (t.hasAttribute('data-checkbox')) {
+        state[t.getAttribute('data-checkbox')] = t.checked;
+        saveStateToStorage();
+        renderApp();
+      } else if (t.hasAttribute('data-field-int')) {
+        state[t.getAttribute('data-field-int')] = parseInt(t.value, 10) || 0;
+        saveStateToStorage();
+        renderApp();
+      } else if (t.tagName === 'SELECT' && t.hasAttribute('data-field')) {
+        const f = t.getAttribute('data-field');
+        const val = t.value;
+        if (f === 'serviceBranch') {
+          state.serviceBranch = val;
+          if (val === 'AFNS') {
+            state.category = state.category === 'CADET' ? 'CADET' : 'OFFICER';
+            state.officerAppendix = 'AFNS';
+            state.selectedOfficerRankId = 'afns_lt';
+            state.selectedCadetId = 'afns_cadet';
+          } else if (val === 'MODC' || val === 'RELIGIOUS') {
+            state.category = 'JCO_OR';
+            if (state.officerAppendix === 'AFNS') state.officerAppendix = 'STANDARD';
+            const prev = state.selectedNonOfficerRankId;
+            if (val === 'MODC' && !['swo','wo','sgt','cpl','lcpl','sainik','nce','modc_recruit'].includes(prev)) state.selectedNonOfficerRankId = 'nce';
+            if (val === 'RELIGIOUS' && !['swo','wo'].includes(prev)) state.selectedNonOfficerRankId = 'wo';
+            if (state.selectedNonOfficerRankId !== prev) {
+              const rk = nonOfficerRanks.find(r => r.id === state.selectedNonOfficerRankId);
+              if (rk) { state.oldScaleStartOverride = String(rk.oldScaleStart); state.oldBasicPayInput = rk.id === 'sgt' ? '26120' : String(rk.oldScaleStart); }
+            }
+          } else if (state.officerAppendix === 'AFNS') {
+            state.officerAppendix = 'STANDARD';
+            state.selectedOfficerRankId = 'maj';
+            state.commissionedYear = 16;
+          }
+        } else if (f === 'officerAppendix') {
+          state.officerAppendix = val;
+          const ranks = getOfficerRanks(val);
+          const rk = ranks.find(r => r.id === state.selectedOfficerRankId) || ranks[0];
+          state.selectedOfficerRankId = rk.id;
+          const yrs = Object.keys(rk.yearToPay).map(Number);
+          if (yrs.length && rk.yearToPay[state.commissionedYear] === undefined) state.commissionedYear = yrs[0];
+        } else if (f === 'selectedOfficerRankId') {
+          state.selectedOfficerRankId = val;
+          const ranks = getOfficerRanks(state.officerAppendix);
+          const rk = ranks.find(r => r.id === val) || ranks[0];
+          const yrs = Object.keys(rk.yearToPay).map(Number);
+          if (yrs.length && rk.yearToPay[state.commissionedYear] === undefined) state.commissionedYear = yrs[0];
+          state.rankPrescribedYearsInput = String(rk.defaultPrescribedService);
+        } else if (f === 'selectedNonOfficerRankId') {
+          state.selectedNonOfficerRankId = val;
+          const rk = nonOfficerRanks.find(r => r.id === val) || nonOfficerRanks[6];
+          state.oldScaleStartOverride = String(rk.oldScaleStart);
+          state.oldBasicPayInput = rk.id === 'sgt' ? '26120' : String(rk.oldScaleStart);
+        } else {
+          state[f] = val;
+        }
+        saveStateToStorage();
+        renderApp();
+      }
+    });
+
+    document.addEventListener('input', (e) => {
+      const t = e.target;
+      if (t.hasAttribute('data-slider')) {
+        const f = t.getAttribute('data-slider');
+        const val = Number(t.value);
+        state[f] = val;
+        const bn = state.useBengaliDigits;
+        if (f === 'gpfPercent') {
+          const el = document.getElementById('gpf-pct-label');
+          if (el) el.textContent = `${fmtNum(val, bn)}%`;
+        } else if (f === 'retiringAgeNextBirthday') {
+          const el = document.getElementById('retire-age-label');
+          const mult = commutationTable[Math.min(80, Math.max(20, val))] || 17.553;
+          if (el) el.textContent = `${fmtNum(val, bn)} বৎসর (গুণক: ${fmtDec(mult, 3, bn)})`;
+        } else if (f === 'commutationSurrenderPercent') {
+          const el = document.getElementById('comm-pct-label');
+          if (el) el.textContent = `${fmtNum(val, bn)}%`;
+        }
+        return;
+      }
+      if (t.hasAttribute('data-date')) {
+        const [prefix, part] = t.getAttribute('data-date').split('-');
+        const cleaned = toEn(t.value).replace(/[^0-9]/g, '');
+        const key = prefix + part.charAt(0).toUpperCase() + part.slice(1);
+        state[key] = cleaned;
+        if (prefix === 'dob' || prefix === 'join') syncDatesEffects();
+        saveStateToStorage();
+        if (prefix === 'retire' && cleaned.length === (part === 'year' ? 4 : 2)) applyProjectedFuturePensionInputs(true);
+        else renderApp(true);
+        return;
+      }
+      if (t.tagName === 'INPUT' && t.hasAttribute('data-field')) {
+        const f = t.getAttribute('data-field');
+        state[f] = t.value;
+        saveStateToStorage();
+        renderApp(true);
+      }
+    });
+
+    // Top bar & modal direct listeners
+    document.getElementById('btn-top-pdf').addEventListener('click', printSummaryAction);
+    document.getElementById('btn-top-share').addEventListener('click', shareSummaryAction);
+    document.getElementById('btn-top-reset').addEventListener('click', () => {
+      const keepBn = state.useBengaliDigits;
+      state = { ...createDefaultState(), useBengaliDigits: keepBn };
+      saveStateToStorage();
+      renderApp();
+      showToast('সকল তথ্য রিসেট করা হয়েছে');
+    });
+    document.getElementById('btn-toggle-digits').addEventListener('click', () => {
+      state.useBengaliDigits = !state.useBengaliDigits;
+      saveStateToStorage();
+      renderApp();
+    });
+
+    const promoModal = document.getElementById('promotion-modal');
+    const closePromo = () => promoModal.classList.add('hidden');
+    document.getElementById('promo-close-x').addEventListener('click', closePromo);
+    document.getElementById('promo-cancel-btn').addEventListener('click', closePromo);
+    document.getElementById('promo-save-btn').addEventListener('click', () => {
+      const sel = document.getElementById('promo-rank-select');
+      const rankId = sel.value;
+      const rankTitle = sel.options[sel.selectedIndex]?.text || rankId;
+      const d = (toEn(document.getElementById('promo-day').value).replace(/[^0-9]/g, '') || '01').padStart(2, '0');
+      const m = (toEn(document.getElementById('promo-month').value).replace(/[^0-9]/g, '') || '01').padStart(2, '0');
+      const y = (toEn(document.getElementById('promo-year').value).replace(/[^0-9]/g, '') || '2030').padStart(4, '0');
+      state.projectedPromotions.push({ id: String(Date.now()), rankId, rankTitle, day: d, month: m, year: y });
+      state.projectedPromotions.sort((a, b) => `${a.year}${a.month}${a.day}`.localeCompare(`${b.year}${b.month}${b.day}`));
+      closePromo();
+      applyProjectedFuturePensionInputs();
+      showToast('সম্ভাব্য পদোন্নতি যোগ করা হয়েছে');
+    });
+
+    const jsonImportInput = document.getElementById('json-import-input');
+    if (jsonImportInput) {
+      jsonImportInput.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => importJsonFromText(String(reader.result || ''));
+        reader.onerror = () => showToast('ফাইল পড়া যায়নি');
+        reader.readAsText(file, 'UTF-8');
+      });
+    }
+
+    // Check localStorage availability & Boot
+    try {
+      const tKey = '__jsi_ls_test__';
+      localStorage.setItem(tKey, '1');
+      localStorage.removeItem(tKey);
+    } catch {
+      const badge = document.getElementById('db-status-badge');
+      if (badge) badge.textContent = 'সেশন মোড (স্টোরেজ ব্লকড)';
+    }
+    renderApp();
+  </script>
+</body>
+</html>

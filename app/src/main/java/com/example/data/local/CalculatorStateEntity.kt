@@ -1,0 +1,75 @@
+package com.example.data.local
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "calculator_state")
+data class CalculatorStateEntity(
+    @PrimaryKey val id: Int = 1,
+    val useBengaliDigits: Boolean = true,
+    val isPensionerRole: Boolean = false,
+    val userName: String = "",
+    val serviceNo: String = "",
+    val unitName: String = "",
+    val dobDay: String = "01",
+    val dobMonth: String = "02",
+    val dobYear: String = "2003",
+    val joinDay: String = "04",
+    val joinMonth: String = "02",
+    val joinYear: String = "2022",
+    val categoryName: String = "JCO_OR",
+    val serviceBranchName: String = "ARMY",
+    val officerAppendixName: String = "STANDARD",
+    val selectedOfficerRankId: String = "maj",
+    val commissionedYear: Int = 16,
+    val officerOldBasicInput: String = "56500",
+    val selectedCadetId: String = "officer_cadet",
+    val selectedNonOfficerRankId: String = "sgt",
+    val oldBasicPayInput: String = "26120",
+    val oldScaleStartOverride: String = "16000",
+    val applyJuly2026Increment: Boolean = true,
+    val isMarried: Boolean = true,
+    val childrenCount: Int = 0,
+    val disabledChildrenCount: Int = 0,
+    val proficiencyPayId: String = "none",
+    val appointmentPayId: String = "none",
+    val goodConductBadges: Int = 1,
+    val selectedSpecialSkillsCsv: String = "",
+    val otherNewAllowanceInput: String = "",
+    val receiveMonthIndex: Int = 0,
+    val monthlyBiseshSubidhaInput: String = "",
+    val cityCategoryName: String = "DHAKA",
+    val accommodationTypeName: String = "NO_QUARTERS_STANDARD",
+    val serviceBracketName: String = "Y0_5",
+    val activeMedicalAgeBracketName: String = "UP_TO_50",
+    val receiveFreeTiffin: Boolean = false,
+    val hillHaorCategoryName: String = "NONE",
+    val oldServiceOrdnanceInput: String = "",
+    val gpfPercent: Int = 5,
+    val pensionSubTabName: String = "EXISTING",
+    val oldNetPensionInput: String = "18500",
+    val pensionerAgeBracketName: String = "AGE_60_TO_70",
+    val adultRationMembers: Int = 2,
+    val childRationMembers: Int = 0,
+    val retiringTypeName: String = "JCO_OR",
+    val retiringLastPayInput: String = "45100",
+    val retiringQualifyingYearsInput: String = "22",
+    val rankPrescribedYearsInput: String = "22",
+    val retiringAgeNextBirthday: Int = 52,
+    val commutationSurrenderPercent: Int = 50,
+    val retireDay: String = "04",
+    val retireMonth: String = "02",
+    val retireYear: String = "2043",
+    val projectedPromotionsRaw: String = "",
+    val updatedAtMillis: Long = System.currentTimeMillis()
+)
+
+@Entity(tableName = "saved_calculations")
+data class SavedCalculationEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0L,
+    val memberName: String,
+    val rankTitle: String,
+    val summaryHighlight: String,
+    val stateSnapshotJson: String,
+    val savedAtMillis: Long = System.currentTimeMillis()
+)

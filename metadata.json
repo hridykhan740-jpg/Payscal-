@@ -1,0 +1,6 @@
+{
+  "name": "JSI 01/2026",
+  "description": "জেএসআই ০১/২০২৬ (JSI 01/2026) বাংলাদেশ সশস্ত্র বাহিনী বেতন, ভাতা ও পেনশন ক্যালকুলেটর",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
