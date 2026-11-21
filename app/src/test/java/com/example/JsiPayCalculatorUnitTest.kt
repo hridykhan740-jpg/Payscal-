@@ -209,4 +209,48 @@ class JsiPayCalculatorUnitTest {
         vm.syncPayToAllowancesAndPension()
         assertEquals(PensionSubTab.RETIRING, vm.uiState.value.pensionSubTab)
     }
+
+    @Test
+    fun testOld2015GradeSelectionAndAutoFixation() {
+        val g10 = JsiPayData.get2015GradeContext("GRADE_10", PersonnelCategory.JCO_OR, "sgt", useBengaliDigits = false)
+        assertEquals(16000L, g10.startPay)
+        assertEquals(16000L, g10.steps.first())
+        assertEquals(38640L, g10.steps.last())
+
+        val g17 = JsiPayData.get2015GradeContext("GRADE_17", PersonnelCategory.JCO_OR, "sainik", useBengaliDigits = false)
+        assertEquals(9000L, g17.startPay)
+        assertEquals(21800L, g17.steps.last())
+
+        val g1 = JsiPayData.get2015GradeContext("GRADE_1", PersonnelCategory.OFFICER, "sgt", useBengaliDigits = false)
+        assertEquals(listOf(78000L), g1.steps)
+
+        val vm = CalculatorViewModel()
+        vm.selectCategory(PersonnelCategory.JCO_OR)
+        vm.selectNonOfficerRank("sgt")
+        vm.toggleJuly2026Increment(true)
+        vm.selectOld2015Grade("GRADE_10")
+        vm.selectOld2015Step(26120L)
+
+        assertEquals(45100L, vm.uiState.value.payFixationResult?.newBasicPay)
+        assertEquals(8, vm.uiState.value.payFixationResult?.matchedStepIndex)
+    }
+
+    @Test
+    fun testCustomAllowancesPhasedTakeHomeTotals() {
+        val vm = CalculatorViewModel()
+        vm.selectCategory(PersonnelCategory.JCO_OR)
+        vm.selectNonOfficerRank("sgt")
+        vm.updateOldBasicPay("26120")
+
+        val baseP1 = vm.uiState.value.phasedArrearsResult!!.phase1TakeHome
+        val baseP4 = vm.uiState.value.phasedArrearsResult!!.phase4TakeHome
+
+        vm.addCustomAllowance("ঝুঁকি ভাতা", 2000L, applyInAllPhases = true)
+        vm.addCustomAllowance("বিশেষ ভাতা", 1500L, applyInAllPhases = false)
+
+        val phased = vm.uiState.value.phasedArrearsResult!!
+        assertEquals(baseP1 + 2000L, phased.phase1TakeHome)
+        assertEquals(baseP4 + 3500L, phased.phase4TakeHome)
+        assertTrue(vm.buildFullSummaryText().contains("ঝুঁকি ভাতা"))
+    }
 }

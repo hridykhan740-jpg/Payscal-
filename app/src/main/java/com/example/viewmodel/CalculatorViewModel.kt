@@ -48,6 +48,13 @@ data class ProjectedPromotion(
     val year: String = "2030"
 )
 
+data class CustomAllowanceItem(
+    val id: String = UUID.randomUUID().toString(),
+    val name: String,
+    val amount: Long,
+    val applyInAllPhases: Boolean = true
+)
+
 data class PayFixationStepItem(
     val stepBn: String,
     val title: String,
@@ -95,6 +102,7 @@ data class PhaseMilestoneDetail(
     val basicPay: Long,
     val basicDiffFromPrevious: Long,
     val basicSubtitle: String,
+    val allowancesTotal: Long = 0L,
     val netGainTitle: String,
     val netGainAmount: Long,
     val netGainSubtitle: String?,
@@ -114,6 +122,12 @@ data class PhasedArrearsResult(
     val phase1Pay: Long,
     val phase2Pay: Long,
     val phase3Pay: Long,
+    val phase1TakeHome: Long = 0L,
+    val phase2TakeHome: Long = 0L,
+    val phase3TakeHome: Long = 0L,
+    val phase4TakeHome: Long = 0L,
+    val oldAllowancesTotal: Long = 0L,
+    val newAllowancesTotal: Long = 0L,
     val dateRangeSubtitle: String,
     val arrearsDurationSummary: String,
     val monthsArrearsCount: Double,
@@ -146,6 +160,8 @@ data class AllowancesResult(
     val goodConductPay: Long,
     val specialSkillPay: Long,
     val otherNewAllowance: Long,
+    val customAllowancesList: List<CustomAllowanceItem> = emptyList(),
+    val customAllowancesTotal: Long = 0L,
     val grossMonthlyPay: Long,
     val gpfDeduction: Long,
     val netMonthlyPay: Long,
@@ -218,6 +234,7 @@ data class CalculatorUiState(
     val selectedCadetId: String = "officer_cadet",
 
     val selectedNonOfficerRankId: String = "sgt",
+    val selectedOld2015GradeId: String = "AUTO",
     val oldBasicPayInput: String = "26120",
     val oldScaleStartOverride: String = "16000",
     val applyJuly2026Increment: Boolean = true,
@@ -233,6 +250,7 @@ data class CalculatorUiState(
     val goodConductBadges: Int = 0,
     val selectedSpecialSkills: Set<SpecialSkillPay> = emptySet(),
     val otherNewAllowanceInput: String = "",
+    val customAllowances: List<CustomAllowanceItem> = emptyList(),
 
     // Phased & Arrears Inputs
     val receiveMonthIndex: Int = 0, // 0 = এখনো পাইনি (আজ পর্যন্ত হিসাব)
@@ -795,9 +813,62 @@ class CalculatorViewModel(
             val defaultOldPay = if (rank.id == "sgt") "26120" else rank.oldScaleStart.toString()
             state.copy(
                 selectedNonOfficerRankId = rankId,
+                selectedOld2015GradeId = "AUTO",
                 oldScaleStartOverride = rank.oldScaleStart.toString(),
                 oldBasicPayInput = defaultOldPay
             )
+        }
+        recalculateAll()
+    }
+
+    fun selectOld2015Grade(gradeId: String) {
+        _uiState.update { state ->
+            val ctx = JsiPayData.get2015GradeContext(
+                gradeId = gradeId,
+                category = state.category,
+                nonOfficerRankId = state.selectedNonOfficerRankId,
+                useBengaliDigits = state.useBengaliDigits
+            )
+            if (state.category == PersonnelCategory.OFFICER) {
+                val cur = BengaliFormat.parseSafeNumber(state.officerOldBasicInput)
+                val nextBasic = if (ctx.steps.isNotEmpty() && cur !in ctx.steps) {
+                    ctx.steps.first().toString()
+                } else state.officerOldBasicInput
+                state.copy(
+                    selectedOld2015GradeId = gradeId,
+                    officerOldBasicInput = nextBasic
+                )
+            } else {
+                val cur = BengaliFormat.parseSafeNumber(state.oldBasicPayInput)
+                val nextBasic = if (cur < ctx.startPay || cur !in ctx.steps) {
+                    (ctx.steps.firstOrNull() ?: ctx.startPay).toString()
+                } else state.oldBasicPayInput
+                state.copy(
+                    selectedOld2015GradeId = gradeId,
+                    oldScaleStartOverride = ctx.startPay.toString(),
+                    oldBasicPayInput = nextBasic
+                )
+            }
+        }
+        recalculateAll()
+    }
+
+    fun selectOld2015Step(amount: Long) {
+        _uiState.update { state ->
+            val ctx = JsiPayData.get2015GradeContext(
+                gradeId = state.selectedOld2015GradeId,
+                category = state.category,
+                nonOfficerRankId = state.selectedNonOfficerRankId,
+                useBengaliDigits = state.useBengaliDigits
+            )
+            if (state.category == PersonnelCategory.OFFICER) {
+                state.copy(officerOldBasicInput = amount.toString())
+            } else {
+                state.copy(
+                    oldBasicPayInput = amount.toString(),
+                    oldScaleStartOverride = if (ctx.startPay > 0L) ctx.startPay.toString() else state.oldScaleStartOverride
+                )
+            }
         }
         recalculateAll()
     }
@@ -868,6 +939,39 @@ class CalculatorViewModel(
 
     fun updateOtherNewAllowance(value: String) {
         _uiState.update { it.copy(otherNewAllowanceInput = value) }
+        recalculateAll()
+    }
+
+    fun addCustomAllowance(name: String, amount: Long, applyInAllPhases: Boolean) {
+        if (amount <= 0L) return
+        _uiState.update { state ->
+            val idxNext = state.customAllowances.size + 1
+            val cleanName = name.trim().ifBlank { "অন্যান্য ভাতা $idxNext" }
+            val item = CustomAllowanceItem(
+                name = cleanName,
+                amount = amount,
+                applyInAllPhases = applyInAllPhases
+            )
+            state.copy(customAllowances = state.customAllowances + item)
+        }
+        recalculateAll()
+    }
+
+    fun toggleCustomAllowancePhase(id: String) {
+        _uiState.update { state ->
+            state.copy(
+                customAllowances = state.customAllowances.map {
+                    if (it.id == id) it.copy(applyInAllPhases = !it.applyInAllPhases) else it
+                }
+            )
+        }
+        recalculateAll()
+    }
+
+    fun removeCustomAllowance(id: String) {
+        _uiState.update { state ->
+            state.copy(customAllowances = state.customAllowances.filterNot { it.id == id })
+        }
         recalculateAll()
     }
 
@@ -1439,6 +1543,10 @@ class CalculatorViewModel(
         } else 0L
         if (oldSkill > 0L) items.add("বিশেষ দক্ষতা বেতন (পুরোনো)" to oldSkill)
 
+        state.customAllowances.filter { it.amount > 0L && it.applyInAllPhases }.forEach { custom ->
+            items.add("${custom.name} (ঐচ্ছিক)" to custom.amount)
+        }
+
         return items
     }
 
@@ -1541,6 +1649,7 @@ class CalculatorViewModel(
         val takeHome3 = gross3 - gpf3
 
         val allow2028Items = buildNewAllowancesItemList(state, pay, allow2028)
+        val allowTotal2028 = (allow2028.grossMonthlyPay - allow2028.basicPay).coerceAtLeast(0L)
         val takeHome4 = allow2028.netMonthlyPay
 
         val p1PctLabel = if (group == ImplementationGroup.GROUP_A) "৪০%" else "৫০%"
@@ -1556,6 +1665,7 @@ class CalculatorViewModel(
                 basicPay = p1,
                 basicDiffFromPrevious = (p1 - oldBasic).coerceAtLeast(0L),
                 basicSubtitle = "পুরোনো মূল বেতন + বৃদ্ধি $p1PctLabel",
+                allowancesTotal = oldAllowTotal,
                 netGainTitle = "প্রণোদনা বাদ দিয়ে জুন ২০২৬-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে",
                 netGainAmount = (p1 - oldBasic - effectiveBisesh),
                 netGainSubtitle = "বিশেষ প্রণোদনা ${BengaliFormat.formatBdt(effectiveBisesh.toDouble(), bn)} বাদ ($biseshRuleNote)",
@@ -1574,6 +1684,7 @@ class CalculatorViewModel(
                 basicPay = p2,
                 basicDiffFromPrevious = (p2 - p1).coerceAtLeast(0L),
                 basicSubtitle = "পুরোনো মূল বেতন + বৃদ্ধি $p2PctLabel",
+                allowancesTotal = oldAllowTotal,
                 netGainTitle = "জুলাই ২০২৬-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে",
                 netGainAmount = (p2 - p1).coerceAtLeast(0L),
                 netGainSubtitle = null,
@@ -1592,6 +1703,7 @@ class CalculatorViewModel(
                 basicPay = p3,
                 basicDiffFromPrevious = (p3 - p2).coerceAtLeast(0L),
                 basicSubtitle = if (p3 > newBasic2026) "১০০% নতুন মূল বেতন (ইনক্রিমেন্টসহ)" else "১০০% নতুন মূল বেতন",
+                allowancesTotal = oldAllowTotal,
                 netGainTitle = "জানুয়ারি ২০২৭-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে",
                 netGainAmount = (p3 - p2).coerceAtLeast(0L),
                 netGainSubtitle = null,
@@ -1610,6 +1722,7 @@ class CalculatorViewModel(
                 basicPay = allow2028.basicPay,
                 basicDiffFromPrevious = 0L,
                 basicSubtitle = "নতুন মূল বেতন",
+                allowancesTotal = allowTotal2028,
                 netGainTitle = "জুলাই ২০২৭-এর তুলনায় আপনার বেতন বৃদ্ধি পেয়েছে",
                 netGainAmount = (takeHome4 - takeHome3),
                 netGainSubtitle = null,
@@ -1639,6 +1752,12 @@ class CalculatorViewModel(
             phase1Pay = p1,
             phase2Pay = p2,
             phase3Pay = p3,
+            phase1TakeHome = takeHome1,
+            phase2TakeHome = takeHome2,
+            phase3TakeHome = takeHome3,
+            phase4TakeHome = takeHome4,
+            oldAllowancesTotal = oldAllowTotal,
+            newAllowancesTotal = allowTotal2028,
             dateRangeSubtitle = dateRangeSubtitle,
             arrearsDurationSummary = durationSummary,
             monthsArrearsCount = fractionMonths,
@@ -1677,6 +1796,9 @@ class CalculatorViewModel(
         if (allow.goodConductPay > 0L) list.add("সদাচরণ ব্যাজ বেতন" to allow.goodConductPay)
         if (allow.specialSkillPay > 0L) list.add("বিশেষ দক্ষতা বেতন" to allow.specialSkillPay)
         if (allow.otherNewAllowance > 0L) list.add("অন্যান্য নতুন ভাতা" to allow.otherNewAllowance)
+        allow.customAllowancesList.forEach { custom ->
+            list.add("${custom.name} (ঐচ্ছিক)" to custom.amount)
+        }
         return list
     }
 
@@ -1767,10 +1889,13 @@ class CalculatorViewModel(
         } else 0L
 
         val otherNewAllowance = BengaliFormat.parseSafeNumber(state.otherNewAllowanceInput).coerceAtLeast(0L)
+        val customList = state.customAllowances.filter { it.amount > 0L }
+        val customTotal = customList.sumOf { it.amount }
 
         val gross = basic + serviceOrdnance2028 + pay.personalPay + houseRentAmount + dsa +
             medical + education + disabledChildAllowance + tiffin + transport + mobile + kit +
-            hillHaor + proficiencyPay + appointmentPay + goodConductPay + specialSkillPay + otherNewAllowance
+            hillHaor + proficiencyPay + appointmentPay + goodConductPay + specialSkillPay +
+            otherNewAllowance + customTotal
 
         val gpf = if (tier == RankTierForAllowances.CADET || tier == RankTierForAllowances.RECRUIT) {
             0L
@@ -1805,6 +1930,8 @@ class CalculatorViewModel(
             goodConductPay = goodConductPay,
             specialSkillPay = specialSkillPay,
             otherNewAllowance = otherNewAllowance,
+            customAllowancesList = customList,
+            customAllowancesTotal = customTotal,
             grossMonthlyPay = gross,
             gpfDeduction = gpf,
             netMonthlyPay = net,
@@ -2012,8 +2139,19 @@ class CalculatorViewModel(
         }
 
         if (allow != null) {
-            sb.appendLine("[৩. ভাতাদি ও নিট বেতন (০১ জানু ২০২৮ হইতে)]")
-            sb.appendLine("মোট বেতন-ভাতা (Gross): ${BengaliFormat.formatBdt(allow.grossMonthlyPay.toDouble(), bn)}")
+            sb.appendLine("[৩. ভাতাদি ও ধাপ অনুযায়ী সর্বমোট নিট বেতন]")
+            if (phased != null) {
+                sb.appendLine("জুলাই ২০২৬ নিট (মূল + ভাতা − জিপিএফ): ${BengaliFormat.formatBdt(phased.phase1TakeHome.toDouble(), bn)}")
+                sb.appendLine("জানুয়ারি ২০২৭ নিট (মূল + ভাতা − জিপিএফ): ${BengaliFormat.formatBdt(phased.phase2TakeHome.toDouble(), bn)}")
+                sb.appendLine("জুলাই ২০২৭ নিট (মূল + ভাতা − জিপিএফ): ${BengaliFormat.formatBdt(phased.phase3TakeHome.toDouble(), bn)}")
+            }
+            if (allow.customAllowancesList.isNotEmpty()) {
+                allow.customAllowancesList.forEach { custom ->
+                    val phaseTag = if (custom.applyInAllPhases) "সকল ধাপে" else "জানু ২০২৮+"
+                    sb.appendLine("ঐচ্ছিক ভাতা (${custom.name} — $phaseTag): ${BengaliFormat.formatBdt(custom.amount.toDouble(), bn)}")
+                }
+            }
+            sb.appendLine("জানু ২০২৮ মোট বেতন-ভাতা (Gross): ${BengaliFormat.formatBdt(allow.grossMonthlyPay.toDouble(), bn)}")
             sb.appendLine("জিপিএফ কর্তন: − ${BengaliFormat.formatBdt(allow.gpfDeduction.toDouble(), bn)}")
             sb.appendLine("নিট মাসিক বেতন (২০২৮): ${BengaliFormat.formatBdt(allow.netMonthlyPay.toDouble(), bn)}")
             sb.appendLine("বাংলা নববর্ষ ভাতা (১৫%): ${BengaliFormat.formatBdt(allow.noboborshoAnnual.toDouble(), bn)}")
@@ -2097,6 +2235,7 @@ class CalculatorViewModel(
                 put("officerOldBasicInput", state.officerOldBasicInput)
                 put("selectedCadetId", state.selectedCadetId)
                 put("selectedNonOfficerRankId", state.selectedNonOfficerRankId)
+                put("selectedOld2015GradeId", state.selectedOld2015GradeId)
                 put("oldBasicPayInput", state.oldBasicPayInput)
                 put("oldScaleStartOverride", state.oldScaleStartOverride)
                 put("applyJuly2026Increment", state.applyJuly2026Increment)
@@ -2108,6 +2247,16 @@ class CalculatorViewModel(
                 put("goodConductBadges", state.goodConductBadges)
                 put("selectedSpecialSkills", org.json.JSONArray(state.selectedSpecialSkills.map { it.name }))
                 put("otherNewAllowanceInput", state.otherNewAllowanceInput)
+                put("customAllowances", org.json.JSONArray().apply {
+                    state.customAllowances.forEach { c ->
+                        put(org.json.JSONObject().apply {
+                            put("id", c.id)
+                            put("name", c.name)
+                            put("amount", c.amount)
+                            put("applyInAllPhases", c.applyInAllPhases)
+                        })
+                    }
+                })
                 put("receiveMonthIndex", state.receiveMonthIndex)
                 put("monthlyBiseshSubidhaInput", state.monthlyBiseshSubidhaInput)
                 put("cityCategory", state.cityCategory.name)
@@ -2165,6 +2314,10 @@ class CalculatorViewModel(
                         put("phase1Pay", phased.phase1Pay)
                         put("phase2Pay", phased.phase2Pay)
                         put("phase3Pay", phased.phase3Pay)
+                        put("phase1TakeHome", phased.phase1TakeHome)
+                        put("phase2TakeHome", phased.phase2TakeHome)
+                        put("phase3TakeHome", phased.phase3TakeHome)
+                        put("phase4TakeHome", phased.phase4TakeHome)
                         put("dateRangeSubtitle", phased.dateRangeSubtitle)
                         put("monthsArrearsCount", phased.monthsArrearsCount)
                         put("monthlyBiseshSubidha", phased.monthlyBiseshSubidha)
@@ -2268,6 +2421,25 @@ class CalculatorViewModel(
                 }
             }
 
+            val customAllows = mutableListOf<CustomAllowanceItem>()
+            val customArr = inputs.optJSONArray("customAllowances")
+            if (customArr != null) {
+                for (i in 0 until customArr.length()) {
+                    val obj = customArr.optJSONObject(i) ?: continue
+                    val amt = BengaliFormat.parseSafeNumber(obj.optString("amount", "0"))
+                    if (amt > 0L) {
+                        customAllows.add(
+                            CustomAllowanceItem(
+                                id = obj.optString("id").ifBlank { UUID.randomUUID().toString() },
+                                name = obj.optString("name", "অন্যান্য ভাতা").ifBlank { "অন্যান্য ভাতা" },
+                                amount = amt,
+                                applyInAllPhases = obj.optBoolean("applyInAllPhases", true)
+                            )
+                        )
+                    }
+                }
+            }
+
             val sbIdx = inputs.optInt("serviceBracketIndex", current.serviceBracket.ordinal)
             val bracket = ServiceBracket.entries.getOrElse(sbIdx) { current.serviceBracket }
 
@@ -2291,6 +2463,8 @@ class CalculatorViewModel(
                     officerOldBasicInput = inputs.optString("officerOldBasicInput", s.officerOldBasicInput),
                     selectedCadetId = inputs.optString("selectedCadetId", s.selectedCadetId),
                     selectedNonOfficerRankId = inputs.optString("selectedNonOfficerRankId", s.selectedNonOfficerRankId),
+                    selectedOld2015GradeId = inputs.optString("selectedOld2015GradeId", s.selectedOld2015GradeId)
+                        .takeIf { id -> JsiPayData.nps2015Grades.any { it.id == id } } ?: "AUTO",
                     oldBasicPayInput = inputs.optString("oldBasicPayInput", s.oldBasicPayInput),
                     oldScaleStartOverride = inputs.optString("oldScaleStartOverride", s.oldScaleStartOverride),
                     applyJuly2026Increment = inputs.optBoolean("applyJuly2026Increment", s.applyJuly2026Increment),
@@ -2302,6 +2476,7 @@ class CalculatorViewModel(
                     goodConductBadges = inputs.optInt("goodConductBadges", s.goodConductBadges),
                     selectedSpecialSkills = if (skillsArr != null) skillsSet else s.selectedSpecialSkills,
                     otherNewAllowanceInput = inputs.optString("otherNewAllowanceInput", s.otherNewAllowanceInput),
+                    customAllowances = if (customArr != null) customAllows else s.customAllowances,
                     receiveMonthIndex = inputs.optInt("receiveMonthIndex", s.receiveMonthIndex),
                     monthlyBiseshSubidhaInput = inputs.optString("monthlyBiseshSubidhaInput", s.monthlyBiseshSubidhaInput),
                     cityCategory = runCatching { CityCategory.valueOf(inputs.optString("cityCategory")) }.getOrDefault(s.cityCategory),
@@ -2336,6 +2511,31 @@ class CalculatorViewModel(
         }
     }
 
+    private fun serializeCustomAllowances(items: List<CustomAllowanceItem>): String {
+        return items.joinToString(";;") { item ->
+            val safeName = item.name.replace("||", " ").replace(";;", " ").replace("@@", " ")
+            "${item.id}||$safeName||${item.amount}||${item.applyInAllPhases}"
+        }
+    }
+
+    private fun deserializeCustomAllowances(raw: String): List<CustomAllowanceItem> {
+        if (raw.isBlank()) return emptyList()
+        return raw.split(";;").filter { it.isNotBlank() }.mapNotNull { chunk ->
+            val parts = chunk.split("||")
+            if (parts.size >= 4) {
+                val amt = parts[2].toLongOrNull() ?: 0L
+                if (amt > 0L) {
+                    CustomAllowanceItem(
+                        id = parts[0].ifBlank { UUID.randomUUID().toString() },
+                        name = parts[1].ifBlank { "অন্যান্য ভাতা" },
+                        amount = amt,
+                        applyInAllPhases = parts[3].toBooleanStrictOrNull() ?: true
+                    )
+                } else null
+            } else null
+        }
+    }
+
     // Room Serialization Helpers
     private fun CalculatorUiState.toEntity(): CalculatorStateEntity = CalculatorStateEntity(
         id = 1,
@@ -2358,6 +2558,7 @@ class CalculatorViewModel(
         officerOldBasicInput = officerOldBasicInput,
         selectedCadetId = selectedCadetId,
         selectedNonOfficerRankId = selectedNonOfficerRankId,
+        selectedOld2015GradeId = selectedOld2015GradeId,
         oldBasicPayInput = oldBasicPayInput,
         oldScaleStartOverride = oldScaleStartOverride,
         applyJuly2026Increment = applyJuly2026Increment,
@@ -2369,6 +2570,7 @@ class CalculatorViewModel(
         goodConductBadges = goodConductBadges,
         selectedSpecialSkillsCsv = selectedSpecialSkills.joinToString(",") { it.name },
         otherNewAllowanceInput = otherNewAllowanceInput,
+        customAllowancesRaw = serializeCustomAllowances(customAllowances),
         receiveMonthIndex = receiveMonthIndex,
         monthlyBiseshSubidhaInput = monthlyBiseshSubidhaInput,
         cityCategoryName = cityCategory.name,
@@ -2434,6 +2636,8 @@ class CalculatorViewModel(
             officerOldBasicInput = officerOldBasicInput,
             selectedCadetId = selectedCadetId,
             selectedNonOfficerRankId = selectedNonOfficerRankId,
+            selectedOld2015GradeId = selectedOld2015GradeId
+                .takeIf { id -> JsiPayData.nps2015Grades.any { it.id == id } } ?: "AUTO",
             oldBasicPayInput = oldBasicPayInput,
             oldScaleStartOverride = oldScaleStartOverride,
             applyJuly2026Increment = applyJuly2026Increment,
@@ -2445,6 +2649,7 @@ class CalculatorViewModel(
             goodConductBadges = goodConductBadges,
             selectedSpecialSkills = skills,
             otherNewAllowanceInput = otherNewAllowanceInput,
+            customAllowances = deserializeCustomAllowances(customAllowancesRaw),
             receiveMonthIndex = receiveMonthIndex,
             monthlyBiseshSubidhaInput = monthlyBiseshSubidhaInput,
             cityCategory = runCatching { CityCategory.valueOf(cityCategoryName) }.getOrDefault(current.cityCategory),
@@ -2489,7 +2694,8 @@ class CalculatorViewModel(
             e.receiveMonthIndex, e.monthlyBiseshSubidhaInput,
             e.cityCategoryName, e.accommodationTypeName, e.serviceBracketName,
             e.activeMedicalAgeBracketName, e.receiveFreeTiffin, e.hillHaorCategoryName,
-            e.oldServiceOrdnanceInput, e.gpfPercent
+            e.oldServiceOrdnanceInput, e.gpfPercent,
+            e.selectedOld2015GradeId, e.customAllowancesRaw
         ).joinToString("@@")
     }
 
@@ -2538,7 +2744,9 @@ class CalculatorViewModel(
             receiveFreeTiffin = p[35].toBoolean(),
             hillHaorCategory = runCatching { HillHaorCategory.valueOf(p[36]) }.getOrDefault(current.hillHaorCategory),
             oldServiceOrdnanceInput = p[37],
-            gpfPercent = p[38].toIntOrNull() ?: 5
+            gpfPercent = p[38].toIntOrNull() ?: 5,
+            selectedOld2015GradeId = p.getOrNull(39)?.takeIf { id -> JsiPayData.nps2015Grades.any { it.id == id } } ?: "AUTO",
+            customAllowances = p.getOrNull(40)?.let { deserializeCustomAllowances(it) } ?: emptyList()
         )
     }
 }

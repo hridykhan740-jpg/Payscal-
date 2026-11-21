@@ -8,6 +8,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -18,6 +19,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Info
@@ -31,8 +33,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.R
 import com.example.ui.theme.*
 import com.example.util.BengaliFormat
 
@@ -1045,24 +1050,18 @@ fun DeveloperCreditCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Surface(
-                    color = CeremonialGoldMuted,
-                    shape = RoundedCornerShape(12.dp),
-                    border = BorderStroke(1.dp, CeremonialGold.copy(alpha = 0.55f)),
-                    modifier = Modifier.size(44.dp)
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Icon(
-                            imageVector = Icons.Default.Person,
-                            contentDescription = "ডেভেলপার পরিচিতি",
-                            tint = CeremonialGold,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-                }
+                Image(
+                    painter = painterResource(id = R.drawable.developer_avatar),
+                    contentDescription = "Àbdüllāh Aĺ Hỗŝŝâîň",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .border(2.dp, CeremonialGold.copy(alpha = 0.7f), RoundedCornerShape(16.dp))
+                )
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "ডেভেলপার পরিচিতি (Developer Info)",
+                        text = "ডেভেলপার পরিচিতি",
                         style = MaterialTheme.typography.labelSmall,
                         color = CeremonialGold
                     )
@@ -1077,42 +1076,50 @@ fun DeveloperCreditCard(
 
             HorizontalDivider(color = RegimentalBorder)
 
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                DeveloperContactRow(
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                DeveloperIconOnlyButton(
                     icon = Icons.Default.Public,
-                    platform = "ফেসবুক (Facebook)",
-                    handle = "facebook.com/share/14vc4Dkbfsi",
-                    actionLabel = "খুলুন",
+                    contentDescription = "Facebook",
+                    tint = Color(0xFF60A5FA),
+                    containerColor = Color(0xFF172554).copy(alpha = 0.7f),
+                    borderColor = Color(0xFF3B82F6).copy(alpha = 0.55f),
                     testTag = "dev_facebook_btn",
                     onClick = {
                         openExternalUrl(context, "https://www.facebook.com/share/14vc4Dkbfsi/")
                     }
                 )
-                DeveloperContactRow(
-                    icon = Icons.Default.Chat,
-                    platform = "হোয়াটসঅ্যাপ (WhatsApp)",
-                    handle = "@ali_98khan",
-                    actionLabel = "কপি",
+                DeveloperIconOnlyButton(
+                    icon = Icons.AutoMirrored.Filled.Chat,
+                    contentDescription = "WhatsApp",
+                    tint = EmeraldTextLight,
+                    containerColor = EmeraldContainerDark.copy(alpha = 0.75f),
+                    borderColor = EmeraldAccent.copy(alpha = 0.55f),
                     testTag = "dev_whatsapp_btn",
                     onClick = {
                         copyTextWithToast(context, "WhatsApp ID", "@ali_98khan")
                     }
                 )
-                DeveloperContactRow(
+                DeveloperIconOnlyButton(
                     icon = Icons.AutoMirrored.Filled.Send,
-                    platform = "ইমু (Imo)",
-                    handle = "mhossenali998",
-                    actionLabel = "কপি",
+                    contentDescription = "Imo",
+                    tint = Color(0xFF38BDF8),
+                    containerColor = Color(0xFF0C4A6E).copy(alpha = 0.65f),
+                    borderColor = Color(0xFF38BDF8).copy(alpha = 0.55f),
                     testTag = "dev_imo_btn",
                     onClick = {
                         copyTextWithToast(context, "Imo ID", "mhossenali998")
                     }
                 )
-                DeveloperContactRow(
+                DeveloperIconOnlyButton(
                     icon = Icons.Default.Email,
-                    platform = "জিমেইল (Gmail)",
-                    handle = "mhossenali740@gmail.com",
-                    actionLabel = "মেইল",
+                    contentDescription = "Gmail",
+                    tint = Color(0xFFFBBF24),
+                    containerColor = CeremonialGoldMuted.copy(alpha = 0.65f),
+                    borderColor = CeremonialGold.copy(alpha = 0.6f),
                     testTag = "dev_gmail_btn",
                     onClick = {
                         openEmailIntent(context, "mhossenali740@gmail.com")
@@ -1124,64 +1131,32 @@ fun DeveloperCreditCard(
 }
 
 @Composable
-private fun DeveloperContactRow(
+private fun DeveloperIconOnlyButton(
     icon: ImageVector,
-    platform: String,
-    handle: String,
-    actionLabel: String,
+    contentDescription: String,
+    tint: Color,
+    containerColor: Color,
+    borderColor: Color,
     testTag: String,
     onClick: () -> Unit
 ) {
     Surface(
         onClick = onClick,
-        shape = RoundedCornerShape(12.dp),
-        color = RegimentalFieldBg,
-        border = BorderStroke(1.dp, RegimentalBorder),
+        shape = RoundedCornerShape(14.dp),
+        color = containerColor,
+        border = BorderStroke(1.dp, borderColor),
         modifier = Modifier
-            .fillMaxWidth()
+            .size(48.dp)
             .minimumInteractiveComponentSize()
             .testTag(testTag)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
+        Box(contentAlignment = Alignment.Center) {
             Icon(
                 imageVector = icon,
-                contentDescription = platform,
-                tint = EmeraldAccent,
-                modifier = Modifier.size(18.dp)
+                contentDescription = contentDescription,
+                tint = tint,
+                modifier = Modifier.size(22.dp)
             )
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = platform,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = TextSecondaryMuted
-                )
-                Text(
-                    text = handle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Medium,
-                    color = TextPrimaryLight,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-            Surface(
-                color = EmeraldContainerDark,
-                shape = RoundedCornerShape(8.dp)
-            ) {
-                Text(
-                    text = actionLabel,
-                    style = MaterialTheme.typography.labelMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = EmeraldTextLight,
-                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
-                )
-            }
         }
     }
 }

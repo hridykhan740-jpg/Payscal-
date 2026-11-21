@@ -119,6 +119,22 @@ enum class SpecialSkillPay(val bnLabel: String) {
     FLYING("উড্ডয়ন (ফ্লাইট ক্রু)")
 }
 
+data class PayScale2015Grade(
+    val id: String,
+    val bnLabel: String,
+    val startPay: Long,
+    val rate: Double,
+    val count: Int,
+    val maxCap: Long?
+)
+
+data class Grade2015Context(
+    val grade: PayScale2015Grade,
+    val displayLabel: String,
+    val startPay: Long,
+    val steps: List<Long>
+)
+
 object JsiPayData {
 
     // Proficiency Pay Options (অধ্যায়-৪, অনুচ্ছেদ ১৫, ক্রমিক ২)
@@ -716,4 +732,77 @@ object JsiPayData {
         "জুন ২০২৭ (১১ মাস)" to 11,
         "জুলাই ২০২৭ (১২ মাস)" to 12
     )
+
+    fun build2015Steps(start: Long, count: Int, rate: Double = 0.05, maxCap: Long? = null): List<Long> {
+        if (count <= 1 || rate <= 0.0) return listOf(start)
+        val out = mutableListOf(start)
+        for (i in 1 until count) {
+            var next = (kotlin.math.ceil((out.last() * (1.0 + rate)) / 10.0) * 10.0).toLong()
+            if (maxCap != null && next > maxCap) next = maxCap
+            out.add(next)
+            if (maxCap != null && next >= maxCap) break
+        }
+        return out
+    }
+
+    val nps2015Grades = listOf(
+        PayScale2015Grade("AUTO", "পদবি অনুযায়ী স্কেল (JSI 01/2016 স্বয়ংক্রিয়)", 0L, 0.05, 19, null),
+        PayScale2015Grade("GRADE_20", "গ্রেড-২০ (৮,২৫০ – ২০,০১০ ৳)", 8250L, 0.05, 19, 20010L),
+        PayScale2015Grade("GRADE_19", "গ্রেড-১৯ (৮,৫০০ – ২০,৫৭০ ৳)", 8500L, 0.05, 19, 20570L),
+        PayScale2015Grade("GRADE_18", "গ্রেড-১৮ (৮,৮০০ – ২১,৩১০ ৳) • এনসি(ই)", 8800L, 0.05, 19, 21310L),
+        PayScale2015Grade("GRADE_17", "গ্রেড-১৭ (৯,০০০ – ২১,৮০০ ৳) • সৈনিক", 9000L, 0.05, 19, 21800L),
+        PayScale2015Grade("GRADE_16", "গ্রেড-১৬ (৯,৩০০ – ২২,৪৯০ ৳)", 9300L, 0.05, 19, 22490L),
+        PayScale2015Grade("GRADE_15", "গ্রেড-১৫ (৯,৭০০ – ২৩,৪৯০ ৳)", 9700L, 0.05, 19, 23490L),
+        PayScale2015Grade("GRADE_14", "গ্রেড-১৪ (১০,২০০ – ২৪,৬৮০ ৳) • এলসিপিএল", 10200L, 0.05, 19, 24680L),
+        PayScale2015Grade("GRADE_13", "গ্রেড-১৩ (১১,০০০ – ২৬,৫৯০ ৳) • কর্পোরাল", 11000L, 0.05, 19, 26590L),
+        PayScale2015Grade("GRADE_12", "গ্রেড-১২ (১১,৩০০ – ২৭,৩০০ ৳)", 11300L, 0.05, 19, 27300L),
+        PayScale2015Grade("GRADE_11", "গ্রেড-১১ (১২,৫০০ – ৩০,২৩০ ৳)", 12500L, 0.05, 19, 30230L),
+        PayScale2015Grade("GRADE_10", "গ্রেড-১০ (১৬,০০০ – ৩৮,৬৪০ ৳) • সার্জেন্ট", 16000L, 0.05, 19, 38640L),
+        PayScale2015Grade("GRADE_9", "গ্রেড-৯ (২২,০০০ – ৫৩,০৬০ ৳) • ডব্লিউও / ২য় লেঃ", 22000L, 0.05, 19, 53060L),
+        PayScale2015Grade("GRADE_8", "গ্রেড-৮ (২৩,০০০ – ৫৫,৪৭০ ৳)", 23000L, 0.05, 19, 55470L),
+        PayScale2015Grade("GRADE_7", "গ্রেড-৭ (২৯,০০০ – ৬৩,৪১০ ৳)", 29000L, 0.05, 17, 63410L),
+        PayScale2015Grade("GRADE_6", "গ্রেড-৬ (৩৫,৫০০ – ৬৭,০১০ ৳)", 35500L, 0.05, 14, 67010L),
+        PayScale2015Grade("GRADE_5", "গ্রেড-৫ (৪৩,০০০ – ৬৯,৮৫০ ৳)", 43000L, 0.045, 12, 69850L),
+        PayScale2015Grade("GRADE_4", "গ্রেড-৪ (৫০,০০০ – ৭১,২০০ ৳)", 50000L, 0.04, 10, 71200L),
+        PayScale2015Grade("GRADE_3", "গ্রেড-৩ (৫৬,৫০০ – ৭৪,৪০০ ৳)", 56500L, 0.04, 8, 74400L),
+        PayScale2015Grade("GRADE_2", "গ্রেড-২ (৬৬,০০০ – ৭৬,৪৯০ ৳)", 66000L, 0.0375, 5, 76490L),
+        PayScale2015Grade("GRADE_1", "গ্রেড-১ (৭৮,০০০ ৳ নির্ধারিত)", 78000L, 0.0, 1, 78000L)
+    )
+
+    fun get2015GradeContext(
+        gradeId: String,
+        category: PersonnelCategory,
+        nonOfficerRankId: String,
+        useBengaliDigits: Boolean
+    ): Grade2015Context {
+        val gradeObj = nps2015Grades.find { it.id == gradeId } ?: nps2015Grades.first()
+        if (gradeObj.id == "AUTO") {
+            if (category == PersonnelCategory.OFFICER) {
+                val fallbackStart = 22000L
+                return Grade2015Context(
+                    grade = gradeObj,
+                    displayLabel = "অফিসার স্কেল (২০১৫ পে স্কেল — গ্রেড ৯+)",
+                    startPay = fallbackStart,
+                    steps = build2015Steps(fallbackStart, 19, 0.05, 53060L)
+                )
+            }
+            val rk = nonOfficerRanks.find { it.id == nonOfficerRankId } ?: nonOfficerRanks[6]
+            val st = if (rk.oldScaleStart > 0L) rk.oldScaleStart else 16000L
+            val steps = if (rk.isHonoraryFixed || rk.isRecruitFixed) listOf(st) else build2015Steps(st, 19, 0.05, null)
+            val shortRank = rk.bnName.substringBefore(" /").trim()
+            val formattedStart = com.example.util.BengaliFormat.formatNumber(st, useBengaliDigits)
+            return Grade2015Context(
+                grade = gradeObj,
+                displayLabel = "পদবি অনুযায়ী ($shortRank: প্রারম্ভিক $formattedStart ৳)",
+                startPay = st,
+                steps = steps
+            )
+        }
+        return Grade2015Context(
+            grade = gradeObj,
+            displayLabel = gradeObj.bnLabel,
+            startPay = gradeObj.startPay,
+            steps = build2015Steps(gradeObj.startPay, gradeObj.count, gradeObj.rate, gradeObj.maxCap)
+        )
+    }
 }

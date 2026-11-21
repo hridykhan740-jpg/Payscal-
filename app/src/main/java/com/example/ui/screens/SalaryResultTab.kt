@@ -108,18 +108,21 @@ fun SalaryResultTab(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     HeroPhaseMiniBox(
-                        title = "জুলাই ২০২৬ মূল বেতন (ইনক্রিমেন্টসহ)",
-                        amount = BengaliFormat.formatBdt(phased.phase1Pay.toDouble(), bn),
+                        title = "জুলাই ২০২৬ (${if (phased.group == ImplementationGroup.GROUP_A) "৪০%" else "৫০%"})",
+                        basicAmountText = "মূল: ${BengaliFormat.formatBdt(phased.phase1Pay.toDouble(), bn)}",
+                        netAmountText = "নিট: ${BengaliFormat.formatBdt(phased.phase1TakeHome.toDouble(), bn)}",
                         modifier = Modifier.weight(1f)
                     )
                     HeroPhaseMiniBox(
-                        title = "জানুয়ারি ২০২৭ মূল বেতন",
-                        amount = BengaliFormat.formatBdt(phased.phase2Pay.toDouble(), bn),
+                        title = "জানুয়ারি ২০২৭ (${if (phased.group == ImplementationGroup.GROUP_A) "৭০%" else "৭৫%"})",
+                        basicAmountText = "মূল: ${BengaliFormat.formatBdt(phased.phase2Pay.toDouble(), bn)}",
+                        netAmountText = "নিট: ${BengaliFormat.formatBdt(phased.phase2TakeHome.toDouble(), bn)}",
                         modifier = Modifier.weight(1f)
                     )
                     HeroPhaseMiniBox(
-                        title = "জুলাই ২০২৭ মূল বেতন (ইনক্রিমেন্টসহ)",
-                        amount = BengaliFormat.formatBdt(phased.phase3Pay.toDouble(), bn),
+                        title = "জুলাই ২০২৭ (১০০%)",
+                        basicAmountText = "মূল: ${BengaliFormat.formatBdt(phased.phase3Pay.toDouble(), bn)}",
+                        netAmountText = "নিট: ${BengaliFormat.formatBdt(phased.phase3TakeHome.toDouble(), bn)}",
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -540,6 +543,108 @@ fun SalaryResultTab(
             }
         }
 
+        // 4B. Separated All-In Phased Grand Totals Card (Basic + Allowances - GPF per % phase)
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag("phased_all_in_totals_card"),
+            shape = RoundedCornerShape(20.dp),
+            color = RegimentalCard,
+            border = BorderStroke(1.dp, EmeraldAccent.copy(alpha = 0.45f))
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(
+                        text = "সব মিলিয়ে মোট টাকার হিসাব (যখন যত % কার্যকর হবে)",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = CeremonialGold
+                    )
+                    Text(
+                        text = "মূল বেতন + সকল ভাতা − জিপিএফ কর্তন (${BengaliFormat.formatNumber(state.gpfPercent.toLong(), bn)}%)",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = TextSecondaryMuted
+                    )
+                }
+
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    phased.milestones.forEach { m ->
+                        Surface(
+                            shape = RoundedCornerShape(14.dp),
+                            color = if (m.isFinalPhase) EmeraldContainerDark.copy(alpha = 0.55f) else RegimentalFieldBg,
+                            border = BorderStroke(
+                                1.dp,
+                                if (m.isFinalPhase) EmeraldAccent.copy(alpha = 0.6f) else RegimentalBorder
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .testTag("phased_total_item_${m.id}")
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(12.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
+                                        Text(
+                                            text = m.title,
+                                            style = MaterialTheme.typography.titleSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = TextPrimaryLight
+                                        )
+                                        Text(
+                                            text = m.dateRange,
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = TextSecondaryMuted
+                                        )
+                                    }
+                                    Surface(
+                                        shape = RoundedCornerShape(50),
+                                        color = if (m.isFinalPhase) EmeraldContainerDark else CeremonialGoldMuted.copy(alpha = 0.6f),
+                                        border = BorderStroke(
+                                            1.dp,
+                                            if (m.isFinalPhase) EmeraldAccent.copy(alpha = 0.6f) else CeremonialGold.copy(alpha = 0.6f)
+                                        )
+                                    ) {
+                                        Text(
+                                            text = m.badgeText,
+                                            style = MaterialTheme.typography.labelSmall,
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (m.isFinalPhase) EmeraldTextLight else CeremonialGold,
+                                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                        )
+                                    }
+                                }
+
+                                HorizontalDivider(color = RegimentalBorder.copy(alpha = 0.55f))
+
+                                KeyValueRow("মূল বেতন", BengaliFormat.formatBdt(m.basicPay.toDouble(), bn))
+                                KeyValueRow("সকল ভাতা (মোট)", BengaliFormat.formatBdt(m.allowancesTotal.toDouble(), bn))
+                                KeyValueRow("মোট (Gross)", BengaliFormat.formatBdt(m.grossMonthlyPay.toDouble(), bn))
+                                KeyValueRow(
+                                    "বাদ: জিপিএফ (${BengaliFormat.formatNumber(state.gpfPercent.toLong(), bn)}%)",
+                                    "− ${BengaliFormat.formatBdt(m.gpfDeduction.toDouble(), bn)}"
+                                )
+                                HorizontalDivider(color = RegimentalBorder.copy(alpha = 0.55f))
+                                KeyValueRow(
+                                    "সর্বমোট নিট (হাতে পাবেন)",
+                                    BengaliFormat.formatBdt(m.takeHomeAfterDeductions.toDouble(), bn),
+                                    highlight = true
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         // 5. Vertical Timeline ("প্রতিটি ধাপের বেতন ও ভাতা" — Matches Screenshots 3, 5, 7)
         Text(
             text = "প্রতিটি ধাপের বেতন ও ভাতা",
@@ -685,7 +790,8 @@ fun SalaryResultTab(
 @Composable
 private fun HeroPhaseMiniBox(
     title: String,
-    amount: String,
+    basicAmountText: String,
+    netAmountText: String,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -696,7 +802,7 @@ private fun HeroPhaseMiniBox(
     ) {
         Column(
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
+            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
                 text = title,
@@ -706,10 +812,17 @@ private fun HeroPhaseMiniBox(
                 minLines = 2
             )
             Text(
-                text = amount,
-                style = MaterialTheme.typography.titleSmall,
+                text = basicAmountText,
+                style = MaterialTheme.typography.labelMedium,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimaryLight,
+                maxLines = 1
+            )
+            Text(
+                text = netAmountText,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Bold,
+                color = EmeraldTextLight,
                 maxLines = 1
             )
         }
